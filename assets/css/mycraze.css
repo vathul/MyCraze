@@ -8,14 +8,15 @@ border-top: 1px solid #e5e5e5;
 
 .bs-docs-masthead, .bs-docs-header{
 	color: #ffffff;
-	background-image: linear-gradient(to bottom,#226AA8 0,#428bca 100%);
+	background-image: linear-gradient(to bottom,#226AA8 0,#428BCA 100%);
 }
 
 
 .bs-docs-sidebar .nav>.active>a, .bs-docs-sidebar .nav>.active:hover>a, .bs-docs-sidebar .nav>.active:focus>a{
 	color: #FFFFFF;
-	background-color: #428bca;
+	background-color: #428BCA;
 	border-left: none;
+	font-weight: 500;
 }
 
 .bs-docs-sidebar .nav>li>a:hover, .bs-docs-sidebar .nav>li>a:focus {
@@ -28,4 +29,12 @@ border-top: 1px solid #e5e5e5;
 	font-size: 14px;
 	border-radius: 4px;
 	padding: 10px 20px;
+}
+
+.btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
+	color: #226AA8;
+}
+
+.btn-outline-inverse {
+	border-color: transparent;
 }
