@@ -11,16 +11,21 @@ border-top: 1px solid #e5e5e5;
 	background-image: linear-gradient(to bottom,#226AA8 0,#428bca 100%);
 }
 
+
 .bs-docs-sidebar .nav>.active>a, .bs-docs-sidebar .nav>.active:hover>a, .bs-docs-sidebar .nav>.active:focus>a{
-	color: #226AA8;
-	border-left : 2px solid #226AA8;
+	color: #FFFFFF;
+	background-color: #428bca;
+	border-left: none;
 }
 
 .bs-docs-sidebar .nav>li>a:hover, .bs-docs-sidebar .nav>li>a:focus {
 	color: #226AA8;
-	border-left : 2px solid #226AA8;
+	background-color: rgba(0,0,0,0.1);
+	border-left: none;
 }
 
 .bs-docs-sidebar .nav>li>a {
 	font-size: 14px;
+	border-radius: 4px;
+	padding: 10px 20px;
 }
