@@ -1,0 +1,3 @@
+def test(request):
+	context = {'message': 'The site is healthy'}
+	return render(request, 'mycraze/test.html', context)
