@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<title>
+			{% block title %} Base Title {% endblock %}
+		</title>
+		<!-- Bootstrap -->
+		<link href="{% static "mycraze/css/bootstrap.min.css" %}" rel="stylesheet">
+		<!-- Bootstrap docs -->
+		<link href="{% static "mycraze/css/docs.min.css" %}" rel="stylesheet">
+		<!-- Awesome fonts IO -->
+		<link href="{% static "mycraze/css/font-awesome.min.css" %}" rel="stylesheet">
+		<!-- MyCraze -->
+		<link href="{% static "mycraze/css/mycraze.css" %}" rel="stylesheet">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="{% static "mycraze/js/html5shiv.min.js" %}"></script>
+		  <script src="{% static "mycraze/js/respond.min.js" %}"></script>
+		<![endif]-->
+	</head>
+	<body>
+		{% block header %}
+			{% include "mycraze/tile/header.html" %}  
+		{% endblock %}
+
+		{% block content %}
+		{% endblock %}
+
+		{% block footer %}
+			{% include "mycraze/tile/footer.html" %}  
+		{% endblock %}
+	</body>
+</html>
