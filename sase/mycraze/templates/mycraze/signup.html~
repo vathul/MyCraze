@@ -1,0 +1,6 @@
+<h1>Create an account</h1>
+<form method="post" action="account_submit">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit" />
+</form>
