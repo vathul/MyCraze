@@ -1,0 +1,45 @@
+{% extends "mycraze/tile/base.html" %}
+{% load staticfiles %}
+{% block title %} Login | MyCraze {% endblock %}
+{% block header %} {% endblock %}
+{% block content %}
+	<!--Page specific styles-->
+	<style>
+	    a.home-custom {
+	    	min-width: 300px;
+	    	max-width: 300px;
+	    	text-align: left;
+	    }
+	    .well {
+	      background-color: rgba(245, 245, 245, 0.5);
+	    }
+	</style>
+	<main class="bs-docs-masthead">
+		<div class="container">
+			<h1>MyCraze</h1>
+			<p class="lead">Choose one of the following services to use MyCraze</p>			
+			<div class="row">
+			    <div class="col-md-8 col-md-offset-2">
+			    	 <div class="row well">
+						<div id="left-pane" class="col-md-6">
+	        				<div>
+	  							<p><a href = "https://accounts.google.com" class="btn btn-default home-custom" role="button"><i class="fa fa-google-plus-square"></i> Google</a></p>
+							</div>
+							<div>
+	  							<p><a href = "https://www.facebook.com/login.php" class="btn btn-default home-custom" role="button"><i class="fa fa-facebook-square"></i> Facebook</a></p>
+							</div>
+							<div>
+	  							<p><a class="btn btn-default home-custom" role="button"><i class="fa fa-github-square"></i> Github</a></p>
+							</div>
+	      				</div>
+						<div id="right-pane" class="col-md-6">
+	        				<embed src="http://www.youtube.com/v/3DccH9AMwFQ">
+						</div>
+				    </div>
+			    </div>
+			</div>
+			
+	  		
+		</div>
+	  </main>
+{% endblock %}
