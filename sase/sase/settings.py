@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%lbz13sa3y75%fvf+wk3p*llkgt-q(fx%s+dz*tur889rvk)(n'
+SECRET_KEY = '0zthi*rhgfo+5#pzj#4wzzsp18iyi!l5tpza=3jc1+ybexd4&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +36,27 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'mycraze',
+    'social.apps.django_app.default'
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.core.context_processors.tz',
+   'django.contrib.messages.context_processors.messages',
+   'social.apps.django_app.context_processors.backends',
+   'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,6 +72,13 @@ ROOT_URLCONF = 'sase.urls'
 
 WSGI_APPLICATION = 'sase.wsgi.application'
 
+# Google Project Details
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '723821424184-b4fatepotlc14bkhkg3fkg0po4hp7flt.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '-vS3QVozqTx8TBK72ARvtXQ6'
+
+#Social Auth Configuration
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/mycraze/user-resume/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/mycraze/profile-complete/'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -88,3 +116,7 @@ STATIC_URL = '/static/'
 # Template
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
