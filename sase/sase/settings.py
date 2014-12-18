@@ -68,6 +68,20 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+# Database
+# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mycraze',
+        'USER':'root',
+        'PASSWORD':'Sr!Kr!shnan123',
+        'HOST':'localhost',
+        'PORT':'3306'
+    }
+}
+
 ROOT_URLCONF = 'sase.urls'
 
 WSGI_APPLICATION = 'sase.wsgi.application'
@@ -87,20 +101,6 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '27ff2c6ed2e53a73e7d240fa81a3dbda'
 #Github Project Details
 SOCIAL_AUTH_GITHUB_KEY = 'cb4ccb6a648aaa4f57f7'
 SOCIAL_AUTH_GITHUB_SECRET = 'c5de7d07f0aef56037c2a9a15843231deb1bcf14'
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mycraze',
-        'USER':'root',
-        'PASSWORD':'Sr!Kr!shnan123',
-        'HOST':'localhost',
-        'PORT':'3306'
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
