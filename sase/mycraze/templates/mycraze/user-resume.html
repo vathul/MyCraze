@@ -1,0 +1,103 @@
+{% extends "mycraze/tile/base.html" %}
+{% load staticfiles %}
+{% block title %} Resume | MyCraze {% endblock %}
+
+{% block content %}
+<!-- Sub Header -->
+	<div class="bs-docs-header" id="content">
+      	<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<img src="../assets/images/profile-pic.png" class="img-responsive img-circle" >
+				</div>
+				<div class="col-md-10">
+        			<h1>Full Name</h1>
+        			<div>Some short description here 
+	        			<a href="#" class="btn btn-outline-inverse"><i class="fa fa-pencil"></i></a>
+        			</div>
+        		</div>
+        	</div>
+      	</div>
+    </div>
+    
+    <!-- Page Main Content -->
+    <div class="container bs-docs-container">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<a class="pull-right" href="" data-toggle="modal" data-target="#add-section"><i class="fa fa-plus-circle"></i> Add Section</a>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<!-- Side pane content -->
+    		<div class="col-md-3" role="main">
+    			<div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" role="complementary"  data-spy="affix" data-offset-top="255" data-offset-bottom="200">
+            		 <ul class="nav bs-docs-sidenav">
+            		 	<li class = "active"><a href="#summary"><i class="fa fa-file-text"></i> Summary</a></li>
+						<li class><a href="#experience"><i class="fa fa-building"></i> Experience</a></li>
+						<li class><a href="#projects"><i class="fa fa-th-list"></i> Projects</a></li>
+						<li class><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></li>
+						<li class><a href="#publications"><i class="fa fa-book"></i> Publications</a></li>
+						<li class><a href="#certifications"><i class="fa fa-certificate"></i> Certifications</a></li>
+						<li class><a href="#skills"><i class="fa fa-anchor"></i> Skills</a></li>
+						<li class><a href="#courses"><i class="fa fa-bookmark"></i> Courses</a></li>
+						<li class><a href="#awards"><i class="fa fa-trophy"></i> Awards</a></li>
+						<li class><a href="#languages"><i class="fa fa-language"></i> Languages</a></li>
+						<li class><a href="#contact"><i class="fa fa-phone"></i> Contact</a></li>
+					</ul>    			
+    			</div>
+    		</div>
+    		<!-- Main content of side pane sections -->
+   			<div class="col-md-9">
+   				<div class="bs-docs-section">
+					<h2 id="summary" class="page-header"><a href="#summary"><i class="fa fa-file-text"></i> Summary</a></h2>
+				</div>
+				<div class="bs-docs-section">
+				<h2 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<div class="page-header">
+					<h2 id="projects" class=""><a href="#projects"><i class="fa fa-th-list"></i> Projects</a>
+					<!-- Single button -->
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
+					    <i class="fa fa-pencil"></i> <span class="caret"></span>
+					  	</button>
+					  	<ul class="dropdown-menu dropdown-menu-right" role="menu">
+					    	<li><a href="" data-toggle="modal" data-target="#add-item"><i class="fa fa-plus-circle"></i> Add Item</a></li>
+					    	<li><a href=""><i class="fa fa-minus-circle"></i> Hide Section</a></li>
+					    	<li><a href=""><i class="fa fa-times-circle"></i> Remove Section</a></li>
+					  	</ul>
+					</div>	
+					</h2>
+				</div>
+				<div id="project-content">
+					
+				</div>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="education" class="page-header"><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book"></i> Publications</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="certifications" class="page-header"><a href="#certifications"><i class="fa fa-certificate"></i> Certifications</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="skills" class="page-header"><a href="#skills"><i class="fa fa-anchor"></i> Skills</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="courses" class="page-header"><a href="#courses"><i class="fa fa-bookmark"></i> Courses</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="awards" class="page-header"><a href="#awards"><i class="fa fa-trophy"></i> Awards</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="languages" class="page-header"><a href="#languages"><i class="fa fa-language"></i> Languages</a></h2>
+			</div>
+			<div class="bs-docs-section">
+				<h2 id="contact" class="page-header"><a href="#contact"><i class="fa fa-phone"></i> Contact</a></h2>
+			</div>
+   		</div>
+    </div>
+{% endblock %}
