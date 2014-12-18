@@ -55,7 +55,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 AUTHENTICATION_BACKENDS = (
    'social.backends.facebook.FacebookOAuth2',
    'social.backends.google.GoogleOAuth2',
-   'social.backends.twitter.TwitterOAuth',
+   'social.backends.github.GithubOAuth2',
    'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -72,13 +72,21 @@ ROOT_URLCONF = 'sase.urls'
 
 WSGI_APPLICATION = 'sase.wsgi.application'
 
+#Social Auth Configuration
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/mycraze/user-resume/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/mycraze/profile-complete/'
+
 # Google Project Details
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '723821424184-b4fatepotlc14bkhkg3fkg0po4hp7flt.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '-vS3QVozqTx8TBK72ARvtXQ6'
 
-#Social Auth Configuration
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/mycraze/user-resume/'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/mycraze/profile-complete/'
+#Facebook Project Details
+SOCIAL_AUTH_FACEBOOK_KEY = '784705508290213'
+SOCIAL_AUTH_FACEBOOK_SECRET = '27ff2c6ed2e53a73e7d240fa81a3dbda'
+
+#Github Project Details
+SOCIAL_AUTH_GITHUB_KEY = 'cb4ccb6a648aaa4f57f7'
+SOCIAL_AUTH_GITHUB_SECRET = 'c5de7d07f0aef56037c2a9a15843231deb1bcf14'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
