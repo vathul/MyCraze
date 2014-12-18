@@ -2,6 +2,6 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def test(request):
+def get_template_page(request):
 	context = {'message': 'The site is healthy'}
-	return render(request, 'mycraze/test.html', context)
+	return render(request, 'mycraze/template.html', context)
