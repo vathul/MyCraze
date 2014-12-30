@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'mycraze',
+	  'mycraze',
     'social.apps.django_app.default'
 )
 
@@ -45,6 +45,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    'django.core.context_processors.debug',
    'django.core.context_processors.i18n',
    'django.core.context_processors.media',
+   'django.core.context_processors.request',
    'django.core.context_processors.static',
    'django.core.context_processors.tz',
    'django.contrib.messages.context_processors.messages',
@@ -86,6 +87,10 @@ ROOT_URLCONF = 'sase.urls'
 
 WSGI_APPLICATION = 'sase.wsgi.application'
 
+#Django Auth Configuration
+LOGIN_URL = '/mycraze/login'
+LOGOUT_URL = '/mycraze/logout'
+
 #Social Auth Configuration
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/mycraze/user-resume/'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/mycraze/profile-complete/'
@@ -101,6 +106,8 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '27ff2c6ed2e53a73e7d240fa81a3dbda'
 #Github Project Details
 SOCIAL_AUTH_GITHUB_KEY = 'cb4ccb6a648aaa4f57f7'
 SOCIAL_AUTH_GITHUB_SECRET = 'c5de7d07f0aef56037c2a9a15843231deb1bcf14'
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
