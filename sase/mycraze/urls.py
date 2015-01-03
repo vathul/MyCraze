@@ -10,5 +10,6 @@ urlpatterns = patterns('',
 	url(r'^login/$', LoginView.get_login_page, name='login'),
 	url(r'^logout/$', LoginView.get_logout_page, name='logout'),
 	url(r'^profile-complete/$', LoginView.get_profile_completion_page, name='profile_complete'),
+	url(r'^submit-profile/$', LoginView.submit_profile, name='submit_profile'),
 	url(r'^user-resume/$', UserView.get_resume_page, name='resume'),
 )

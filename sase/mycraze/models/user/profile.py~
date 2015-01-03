@@ -1,11 +1,10 @@
+from django import forms
+from django.contrib.auth.models import User
 from django.db import models
 
 class UserProfile(models.Model):
 	class Meta:
 		app_label = 'mycraze'
 
-	first_name = models.CharField(max_length=80)
-	last_name = models.CharField(max_length=80)
-	email_id = models.CharField(max_length=100)
-	password = models.CharField(max_length=25)
-    sample = models.CharField(max_length=25)
+	user = models.OneToOneField(User)
+	description = models.CharField(max_length=200)
