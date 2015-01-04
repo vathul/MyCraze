@@ -15,7 +15,7 @@ class UserForm(ModelForm):
 class UserProfileForm(ModelForm):
 	class Meta:
 		model = UserProfile
-		fields = ['description']
+		fields = ['description','profile_image']
 		widgets = {
 			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
 		}

@@ -27,8 +27,9 @@ def get_profile_completion_page(request):
     })
 
 def submit_profile(request):
-	userForm = UserForm(data=request.POST)
-	userProfileForm = UserProfileForm(data=request.POST)
+	userForm = UserForm(request.POST)
+	userProfileForm = UserProfileForm(request.POST, request.FILES)
+	print(request.FILES)
 	if userForm.is_valid() and userProfileForm.is_valid():
 		user = userForm.save(commit=False)
 		userProfile = userProfileForm.save(commit=False)

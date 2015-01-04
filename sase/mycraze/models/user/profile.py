@@ -7,3 +7,4 @@ class UserProfile(models.Model):
 
 	user = models.OneToOneField(User, related_name='userProfile')
 	description = models.CharField(max_length=200)
+	profile_image = models.ImageField(upload_to="profile_image/", null=True, blank=True)

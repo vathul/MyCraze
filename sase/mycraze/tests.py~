@@ -1,0 +1,11 @@
+from django.test import TestCase
+from mycraze.models.user.profile import UserProfile
+
+# Create your tests here.
+
+class AnimalTestCase(TestCase):
+    def test_models_import(self):
+        account = UserProfile()
+        account.first_name = 'sefsef'
+        account.last_name = 'sefsef'
+        self.assertEqual(account.first_name, account.last_name)
