@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
 from mycraze.models.user.profile import UserProfile
+from mycraze.services.user import UserProfileService
+
 # Create your login views here.
 
 def get_login_page(request, **kwargs):
@@ -30,11 +32,7 @@ def submit_profile(request):
 	if userForm.is_valid() and userProfileForm.is_valid():
 		user = userForm.save(commit=False)
 		userProfile = userProfileForm.save(commit=False)
-		request.user.first_name = user.first_name
-		request.user.last_name = user.last_name
-		request.user.save()
-		userProfile.user = request.user
-		userProfile.save()
+		UserProfileService.save_user_profile(request.user, user, userProfile)
 	return HttpResponseRedirect('/mycraze/user-resume')
 
 def get_logout_page(request):
