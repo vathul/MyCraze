@@ -137,3 +137,4 @@ STATICFILES_DIRS = (
 )
 
 PROFILE_IMAGES_DIR = '/var/www/html/'
+PROFILE_IMAGES_URL = 'http://mycraze.images.com/'
