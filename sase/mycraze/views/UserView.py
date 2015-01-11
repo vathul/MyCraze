@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
