@@ -1,7 +1,9 @@
 {% extends "mycraze/tile/base.html" %}
 {% load staticfiles %}
 {% block title %} Resume | MyCraze {% endblock %}
-
+{% block header %}
+			{% include "mycraze/tile/header.html" with resumeClass="active"%}
+{% endblock %}
 {% block content %}
 <!-- Sub Header -->
 	<div class="bs-docs-header" id="content">
