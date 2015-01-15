@@ -1,6 +1,6 @@
 {% extends "mycraze/tile/base.html" %}
 {% load staticfiles %}
-{% block title %} Resume | MyCraze {% endblock %}
+{% block title %} Resume {% endblock %}
 {% block header %}
 			{% include "mycraze/tile/header.html" with resumeClass="active"%}
 {% endblock %}
@@ -14,14 +14,14 @@
 				</div>
 				<div class="col-md-10">
         			<h1>{{ request.user.first_name}} {{ request.user.last_name}}</h1>
-        			<div>{{ request.user.userProfile.description }}
-	        			<a href="#" class="btn btn-outline-inverse"><i class="fa fa-pencil"></i></a>
-        			</div>
+        			<p>{{ request.user.userProfile.description }}</p>
         		</div>
         	</div>
       	</div>
+		<div class="pull-right">
+			<a href="#" class="btn btn-outline-inverse"><i class="fa fa-pencil"></i></a>
+		</div>
     </div>
-    
     <!-- Page Main Content -->
     <div class="container bs-docs-container">
     	<div class="row">
@@ -53,10 +53,8 @@
 				<h2 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h2>
 			</div>
 			<div class="bs-docs-section">
-				<div class="page-header">
-					<h2 id="projects" class=""><a href="#projects"><i class="fa fa-th-list"></i> Projects</a>
-					<!-- Single button -->
-					<div class="btn-group pull-right">
+				<h2 id="education" class="page-header"><a href="#education"><i class="fa fa-th-list"></i> Projects</a></h2>
+				<div class="btn-group pull-right">
 						<button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
 					    <i class="fa fa-pencil"></i> <span class="caret"></span>
 					  	</button>
@@ -65,12 +63,7 @@
 					    	<li><a href=""><i class="fa fa-minus-circle"></i> Hide Section</a></li>
 					    	<li><a href=""><i class="fa fa-times-circle"></i> Remove Section</a></li>
 					  	</ul>
-					</div>	
-					</h2>
-				</div>
-				<div id="project-content">
-					
-				</div>
+					</div>
 			</div>
 			<div class="bs-docs-section">
 				<h2 id="education" class="page-header"><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></h2>
@@ -101,4 +94,8 @@
 			</div>
    		</div>
     </div>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
 {% endblock %}
