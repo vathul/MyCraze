@@ -22,7 +22,8 @@
 			<![endif]-->
 		{% endblock %}
 	</head>
-	<body>
+	<body{% ifequal request.path "/mycraze/user-resume/" %} data-spy="scroll" data-target=".bs-docs-sidebar" {% endifequal %}>
+
 		{% block header %}
 			{% include "mycraze/tile/header.html" %}
 		{% endblock %}
