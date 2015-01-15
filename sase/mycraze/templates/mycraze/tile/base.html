@@ -3,22 +3,24 @@
 <html>
 	<head>
 		<title>
-			{% block title %} Base Title {% endblock %}
+			{% block title %} Base Title {% endblock %} | MyCraze
 		</title>
-		<!-- Bootstrap -->
-		<link href="{% static "mycraze/css/bootstrap.min.css" %}" rel="stylesheet">
-		<!-- Bootstrap docs -->
-		<link href="{% static "mycraze/css/docs.min.css" %}" rel="stylesheet">
-		<!-- Awesome fonts IO -->
-		<link href="{% static "mycraze/css/font-awesome.min.css" %}" rel="stylesheet">
-		<!-- MyCraze -->
-		<link href="{% static "mycraze/css/mycraze.css" %}" rel="stylesheet">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script src="{% static "mycraze/js/html5shiv.min.js" %}"></script>
-		  <script src="{% static "mycraze/js/respond.min.js" %}"></script>
-		<![endif]-->
+		{% block css %}
+			<!-- Bootstrap -->
+			<link href="{% static "mycraze/css/bootstrap.min.css" %}" rel="stylesheet">
+			<!-- Bootstrap docs -->
+			<link href="{% static "mycraze/css/docs.min.css" %}" rel="stylesheet">
+			<!-- Awesome fonts IO -->
+			<link href="{% static "mycraze/css/font-awesome.min.css" %}" rel="stylesheet">
+			<!-- MyCraze -->
+			<link href="{% static "mycraze/css/mycraze.css" %}" rel="stylesheet">
+			<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+			<!--[if lt IE 9]>
+			  <script src="{% static "mycraze/js/html5shiv.min.js" %}"></script>
+			  <script src="{% static "mycraze/js/respond.min.js" %}"></script>
+			<![endif]-->
+		{% endblock %}
 	</head>
 	<body>
 		{% block header %}
@@ -32,4 +34,8 @@
 			{% include "mycraze/tile/footer.html" %}  
 		{% endblock %}
 	</body>
+	{% block javascript %}
+			<script src="{% static "mycraze/js/jquery-2.1.1.min.js" %}"></script>
+			<script src="{% static "mycraze/js/bootstrap.min.js" %}"></script>
+	{% endblock %}
 </html>
