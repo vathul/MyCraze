@@ -13,13 +13,13 @@
 					<img src="{{image_url}}{{ request.user.userProfile.profile_image }}" class="img-responsive" >
 				</div>
 				<div class="col-md-10">
-        			<h1>{{ request.user.first_name}} {{ request.user.last_name}}</h1>
-        			<p>{{ request.user.userProfile.description }}</p>
+        			<h1 id = "full-name">{{ request.user.first_name}} {{ request.user.last_name}}</h1>
+        			<p id =  "description" class="lead">{{ request.user.userProfile.description }}</p>
         		</div>
         	</div>
       	</div>
 		<div class="pull-right">
-			<a href="#" class="btn btn-outline-inverse"><i class="fa fa-pencil"></i></a>
+			<button type="button" class="btn btn-outline-inverse" data-toggle="modal" data-target="#edit-profile"><i class="fa fa-pencil"></i></button>
 		</div>
     </div>
     <!-- Page Main Content -->
@@ -96,6 +96,56 @@
     </div>
 {% endblock %}
 
+{% block hidden %}
+	<!-- Modal for edit profile-->
+	<div class="modal" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+	      </div>
+	      <div class="modal-body">
+	      		{% include "mycraze/form/edit-profile-form.html" %}
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+	        <button type="button" id="edit-profile-data" class="btn btn-success"><i class="fa fa-check"></i> Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+{% endblock %}
+
 {% block javascript %}
 {{ block.super }}
+<script type="text/javascript">
+	var editForm = $('#edit-profile-form');
+
+	$("#edit-profile-data").on('click',function(){
+		submitEditProfileDataForm();
+	});
+    submitEditProfileDataForm = function () {
+        $.ajax({
+            type: editForm.attr('method'),
+            url: editForm.attr('action'),
+            data: editForm.serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#full-name").text(data.first_name + " " + data.last_name);
+				$("#description").text(data.description);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+            	$("#edit-profile").modal('toggle');
+            }
+        });
+        return false;
+    };
+</script>
 {% endblock %}
