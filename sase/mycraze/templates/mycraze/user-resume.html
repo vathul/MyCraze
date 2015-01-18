@@ -10,11 +10,11 @@
       	<div class="container">
 			<div class="row">
 				<div class="col-md-2">
-					<img src="{{image_url}}{{ request.user.userProfile.profile_image }}" class="img-responsive" >
+					<img src="{{image_url}}{{ request.user.user_profile.profile_image }}" class="img-responsive" >
 				</div>
 				<div class="col-md-10">
         			<h1 id = "full-name">{{ request.user.first_name}} {{ request.user.last_name}}</h1>
-        			<p id =  "description" class="lead">{{ request.user.userProfile.description }}</p>
+        			<p id =  "description" class="lead">{{ request.user.user_profile.description }}</p>
         		</div>
         	</div>
       	</div>
@@ -50,6 +50,7 @@
 					<h2 id="summary" class="page-header"><a href="#summary"><i class="fa fa-file-text"></i> Summary</a>
 						{% include "mycraze/section-edit-dropdown.html"%}
 					</h2>
+					<p id="summary-content" class="lead">{{ request.user.user_profile.summary_section.content}}</p>
 				</div>
 				<div class="bs-docs-section">
 				<h2 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h2>
@@ -91,7 +92,7 @@
 
 {% block hidden %}
 	{% include "mycraze/modal/edit-profile.html"%}
-	{% include "mycraze/modal/edit-summary.html"%}
+	{% include "mycraze/modal/edit-summary-modal.html"%}
 {% endblock %}
 
 {% block javascript %}
@@ -102,6 +103,11 @@
 	$("#edit-profile-data").on('click',function(){
 		submitEditProfileDataForm();
 	});
+
+	$("#edit-summary-data").on('click',function(){
+		editSummaryData();
+	});
+
     submitEditProfileDataForm = function () {
         $.ajax({
             type: editForm.attr('method'),
@@ -113,12 +119,38 @@
             success: function (data) {
                 $("#full-name").text(data.first_name + " " + data.last_name);
 				$("#description").text(data.description);
+				$("#edit-profile").modal('toggle');
             },
             error: function(data) {
                 
             },
             complete : function() {
-            	$("#edit-profile").modal('toggle');
+            	
+            }
+        });
+        return false;
+    };
+
+    editSummaryData = function () {
+        $.ajax({
+        	type: 'POST',
+            url: "{% url 'edit_summary' %}",
+            data: {
+        		csrfmiddlewaretoken: '{{ csrf_token }}',
+        		content: $("#summary-data").val(),
+    		},
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+            	$("#summary-content").text(data.content);
+                $("#edit-summary").modal('toggle');
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+            	
             }
         });
         return false;

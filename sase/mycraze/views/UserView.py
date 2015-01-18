@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import ensure_csrf_cookie
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
 from mycraze.models.user.profile import UserProfile
@@ -27,7 +28,13 @@ def edit_profile(request):
 	updated_user = UserProfileService.edit_user_profile(request.user, updated_user, updated_user_profile)
 	print(updated_user.first_name)
 	print(updated_user.last_name)
-	return JsonResponse({'first_name':updated_user.first_name, 'last_name':updated_user.last_name, 'description':updated_user.userProfile.description})
+	return JsonResponse({'first_name':updated_user.first_name, 'last_name':updated_user.last_name, 'description':updated_user.user_profile.description})
+
+@login_required
+def edit_summary(request):
+	summary_content = request.POST['content']
+	summary_section = UserProfileService.edit_summary_content(request.user, summary_content)
+	return JsonResponse({'content': summary_section.content})
 
 @login_required
 def get_resume_page(request):

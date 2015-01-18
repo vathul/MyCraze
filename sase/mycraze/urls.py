@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 	url(r'^logout/$', LoginView.get_logout_page, name='logout'),
 	url(r'^profile-complete/$', LoginView.get_profile_completion_page, name='profile_complete'),
 	url(r'^submit-profile/$', UserView.submit_profile, name='submit_profile'),
-	url(r'^edit-profile/$', UserView.edit_profile, name='edit_profile'),
 	url(r'^user-resume/$', UserView.get_resume_page, name='resume'),
+	url(r'^edit-profile/$', UserView.edit_profile, name='edit_profile'),
+	url(r'^edit-summary/$', UserView.edit_summary, name='edit_summary'),
 )
