@@ -47,23 +47,16 @@
     		<!-- Main content of side pane sections -->
    			<div class="col-md-9">
    				<div class="bs-docs-section">
-					<h2 id="summary" class="page-header"><a href="#summary"><i class="fa fa-file-text"></i> Summary</a></h2>
+					<h2 id="summary" class="page-header"><a href="#summary"><i class="fa fa-file-text"></i> Summary</a>
+						{% include "mycraze/section-edit-dropdown.html"%}
+					</h2>
 				</div>
 				<div class="bs-docs-section">
 				<h2 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h2>
 			</div>
 			<div class="bs-docs-section">
-				<h2 id="education" class="page-header"><a href="#education"><i class="fa fa-th-list"></i> Projects</a></h2>
-				<div class="btn-group pull-right">
-						<button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown">
-					    <i class="fa fa-pencil"></i> <span class="caret"></span>
-					  	</button>
-					  	<ul class="dropdown-menu dropdown-menu-right" role="menu">
-					    	<li><a href="" data-toggle="modal" data-target="#add-item"><i class="fa fa-plus-circle"></i> Add Item</a></li>
-					    	<li><a href=""><i class="fa fa-minus-circle"></i> Hide Section</a></li>
-					    	<li><a href=""><i class="fa fa-times-circle"></i> Remove Section</a></li>
-					  	</ul>
-					</div>
+				<h2 id="projects" class="page-header"><a href="#projects"><i class="fa fa-th-list"></i> Projects</a>
+				</h2>
 			</div>
 			<div class="bs-docs-section">
 				<h2 id="education" class="page-header"><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></h2>
@@ -97,25 +90,8 @@
 {% endblock %}
 
 {% block hidden %}
-	<!-- Modal for edit profile-->
-	<div class="modal" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
-	      </div>
-	      <div class="modal-body">
-	      		{% include "mycraze/form/edit-profile-form.html" %}
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-	        <button type="button" id="edit-profile-data" class="btn btn-success"><i class="fa fa-check"></i> Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
+	{% include "mycraze/modal/edit-profile.html"%}
+	{% include "mycraze/modal/edit-summary.html"%}
 {% endblock %}
 
 {% block javascript %}

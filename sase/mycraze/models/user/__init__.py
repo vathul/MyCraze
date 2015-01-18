@@ -1,2 +1,3 @@
 from mycraze.models.user.profile import UserProfile
-__all__ = ['UserProfile']
+from mycraze.models.user.sections import SummarySection
+__all__ = ['UserProfile','SummarySection']
