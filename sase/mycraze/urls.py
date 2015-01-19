@@ -14,4 +14,5 @@ urlpatterns = patterns('',
 	url(r'^user-resume/$', UserView.get_resume_page, name='resume'),
 	url(r'^edit-profile/$', UserView.edit_profile, name='edit_profile'),
 	url(r'^edit-summary/$', UserView.edit_summary, name='edit_summary'),
+	url(r'^edit-contact/$', UserView.edit_contact, name='edit_contact'),
 )

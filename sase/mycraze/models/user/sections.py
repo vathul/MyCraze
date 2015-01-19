@@ -8,3 +8,11 @@ class SummarySection(models.Model):
 	user_profile = models.OneToOneField(UserProfile, related_name='summary_section')
 	content = models.CharField(max_length=400)
 	is_active = models.BooleanField(default=True)
+
+class ContactSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='contact_section')
+	personal_email = models.CharField(max_length=40)
+	phone_number = models.CharField(max_length=20)

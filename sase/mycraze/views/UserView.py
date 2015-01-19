@@ -7,6 +7,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
 from mycraze.models.user.profile import UserProfile
+from mycraze.models.form.sections import ContactSectionForm
 from mycraze.services.user import UserProfileService
 from mycraze.utils.http import JsonResponse
 # Create your views here.
@@ -37,8 +38,20 @@ def edit_summary(request):
 	return JsonResponse({'content': summary_section.content})
 
 @login_required
+def edit_contact(request):
+	section_form = ContactSectionForm(request.POST)
+	if section_form.is_valid():
+		section = section_form.save(commit=False)
+		contact_section = UserProfileService.edit_contact_content(request.user, section)
+	return JsonResponse({'personal_email': contact_section.personal_email, "phone_number": contact_section.phone_number})
+
+@login_required
 def get_resume_page(request):
-	setting = {
+	contact_data = {'personal_email': request.user.user_profile.contact_section.personal_email,
+		    'phone_number': request.user.user_profile.contact_section.phone_number}
+	contact_form = ContactSectionForm(contact_data)
+	context = {
 		'image_url': settings.PROFILE_IMAGES_URL,
+		'contact_form': contact_form
 	}
-	return render(request, 'mycraze/user-resume.html',setting)
+	return render(request, 'mycraze/user-resume.html',context)
