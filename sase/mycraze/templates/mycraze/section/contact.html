@@ -1,11 +1,7 @@
 <div class="bs-docs-section">
 	<h3 id="contact" class="page-header"><a href="#contact"><i class="fa fa-phone"></i> Contact</a>
 		{% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-contact" type="Contacts" %}
-	</h3>
-	<div class="panel panel-default">
-			<div class="panel-body">
-			<p class="lead">Personal Email : <span id="personal-email">{{ request.user.user_profile.contact_section.personal_email}}</span></p>
-			<p class="lead">Phone Number   : <span id="phone-number">{{ request.user.user_profile.contact_section.phone_number}}</span></p>
-		</div>
-	</div>
+	</h3>	
+	<p class="lead">Personal Email : <span id="personal-email">{{ request.user.user_profile.contact_section.personal_email}}</span></p>
+	<p class="lead">Phone Number   : <span id="phone-number">{{ request.user.user_profile.contact_section.phone_number}}</span></p>
 </div>
