@@ -1,18 +1,22 @@
 from mycraze.models.user.sections import SummarySection
+from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.sections import ContactSection
 
 class UserProfileService:
 	def create_sections(user):
 		#create sections here
 		summary_section = SummarySection(user_profile = user.user_profile)
+		experience_section = ExperienceSection(user_profile = user.user_profile)
 		contact_section = ContactSection(user_profile = user.user_profile)
 
 		#add the sections here
 		summary_section.user_profile = user.user_profile
+		experience_section.user_profile = user.user_profile
 		contact_section.user_profile = user.user_profile
 
 		#save the sections here
 		summary_section.save()
+		experience_section.save()
 		contact_section.save()
 
 	def save_user_profile(current_user, updated_user, updated_profile):
