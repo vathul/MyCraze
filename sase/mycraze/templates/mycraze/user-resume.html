@@ -50,49 +50,56 @@
 					<h3 id="summary" class="page-header"><a href="#summary"><i class="fa fa-file-text"></i> Summary</a>
 						{% include "mycraze/section-edit-dropdown.html" with dataTarget="#edit-summary" type="Summary" %}
 					</h3>
-					<p id="summary-content" class="lead">{{ request.user.user_profile.summary_section.content}}</p >
+					<div class="panel panel-default">
+  						<div class="panel-body">
+							<p id="summary-content" class="lead">{{ request.user.user_profile.summary_section.content}}</p >
+						</div>
+					</div>
 				</div>
 				<div class="bs-docs-section">
-				<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="projects" class="page-header"><a href="#projects"><i class="fa fa-th-list"></i> Projects</a>
-				</h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="education" class="page-header"><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="link" class="page-header"><a href="#link"><i class="fa fa-external-link-square"></i> Links</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book"></i> Publications</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="certifications" class="page-header"><a href="#certifications"><i class="fa fa-certificate"></i> Certifications</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="skills" class="page-header"><a href="#skills"><i class="fa fa-anchor"></i> Skills</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-bookmark"></i> Courses</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="awards" class="page-header"><a href="#awards"><i class="fa fa-trophy"></i> Awards</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="languages" class="page-header"><a href="#languages"><i class="fa fa-language"></i> Languages</a></h3>
-			</div>
-			<div class="bs-docs-section">
-				<h3 id="contact" class="page-header"><a href="#contact"><i class="fa fa-phone"></i> Contact</a>
-					{% include "mycraze/section-edit-dropdown.html" with dataTarget="#edit-contact" type="Contacts" %}
-				</h3>
-				<div>
-					<p class="lead">Personal Email : <span id="personal-email">{{ request.user.user_profile.contact_section.personal_email}}</span></p>
-					<p class="lead">Phone Number   : <span id="phone-number">{{ request.user.user_profile.contact_section.phone_number}}</span></p>
+					<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h3>
 				</div>
-			</div>
-   		</div>
+				<div class="bs-docs-section">
+					<h3 id="projects" class="page-header"><a href="#projects"><i class="fa fa-th-list"></i> Projects</a>
+					</h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="education" class="page-header"><a href="#education"><i class="fa fa-graduation-cap"></i> Education</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="link" class="page-header"><a href="#link"><i class="fa fa-external-link-square"></i> Links</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book"></i> Publications</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="certifications" class="page-header"><a href="#certifications"><i class="fa fa-certificate"></i> Certifications</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="skills" class="page-header"><a href="#skills"><i class="fa fa-anchor"></i> Skills</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-bookmark"></i> Courses</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="awards" class="page-header"><a href="#awards"><i class="fa fa-trophy"></i> Awards</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="languages" class="page-header"><a href="#languages"><i class="fa fa-language"></i> Languages</a></h3>
+				</div>
+				<div class="bs-docs-section">
+					<h3 id="contact" class="page-header"><a href="#contact"><i class="fa fa-phone"></i> Contact</a>
+						{% include "mycraze/section-edit-dropdown.html" with dataTarget="#edit-contact" type="Contacts" %}
+					</h3>
+					<div class="panel panel-default">
+	  					<div class="panel-body">
+							<p class="lead">Personal Email : <span id="personal-email">{{ request.user.user_profile.contact_section.personal_email}}</span></p>
+							<p class="lead">Phone Number   : <span id="phone-number">{{ request.user.user_profile.contact_section.phone_number}}</span></p>
+						</div>
+					</div>
+				</div>
+	   		</div>
+	   	</div>
     </div>
 {% endblock %}
 

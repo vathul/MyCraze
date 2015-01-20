@@ -8,4 +8,4 @@ class ExperienceItem(models.Model):
 	role = models.CharField(max_length=40)
 	organization = models.CharField(max_length=60)
 	description = models.CharField(max_length=400)
-	experience_section = models.ForeignKey(ExperienceSection, related_name="experience_items")
+	experience_section = models.ForeignKey(ExperienceSection)
