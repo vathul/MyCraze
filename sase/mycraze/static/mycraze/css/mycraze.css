@@ -42,3 +42,11 @@ border-top: 1px solid #e5e5e5;
 .form-control {
 	color: black;
 }
+
+.bs-callout-info {
+	border-left-color: #1b809e;
+}
+
+.bs-callout-info h4{
+	color: #1b809e;
+}
