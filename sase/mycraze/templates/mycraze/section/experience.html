@@ -1,4 +1,12 @@
 <div class="bs-docs-section">
 	<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h3>
-	<button type="button" class="btn btn-default"><i class="fa fa-plus"></i> Add Experience</button>
+	<div id="experience-list">
+		{% for item in request.user.user_profile.experience_section.experience_items.all %}
+    		<div class='bs-callout bs-callout-info'>
+				<h4 class='lead'>{{item.role}}, <small>{{item.organization}}</small></h4>
+		  		<p class='lead'>{{item.description}}</p>
+			</div>
+		{% endfor %}
+	</div>
+	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-experience"><i class="fa fa-plus"></i> Add Experience</button>
 </div>

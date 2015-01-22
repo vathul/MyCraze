@@ -1,5 +1,6 @@
 from mycraze.models.user.sections import SummarySection
 from mycraze.models.user.sections import ExperienceSection
+from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.sections import ContactSection
 
 class UserProfileService:
@@ -43,6 +44,13 @@ class UserProfileService:
 		summary_section.content = summary_content
 		summary_section.save()
 		return summary_section
+
+	def	add_experience_item(current_user, item_content):
+		experience_item = ExperienceItem(role=item_content.role,organization=item_content.organization,description=item_content.description)
+		experience_section = current_user.user_profile.experience_section
+		experience_item = ExperienceItem(experience_section=experience_section, role=item_content.role,organization=item_content.organization,description=item_content.description)
+		experience_item.save()
+		return experience_item
 
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile

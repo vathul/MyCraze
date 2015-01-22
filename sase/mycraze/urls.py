@@ -3,6 +3,7 @@ from django.conf.urls import patterns, url
 from mycraze.views import TemplateView
 from mycraze.views import LoginView
 from mycraze.views import UserView
+from mycraze.views import UserProfileView
 
 urlpatterns = patterns('',
 	#url(r'^$', views.index, name='index'),
@@ -13,6 +14,7 @@ urlpatterns = patterns('',
 	url(r'^submit-profile/$', UserView.submit_profile, name='submit_profile'),
 	url(r'^user-resume/$', UserView.get_resume_page, name='resume'),
 	url(r'^edit-profile/$', UserView.edit_profile, name='edit_profile'),
-	url(r'^edit-summary/$', UserView.edit_summary, name='edit_summary'),
-	url(r'^edit-contact/$', UserView.edit_contact, name='edit_contact'),
+	url(r'^edit-summary/$', UserProfileView.edit_summary, name='edit_summary'),
+	url(r'^add-experience/$', UserProfileView.add_experience, name='add_experience'),
+	url(r'^edit-contact/$', UserProfileView.edit_contact, name='edit_contact'),
 )
