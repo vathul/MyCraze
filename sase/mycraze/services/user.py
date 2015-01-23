@@ -46,9 +46,11 @@ class UserProfileService:
 		return summary_section
 
 	def	add_experience_item(current_user, item_content):
-		experience_item = ExperienceItem(role=item_content.role,organization=item_content.organization,description=item_content.description)
 		experience_section = current_user.user_profile.experience_section
-		experience_item = ExperienceItem(experience_section=experience_section, role=item_content.role,organization=item_content.organization,description=item_content.description)
+		if item_content.id == "0":
+			experience_item = ExperienceItem(experience_section=experience_section, role=item_content.role,organization=item_content.organization,description=item_content.description)
+		else:
+			experience_item = ExperienceItem(id=item_content.id, experience_section=experience_section, role=item_content.role,organization=item_content.organization,description=item_content.description)			
 		experience_item.save()
 		return experience_item
 

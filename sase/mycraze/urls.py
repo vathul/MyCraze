@@ -16,8 +16,7 @@ urlpatterns = patterns('',
 	url(r'^user-resume/$', UserView.get_resume_page, name='resume'),
 	url(r'^edit-profile/$', UserView.edit_profile, name='edit_profile'),
 	url(r'^edit-summary/$', UserProfileView.edit_summary, name='edit_summary'),
-	url(r'^add-experience/$', UserProfileView.add_experience, name='add_experience'),
+	url(r'^edit-experience/$', UserProfileView.edit_experience, name='edit_experience'),
 	url(r'^get-experience-form/$', UserFormView.get_experience_form, name='get_experience_form'),
-
 	url(r'^edit-contact/$', UserProfileView.edit_contact, name='edit_contact'),
 )

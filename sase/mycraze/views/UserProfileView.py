@@ -13,10 +13,12 @@ def edit_summary(request):
 
 @login_required
 @csrf_exempt
-def add_experience(request):
+def edit_experience(request):
 	item_form = ExperienceItemForm(request.POST)
+	item_id = request.POST['item_id']
 	if item_form.is_valid():
 		item = item_form.save(commit=False)
+		item.id = item_id
 		experience_item = UserProfileService.add_experience_item(request.user, item)
 	return JsonResponse({'role': item.role, 'organization': item.organization, 'description': item.description})
 
