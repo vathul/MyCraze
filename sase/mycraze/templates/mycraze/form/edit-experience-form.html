@@ -1,0 +1,21 @@
+<form id="experience-form" method="post" action="{% url 'add_experience' %}" class="form-horizontal" role="form" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="role" class="col-sm-2 control-label">Role</label>
+      <div class="col-sm-10">
+        {{ experience_form.role }}
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="organization" class="col-sm-2 control-label">Organization</label>
+      <div class="col-sm-10">
+        {{ experience_form.organization }}
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="description" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            {{ experience_form.description }}
+            </div>
+  </div>
+</form>

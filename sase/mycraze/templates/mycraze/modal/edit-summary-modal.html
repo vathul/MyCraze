@@ -1,10 +1,10 @@
 <!-- Modal for edit summary-->
-<div class="modal" id="edit-summary" tabindex="-1" role="dialog" aria-labelledby="edit-label" aria-hidden="true">
+<div class="modal" id="edit-summary-modal" tabindex="-1" role="dialog" aria-labelledby="edit-label" aria-hidden="true">
     <div class="modal-dialog">
     		<div class="modal-content">
       			<div class="modal-header">
         			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        				<h4 class="modal-title" id="edit-label"><i class="fa fa-pencil"></i> Edit Summary</h4>
+        				<h4 class="modal-title" id="edit-label"><i class="fa fa-pencil"></i> Summary</h4>
       			</div>
       			<div class="modal-body">
       				<textarea class="form-control" id="summary-data" name="description" rows="3">{{request.user.user_profile.summary_section.content}}</textarea>

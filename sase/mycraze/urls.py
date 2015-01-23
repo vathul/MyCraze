@@ -4,6 +4,7 @@ from mycraze.views import TemplateView
 from mycraze.views import LoginView
 from mycraze.views import UserView
 from mycraze.views import UserProfileView
+from mycraze.views import UserFormView
 
 urlpatterns = patterns('',
 	#url(r'^$', views.index, name='index'),
@@ -16,5 +17,7 @@ urlpatterns = patterns('',
 	url(r'^edit-profile/$', UserView.edit_profile, name='edit_profile'),
 	url(r'^edit-summary/$', UserProfileView.edit_summary, name='edit_summary'),
 	url(r'^add-experience/$', UserProfileView.add_experience, name='add_experience'),
+	url(r'^get-experience-form/$', UserFormView.get_experience_form, name='get_experience_form'),
+
 	url(r'^edit-contact/$', UserProfileView.edit_contact, name='edit_contact'),
 )

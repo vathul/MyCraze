@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.form.sections import ContactSectionForm
 from mycraze.services.user import UserProfileService
@@ -11,6 +12,7 @@ def edit_summary(request):
 	return JsonResponse({'content': summary_section.content})
 
 @login_required
+@csrf_exempt
 def add_experience(request):
 	item_form = ExperienceItemForm(request.POST)
 	if item_form.is_valid():

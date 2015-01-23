@@ -34,11 +34,9 @@ def get_resume_page(request):
 	contact_data = {'personal_email': request.user.user_profile.contact_section.personal_email,
 		    'phone_number': request.user.user_profile.contact_section.phone_number}
 
-	experience_form = ExperienceItemForm()
 	contact_form = ContactSectionForm(contact_data)
 	context = {
 		'image_url': settings.PROFILE_IMAGES_URL,
-		'experience_form': experience_form,
 		'contact_form': contact_form
 	}
 	return render(request, 'mycraze/user-resume.html',context)

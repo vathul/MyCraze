@@ -19,7 +19,7 @@
         	</div>
       	</div>
 		<div class="pull-right">
-			<button type="button" class="btn btn-outline-inverse" data-toggle="modal" data-target="#edit-profile"><i class="fa fa-pencil"></i></button>
+			<button type="button" class="btn btn-outline-inverse" data-toggle="modal" data-target="#edit-profile-modal"><i class="fa fa-pencil"></i></button>
 		</div>
     </div>
     <!-- Page Main Content -->
@@ -49,17 +49,17 @@
 {% endblock %}
 
 {% block hidden %}
-	{% include "mycraze/modal/edit-profile.html"%}
+	{% include "mycraze/modal/edit-profile-modal.html"%}
 	{% include "mycraze/modal/edit-summary-modal.html"%}
-	{% include "mycraze/modal/add-experience-modal.html"%}
+	{% include "mycraze/modal/edit-experience-modal.html"%}
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
 {% block javascript %}
 {{ block.super }}
 <script type="text/javascript">
+$( document ).ready(function() {
 	var editForm = $('#edit-profile-form');
-
 	$("#edit-profile-data").on('click',function(){
 		submitEditProfileDataForm();
 	});
@@ -68,9 +68,19 @@
 		editSummaryData();
 	});
 
-	$("#add-experience-data").on('click',function(){
+    $("#add-experience").on('click',function(){
+        editExperienceForm(0);
+    });
+
+	$("#edit-experience-data").on('click',function(){
 		addExperienceData();
 	});
+
+    $(".btn-edit-experience").on('click',function(event){
+        event.preventDefault();
+        var itemId = $(this).parent().parent().parent().data('item');
+        editExperienceForm(itemId);        
+    });
 
 	$("#edit-content-data").on('click',function(){
 		editContactData();
@@ -87,7 +97,7 @@
             success: function (data) {
                 $("#full-name").text(data.first_name + " " + data.last_name);
 				$("#description").text(data.description);
-				$("#edit-profile").modal('toggle');
+				$("#edit-profile-modal").modal('toggle');
             },
             error: function(data) {
                 
@@ -112,7 +122,7 @@
             },
             success: function (data) {
             	$("#summary-content").text(data.content);
-                $("#edit-summary").modal('toggle');
+                $("#edit-summary-modal").modal('toggle');
             },
             error: function(data) {
                 
@@ -121,10 +131,35 @@
             	
             }
         });
-        return false;
     };
 
+    editExperienceForm = function(itemId) {
+        //get the form for add/edit experience
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_experience_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-experience-modal").modal('show');                
+                $("#experience-form-body").html(data);                
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
 	addExperienceData = function () {
+        //this is called when the user submits the add experience form
         $.ajax({
         	type: 'POST',
             url: "{% url 'add_experience' %}",
@@ -135,7 +170,7 @@
             success: function (data) {
             	htmlContent = get_experience_item_html(data);
             	$("#experience-list").append(htmlContent);
-                $("#add-experience").modal('toggle');
+                $("#edit-experience-modal").modal('toggle');
             },
             error: function(data) {
 
@@ -146,6 +181,10 @@
         });
         return false;
     };
+
+    editExperienceData = function(itemId) {
+        //this is called when the user submits the edit experience form
+    }
 
     editContactData = function () {
         $.ajax({
@@ -158,7 +197,7 @@
             success: function (data) {
             	$("#personal-email").text(data.personal_email);
             	$("#phone-number").text(data.phone_number);
-                $("#edit-contact").modal('toggle');
+                $("#edit-contact-modal").modal('toggle');
             },
             error: function(data) {
                 
@@ -178,5 +217,6 @@
 		+"</div>"
 		return htmlContent;
     }
+    });
 </script>
 {% endblock %}
