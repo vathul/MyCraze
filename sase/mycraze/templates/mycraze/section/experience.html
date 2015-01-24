@@ -2,10 +2,8 @@
 	<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h3>
 	<div id="experience-list">
 		{% for item in request.user.user_profile.experience_section.experience_items.all %}
-    		<div class='bs-callout bs-callout-info' data-item={{item.id}}>
-				<h4 class='lead'><span id="experience-role_{{item.id}}">{{item.role}}</span>, <small id="experience-organization_{{item.id}}">{{item.organization}}</small></h4>
-		  		<p id="experience-description_{{item.id}}" class='lead'>{{item.description}}</p>
-		  		{% include "mycraze/widget/item-edit-dropdown.html" %}<br/>
+			<div class="experience-item" val="2">
+				{% include "mycraze/item/experience.html" %}
 			</div>
 		{% endfor %}
 	</div>

@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.form.sections import ContactSectionForm
@@ -20,7 +22,9 @@ def edit_experience(request):
 		item = item_form.save(commit=False)
 		item.id = item_id
 		experience_item = UserProfileService.add_experience_item(request.user, item)
-	return JsonResponse({'role': item.role, 'organization': item.organization, 'description': item.description})
+	html = render_to_string('mycraze/item/experience.html', 
+		{'item': experience_item})
+	return HttpResponse(html)
 
 @login_required
 def edit_contact(request):

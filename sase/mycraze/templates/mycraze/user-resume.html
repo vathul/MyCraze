@@ -60,6 +60,7 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 	var editForm = $('#edit-profile-form');
+    var editExperienceItem;
 	$("#edit-profile-data").on('click',function(){
 		submitEditProfileDataForm();
 	});
@@ -79,9 +80,11 @@ $( document ).ready(function() {
 
     $(".btn-edit-experience").on('click',function(event){
         event.preventDefault();
-        var itemId = $(this).parent().parent().parent().attr('data-item');
-        alert(itemId);
-        editExperienceForm(itemId);        
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        itemId = element.attr('data-item');
+        editExperienceForm(itemId);
+        editExperienceItem = elementParent;
     });
 
 	$("#edit-content-data").on('click',function(){
@@ -172,8 +175,10 @@ $( document ).ready(function() {
 
             },
             success: function (data) {
-            	htmlContent = get_experience_item_html(data);
-            	$("#experience-list").append(htmlContent);
+                if(itemId == 0)
+                    $("#experience-list").append(data)
+                else
+                    editExperienceItem.html(data);
                 $("#edit-experience-modal").modal('toggle');
             },
             error: function(data) {
@@ -208,14 +213,6 @@ $( document ).ready(function() {
         return false;
     };
 
-    get_experience_item_html = function(data) {
-    	htmlContent = ""
-    	+"<div class='bs-callout bs-callout-info'>"
-		+"	<h4 class='lead'>" + data.role+ ", <small>" + data.organization + "</small></h4>"
-		+"  <p class='lead'>"+ data.description +"</p>"
-		+"</div>"
-		return htmlContent;
-    }
-    });
+});
 </script>
 {% endblock %}
