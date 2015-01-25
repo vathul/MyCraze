@@ -82,7 +82,7 @@ $( document ).ready(function() {
         event.preventDefault();
         var element = $(this).parent().parent().parent();
         var elementParent = element.parent();
-        itemId = element.attr('data-item');
+        itemId = element.find("input").val();
         editExperienceForm(itemId);
         editExperienceItem = elementParent;
     });
