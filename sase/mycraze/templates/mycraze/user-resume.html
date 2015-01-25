@@ -75,10 +75,10 @@ $( document ).ready(function() {
     });
 
 	$("#edit-experience-data").on('click',function(){
-		editExperienceData($(this).attr("data-type"));
+		editExperienceData($("#experience_item_id").val());
 	});
 
-    $(".btn-edit-experience").on('click',function(event){
+    $("body").on('click','li.btn-edit-experience',function(event){
         event.preventDefault();
         var element = $(this).parent().parent().parent();
         var elementParent = element.parent();
@@ -177,7 +177,7 @@ $( document ).ready(function() {
             success: function (data) {
                 if(itemId == 0)
                     $("#experience-list").append(data)
-                else
+                else if(itemId > 0)
                     editExperienceItem.html(data);
                 $("#edit-experience-modal").modal('toggle');
             },
