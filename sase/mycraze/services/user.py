@@ -2,6 +2,7 @@ from mycraze.models.user.sections import SummarySection
 from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.sections import ProjectSection
+from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.sections import ContactSection
 
 class UserProfileService:
@@ -49,7 +50,7 @@ class UserProfileService:
 		summary_section.save()
 		return summary_section
 
-	def	add_experience_item(current_user, item_content):
+	def	edit_experience_item(current_user, item_content):
 		experience_section = current_user.user_profile.experience_section
 		if item_content.id == "0":
 			experience_item = ExperienceItem(experience_section=experience_section, role=item_content.role,organization=item_content.organization,description=item_content.description)
@@ -57,6 +58,15 @@ class UserProfileService:
 			experience_item = ExperienceItem(id=item_content.id, experience_section=experience_section, role=item_content.role,organization=item_content.organization,description=item_content.description)			
 		experience_item.save()
 		return experience_item
+
+	def	edit_project_item(current_user, item_content):
+		project_section = current_user.user_profile.project_section
+		if item_content.id == "0":
+			project_item = ProjectItem(project_section=project_section, title=item_content.title,url=item_content.url,description=item_content.description)
+		else:
+			project_item = ProjectItem(id=item_content.id, project_section=project_section, title=item_content.title,url=item_content.url,description=item_content.description)
+		project_item.save()
+		return project_item
 
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile

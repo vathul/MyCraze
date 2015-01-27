@@ -52,6 +52,7 @@
 	{% include "mycraze/modal/edit-profile-modal.html"%}
 	{% include "mycraze/modal/edit-summary-modal.html"%}
 	{% include "mycraze/modal/edit-experience-modal.html"%}
+    {% include "mycraze/modal/edit-project-modal.html"%}
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
@@ -61,14 +62,19 @@
 $( document ).ready(function() {
 	var editForm = $('#edit-profile-form');
     var editExperienceItem;
+    var editProjectItem;
+
+    //profile
 	$("#edit-profile-data").on('click',function(){
 		submitEditProfileDataForm();
 	});
 
+    //summary
 	$("#edit-summary-data").on('click',function(){
 		editSummaryData();
 	});
 
+    //experience
     $("#add-experience").on('click',function(){
         $("#experience_item_id").val(0);
         editExperienceForm(0);
@@ -82,15 +88,36 @@ $( document ).ready(function() {
         event.preventDefault();
         var element = $(this).parent().parent().parent();
         var elementParent = element.parent();
-        itemId = element.find("input").val();
+        var itemId = element.find("input").val();
         editExperienceForm(itemId);
         editExperienceItem = elementParent;
     });
 
-	$("#edit-content-data").on('click',function(){
+    //project
+    $("#add-project").on('click',function(){
+        $("#project_item_id").val(0);
+        editProjectForm(0);
+    });
+
+    $("#edit-project-data").on('click',function(){
+        editProjectData($("#project_item_id").val());
+    });
+
+    $("body").on('click','li.btn-edit-project',function(event){
+        event.preventDefault();
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        var itemId = element.find("input").val();
+        editProjectForm(itemId);
+        editProjectItem = elementParent;
+    });
+
+    //contact
+	$("#edit-contact-data").on('click',function(){
 		editContactData();
 	});
 
+    //profile
     submitEditProfileDataForm = function () {
         $.ajax({
             type: editForm.attr('method'),
@@ -114,6 +141,7 @@ $( document ).ready(function() {
         return false;
     };
 
+    //summary
     editSummaryData = function () {
         $.ajax({
         	type: 'POST',
@@ -138,6 +166,7 @@ $( document ).ready(function() {
         });
     };
 
+    //experience
     editExperienceForm = function(itemId) {
         //get the form for add/edit experience for the user to either add or edit
         $.ajax({
@@ -190,6 +219,60 @@ $( document ).ready(function() {
         });
     };
 
+    //project
+    editProjectForm = function(itemId) {
+        //get the form for add/edit project for the user to either add or edit
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_project_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-project-modal").modal('show');                
+                $("#project-form-body").html(data);
+                $("#project_item_id").val(itemId);
+                $("#edit-project-data").attr("data-type", itemId);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
+    editProjectData = function (itemId) {
+        //this is called when the user submits the add/edit project form
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'edit_project' %}",
+            data: $("#project-form").serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                if(itemId == 0)
+                    $("#project-list").append(data)
+                else if(itemId > 0)
+                    editProjectItem.html(data);
+                $("#edit-project-modal").modal('toggle');
+            },
+            error: function(data) {
+
+            },
+            complete : function() {
+
+            }
+        });
+    };
+
+    //contact
     editContactData = function () {
         $.ajax({
         	type: 'POST',
