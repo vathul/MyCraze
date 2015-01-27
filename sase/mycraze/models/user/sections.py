@@ -9,6 +9,13 @@ class SummarySection(models.Model):
 	content = models.CharField(max_length=400)
 	is_active = models.BooleanField(default=True)
 
+class ProjectSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='project_section')
+	is_active = models.BooleanField(default=True)
+
 class ExperienceSection(models.Model):
 	class Meta:
 		app_label = 'mycraze'
