@@ -1,4 +1,6 @@
 from mycraze.models.user.sections import SummarySection
+from mycraze.models.user.sections import EducationSection
+from mycraze.models.user.items import EducationItem
 from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.sections import ProjectSection
@@ -11,18 +13,21 @@ class UserProfileService:
 		summary_section = SummarySection(user_profile = user.user_profile)
 		experience_section = ExperienceSection(user_profile = user.user_profile)
 		project_section = ProjectSection(user_profile = user.user_profile)
+		education_section = EducationSection(user_profile = user.user_profile)
 		contact_section = ContactSection(user_profile = user.user_profile)
 
 		#add the sections here
 		summary_section.user_profile = user.user_profile
 		experience_section.user_profile = user.user_profile
 		project_section.user_profile = user.user_profile
+		education_section.user_profile = user.user_profile
 		contact_section.user_profile = user.user_profile
 
 		#save the sections here
 		summary_section.save()
 		experience_section.save()
 		project_section.save()
+		education_section.save()
 		contact_section.save()
 
 	def save_user_profile(current_user, updated_user, updated_profile):
@@ -67,6 +72,15 @@ class UserProfileService:
 			project_item = ProjectItem(id=item_content.id, project_section=project_section, title=item_content.title,url=item_content.url,description=item_content.description)
 		project_item.save()
 		return project_item
+
+	def	edit_education_item(current_user, item_content):
+		education_section = current_user.user_profile.education_section
+		if item_content.id == "0":
+			education_item = EducationItem(education_section=education_section, school=item_content.school,degree=item_content.degree,description=item_content.description)
+		else:
+			education_item = EducationItem(id=item_content.id, education_section=education_section, school=item_content.school,degree=item_content.degree,description=item_content.description)
+		education_item.save()
+		return education_item
 
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile

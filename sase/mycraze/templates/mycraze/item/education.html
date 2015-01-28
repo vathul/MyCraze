@@ -1,0 +1,8 @@
+<div class="experience-item" val="">
+	<div class='bs-callout bs-callout-info'>
+		<input type="hidden" value={{item.id}} />
+		<h4 class='lead'><span>{{item.school}}</span>, <small>{{item.degree}}</small></h4>
+			<p class='lead'>{{item.description}}</p>
+			{% include "mycraze/widget/item-edit-dropdown.html" with category="education" %}<br/>
+	</div>
+</div>

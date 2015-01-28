@@ -8,4 +8,8 @@ drop table mycraze_projectitem;
 
 drop table mycraze_projectsection;
 
+drop table mycraze_educationitem;
+
+drop table mycraze_educationsection;
+
 drop table mycraze_contactsection;

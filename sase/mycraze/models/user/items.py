@@ -1,4 +1,5 @@
 from django.db import models
+from mycraze.models.user.sections import EducationSection
 from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.sections import ProjectSection
 
@@ -27,4 +28,4 @@ class EducationItem(models.Model):
 	school = models.CharField(max_length=200)
 	degree = models.CharField(max_length=100)
 	description = models.CharField(max_length=400)
-	education_section = models.ForeignKey(ProjectSection, related_name="education_items")
+	education_section = models.ForeignKey(EducationSection, related_name="education_items")

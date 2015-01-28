@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from mycraze.models.form.items import EducationItemForm
 from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.form.items import ProjectItemForm
 from mycraze.models.form.sections import ContactSectionForm
@@ -38,6 +39,19 @@ def edit_project(request):
 		project_item = UserProfileService.edit_project_item(request.user, item)
 	html = render_to_string('mycraze/item/project.html', 
 		{'item': project_item})
+	return HttpResponse(html)
+
+@login_required
+@csrf_exempt
+def edit_education(request):
+	item_form = EducationItemForm(request.POST)
+	item_id = request.POST['item_id']
+	if item_form.is_valid():
+		item = item_form.save(commit=False)
+		item.id = item_id
+		education_item = UserProfileService.edit_education_item(request.user, item)
+	html = render_to_string('mycraze/item/education.html', 
+		{'item': education_item})
 	return HttpResponse(html)
 
 @login_required
