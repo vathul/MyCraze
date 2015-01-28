@@ -19,3 +19,12 @@ class ProjectItem(models.Model):
 	url = models.CharField(max_length=200)
 	description = models.CharField(max_length=400)
 	project_section = models.ForeignKey(ProjectSection, related_name="project_items")
+
+class EducationItem(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	school = models.CharField(max_length=200)
+	degree = models.CharField(max_length=100)
+	description = models.CharField(max_length=400)
+	education_section = models.ForeignKey(ProjectSection, related_name="education_items")

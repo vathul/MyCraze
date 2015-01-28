@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import ModelForm
+from mycraze.models.user.items import EducationItem
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.items import ProjectItem
 
@@ -20,5 +21,15 @@ class ProjectItemForm(ModelForm):
 		widgets = {
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'url': forms.TextInput(attrs={'class': 'form-control'}),
+			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
+		}
+
+class EducationItemForm(ModelForm):
+	class Meta:
+		model = EducationItem
+		fields = ['school', 'degree', 'description']
+		widgets = {
+			'school': forms.TextInput(attrs={'class': 'form-control'}),
+			'degree': forms.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
 		}		

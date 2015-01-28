@@ -22,7 +22,14 @@ class ExperienceSection(models.Model):
 
 	user_profile = models.OneToOneField(UserProfile, related_name='experience_section')
 	is_active = models.BooleanField(default=True)
-	
+
+class EducationSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='education_section')
+	is_active = models.BooleanField(default=True)
+		
 class ContactSection(models.Model):
 	class Meta:
 		app_label = 'mycraze'
