@@ -16,7 +16,7 @@ border-top: 1px solid #e5e5e5;
 	color: #FFFFFF;
 	background-color: #428BCA;
 	border-left: none;
-	font-weight: 500;
+	font-weight: bolder;
 }
 
 .bs-docs-sidebar .nav>li>a:hover, .bs-docs-sidebar .nav>li>a:focus {
@@ -62,4 +62,13 @@ h1[id] {
 
 .bs-callout {
 	padding: 10px;
+}
+
+.bs-callout > h4.lead {
+	font-weight: bolder;
+	color: black;
+}
+
+h3.page-header {
+	font-weight: bolder;	
 }

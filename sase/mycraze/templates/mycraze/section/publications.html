@@ -1,5 +1,5 @@
 <div class="bs-docs-section">
-	<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-building"></i> Publication</a></h3>
+	<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book"></i> Publication</a></h3>
 	<div id="publication-list">
 		{% for item in request.user.user_profile.publication_section.publication_items.all %}
 			{% include "mycraze/item/publication.html" %}
