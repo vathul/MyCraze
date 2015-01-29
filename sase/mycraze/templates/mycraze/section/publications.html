@@ -1,9 +1,13 @@
-<div class="bs-docs-section">
-	<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book"></i> Publication</a></h3>
+<div class="panel panel-default">
+  <div class="panel-body">
+  <div class="bs-docs-section">
+	<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book fa-fw"></i> Publication</a></h3>
 	<div id="publication-list">
 		{% for item in request.user.user_profile.publication_section.publication_items.all %}
 			{% include "mycraze/item/publication.html" %}
 		{% endfor %}
 	</div>
 	<button type="button" id="add-publication" class="btn btn-default"><i class="fa fa-plus"></i> Add Publication</button>
+</div>
+</div>
 </div>

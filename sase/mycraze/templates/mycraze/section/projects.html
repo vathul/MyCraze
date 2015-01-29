@@ -1,5 +1,7 @@
+<div class="panel panel-default">
+  <div class="panel-body">
 <div class="bs-docs-section">
-	<h3 id="projects" class="page-header"><a href="#projects"><i class="fa fa-th-list"></i> Projects</a></h3>
+	<h3 id="projects" class="page-header"><a href="#projects"><i class="fa fa-th-list fa-fw"></i> Projects</a></h3>
 	<div id="project-list">
 		{% for item in request.user.user_profile.project_section.project_items.all %}
 			{% include "mycraze/item/project.html" %}
@@ -7,3 +9,4 @@
 	</div>
 	<button type="button" id="add-project" class="btn btn-default"><i class="fa fa-plus"></i> Add Project</button>
 </div>
+</div></div>

@@ -72,3 +72,12 @@ h1[id] {
 h3.page-header {
 	font-weight: bolder;	
 }
+
+.panel {
+	margin-bottom: 10px;
+}
+
+.bs-docs-section > h3.page-header {
+	margin: 0 0 10px;
+    padding-bottom: 5px;
+}

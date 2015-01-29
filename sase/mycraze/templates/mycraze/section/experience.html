@@ -1,5 +1,7 @@
+<div class="panel panel-default">
+  <div class="panel-body">
 <div class="bs-docs-section">
-	<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building"></i> Experience</a></h3>
+	<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building fa-fw"></i> Experience</a></h3>
 	<div id="experience-list">
 		{% for item in request.user.user_profile.experience_section.experience_items.all %}
 			{% include "mycraze/item/experience.html" %}
@@ -7,3 +9,4 @@
 	</div>
 	<button type="button" id="add-experience" class="btn btn-default"><i class="fa fa-plus"></i> Add Experience</button>
 </div>
+</div></div>
