@@ -12,4 +12,8 @@ drop table mycraze_educationitem;
 
 drop table mycraze_educationsection;
 
+drop table mycraze_publicationitem;
+
+drop table mycraze_publicationsection;
+
 drop table mycraze_contactsection;

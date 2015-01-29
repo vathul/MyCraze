@@ -1,4 +1,5 @@
 from django.db import models
+from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.sections import EducationSection
 from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.sections import ProjectSection
@@ -39,3 +40,11 @@ class PublicationItem(models.Model):
 	publisher = models.CharField(max_length=100)
 	description = models.CharField(max_length=400)
 	publication_section = models.ForeignKey(PublicationSection, related_name="publication_items")
+
+class CertificationItem(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	title = models.CharField(max_length=200)
+	certifier = models.CharField(max_length=100)
+	certification_section = models.ForeignKey(CertificationSection, related_name="certification_items")

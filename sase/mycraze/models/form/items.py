@@ -1,5 +1,7 @@
 from django import forms
 from django.forms import ModelForm
+
+from mycraze.models.user.items import CertificationItem
 from mycraze.models.user.items import EducationItem
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.items import ProjectItem
@@ -43,4 +45,13 @@ class PublicationItemForm(ModelForm):
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'publisher': forms.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
+		}
+
+class CertificationItemForm(ModelForm):
+	class Meta:
+		model = CertificationItem
+		fields = ['title', 'certifier']
+		widgets = {
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'certifier': forms.TextInput(attrs={'class': 'form-control'})
 		}

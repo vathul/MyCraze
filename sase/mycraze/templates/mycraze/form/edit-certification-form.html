@@ -1,0 +1,16 @@
+<form id="certification-form" method="post" action="{% url 'edit_certification' %}" class="form-horizontal" role="form" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="role" class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-10">
+        {{ certification_form.title }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="organization" class="col-sm-2 control-label">Certifier</label>
+    <div class="col-sm-10">
+        {{ certification_form.certifier }}
+    </div>
+  </div>
+  <input id="certification_item_id" type="hidden" name="item_id" value=""/>
+</form>

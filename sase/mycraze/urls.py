@@ -24,5 +24,7 @@ urlpatterns = patterns('',
 	url(r'^get-education-form/$', UserFormView.get_education_form, name='get_education_form'),
 	url(r'^edit-publication/$', UserProfileView.edit_publication, name='edit_publication'),
 	url(r'^get-publication-form/$', UserFormView.get_publication_form, name='get_publication_form'),
+	url(r'^edit-certification/$', UserProfileView.edit_certification, name='edit_certification'),
+	url(r'^get-certification-form/$', UserFormView.get_certification_form, name='get_certification_form'),
 	url(r'^edit-contact/$', UserProfileView.edit_contact, name='edit_contact'),
 )

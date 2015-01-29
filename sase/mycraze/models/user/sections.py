@@ -37,6 +37,13 @@ class PublicationSection(models.Model):
 	user_profile = models.OneToOneField(UserProfile, related_name='publication_section')
 	is_active = models.BooleanField(default=True)
 
+class CertificationSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='certification_section')
+	is_active = models.BooleanField(default=True)
+
 class ContactSection(models.Model):
 	class Meta:
 		app_label = 'mycraze'

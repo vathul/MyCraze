@@ -1,3 +1,9 @@
 <div class="bs-docs-section">
 	<h3 id="certifications" class="page-header"><a href="#certifications"><i class="fa fa-certificate"></i> Certifications</a></h3>
+	<div id="certification-list">
+		{% for item in request.user.user_profile.certification_section.certification_items.all %}
+			{% include "mycraze/item/certification.html" %}
+		{% endfor %}
+	</div>
+	<button type="button" id="add-certification" class="btn btn-default"><i class="fa fa-plus"></i> Add Certification</button>
 </div>

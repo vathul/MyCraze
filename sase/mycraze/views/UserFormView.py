@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from mycraze.models.form.items import CertificationItemForm
+from mycraze.models.user.items import CertificationItem
 from mycraze.models.form.items import EducationItemForm
 from mycraze.models.user.items import EducationItem
 from mycraze.models.form.items import ExperienceItemForm
@@ -56,4 +58,16 @@ def get_education_form(request):
 		education_form = EducationItemForm(instance=education_item)
 	html = render_to_string('mycraze/form/edit-education-form.html', 
 		{'education_form': education_form})
-	return HttpResponse(html)	
+	return HttpResponse(html)
+
+@login_required
+def get_certification_form(request):
+	item_id = request.POST['id']
+	if item_id == "0":
+		certification_form = CertificationItemForm()
+	else:
+		certification_item = CertificationItem.objects.get(id=item_id)
+		certification_form = CertificationItemForm(instance=certification_item)
+	html = render_to_string('mycraze/form/edit-certification-form.html', 
+		{'certification_form': certification_form})
+	return HttpResponse(html)
