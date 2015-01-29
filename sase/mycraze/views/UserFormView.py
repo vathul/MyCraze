@@ -7,6 +7,9 @@ from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.form.items import ProjectItemForm
 from mycraze.models.user.items import ProjectItem
+from mycraze.models.form.items import PublicationItemForm
+from mycraze.models.user.items import PublicationItem
+
 @login_required
 def get_experience_form(request):
 	item_id = request.POST['id']
@@ -29,6 +32,18 @@ def get_project_form(request):
 		project_form = ProjectItemForm(instance=project_item)
 	html = render_to_string('mycraze/form/edit-project-form.html', 
 		{'project_form': project_form})
+	return HttpResponse(html)
+
+@login_required
+def get_publication_form(request):
+	item_id = request.POST['id']
+	if item_id == "0":
+		publication_form = PublicationItemForm()
+	else:
+		publication_item = PublicationItem.objects.get(id=item_id)
+		publication_form = PublicationItemForm(instance=publication_item)
+	html = render_to_string('mycraze/form/edit-publication-form.html', 
+		{'publication_form': publication_form})
 	return HttpResponse(html)
 
 @login_required

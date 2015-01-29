@@ -5,6 +5,8 @@ from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.items import ProjectItem
+from mycraze.models.user.sections import PublicationSection
+from mycraze.models.user.items import PublicationItem
 from mycraze.models.user.sections import ContactSection
 
 class UserProfileService:
@@ -14,6 +16,7 @@ class UserProfileService:
 		experience_section = ExperienceSection(user_profile = user.user_profile)
 		project_section = ProjectSection(user_profile = user.user_profile)
 		education_section = EducationSection(user_profile = user.user_profile)
+		publication_section = PublicationSection(user_profile = user.user_profile)
 		contact_section = ContactSection(user_profile = user.user_profile)
 
 		#add the sections here
@@ -21,6 +24,7 @@ class UserProfileService:
 		experience_section.user_profile = user.user_profile
 		project_section.user_profile = user.user_profile
 		education_section.user_profile = user.user_profile
+		publication_section.user_profile = user.user_profile
 		contact_section.user_profile = user.user_profile
 
 		#save the sections here
@@ -28,6 +32,7 @@ class UserProfileService:
 		experience_section.save()
 		project_section.save()
 		education_section.save()
+		publication_section.save()
 		contact_section.save()
 
 	def save_user_profile(current_user, updated_user, updated_profile):
@@ -81,6 +86,15 @@ class UserProfileService:
 			education_item = EducationItem(id=item_content.id, education_section=education_section, school=item_content.school,degree=item_content.degree,description=item_content.description)
 		education_item.save()
 		return education_item
+
+	def	edit_publication_item(current_user, item_content):
+		publication_section = current_user.user_profile.publication_section
+		if item_content.id == "0":
+			publication_item = PublicationItem(publication_section=publication_section, title=item_content.title,publisher=item_content.publisher,description=item_content.description)
+		else:
+			publication_item = PublicationItem(id=item_content.id, publication_section=publication_section, title=item_content.title,publisher=item_content.publisher,description=item_content.description)
+		publication_item.save()
+		return publication_item
 
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile

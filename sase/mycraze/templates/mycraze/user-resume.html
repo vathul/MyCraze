@@ -26,11 +26,11 @@
     <div class="container bs-docs-container">
     	<div class="row">
     		<!-- Side pane content -->
-    		<div class="col-md-3" role="main" role="complementary">
+    		<div class="col-md-3" role="complementary">
     			{% include "mycraze/widget/side-pane.html" %}
     		</div>
     		<!-- Main content of side pane sections -->
-   			<div class="col-md-9">
+   			<div class="col-md-9" role="main">
    				{% include "mycraze/section/summary.html" %}
 				{% include "mycraze/section/experience.html" %}
 				{% include "mycraze/section/projects.html" %}
@@ -54,6 +54,7 @@
 	{% include "mycraze/modal/edit-experience-modal.html"%}
     {% include "mycraze/modal/edit-project-modal.html"%}
     {% include "mycraze/modal/edit-education-modal.html"%}
+    {% include "mycraze/modal/edit-publication-modal.html"%}
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
@@ -65,6 +66,7 @@ $( document ).ready(function() {
     var editExperienceItem;
     var editProjectItem;
     var editEducationItem;
+    var editPublicationItem;
 
     //profile
 	$("#edit-profile-data").on('click',function(){
@@ -131,6 +133,25 @@ $( document ).ready(function() {
         var itemId = element.find("input").val();
         editEducationForm(itemId);
         editEducationItem = elementParent;
+    });
+
+    //publication
+    $("#add-publication").on('click',function(){
+        $("#publication_item_id").val(0);
+        editPublicationForm(0);
+    });
+
+    $("#edit-publication-data").on('click',function(){
+        editPublicationData($("#publication_item_id").val());
+    });
+
+    $("body").on('click','li.btn-edit-publication',function(event){
+        event.preventDefault();
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        var itemId = element.find("input").val();
+        editPublicationForm(itemId);
+        editPublicationItem = elementParent;
     });
 
     //contact
@@ -295,7 +316,7 @@ $( document ).ready(function() {
 
     //education
     editEducationForm = function(itemId) {
-        //get the form for add/edit project for the user to either add or edit
+        //get the form for add/edit education for the user to either add or edit
         $.ajax({
             type: 'POST',
             url: "{% url 'get_education_form' %}",
@@ -322,7 +343,7 @@ $( document ).ready(function() {
     }
 
     editEducationData = function (itemId) {
-        //this is called when the user submits the add/edit project form
+        //this is called when the user submits the add/edit education form
         $.ajax({
             type: 'POST',
             url: "{% url 'edit_education' %}",
@@ -336,6 +357,59 @@ $( document ).ready(function() {
                 else if(itemId > 0)
                     editEducationItem.html(data);
                 $("#edit-education-modal").modal('toggle');
+            },
+            error: function(data) {
+
+            },
+            complete : function() {
+
+            }
+        });
+    };
+
+    //publication
+    editPublicationForm = function(itemId) {
+        //get the form for add/edit publication for the user to either add or edit
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_publication_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-publication-modal").modal('show');                
+                $("#publication-form-body").html(data);
+                $("#publication_item_id").val(itemId);
+                $("#edit-publication-data").attr("data-type", itemId);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
+    editPublicationData = function (itemId) {
+        //this is called when the user submits the add/edit project form
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'edit_publication' %}",
+            data: $("#publication-form").serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                if(itemId == 0)
+                    $("#publication-list").append(data)
+                else if(itemId > 0)
+                    editPublicationItem.html(data);
+                $("#edit-publication-modal").modal('toggle');
             },
             error: function(data) {
 

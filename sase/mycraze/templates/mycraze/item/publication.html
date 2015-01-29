@@ -1,0 +1,9 @@
+<div class="publication-item" val="">
+	<div class='bs-callout bs-callout-info'>
+		{% include "mycraze/widget/item-edit-dropdown.html" with category="publication" %}
+		<input type="hidden" value={{item.id}} />
+		<h4 class='lead'><span>{{item.title}}</span></h4>
+		<h4><small>{{item.publisher}}</small></h4>
+		<p class='lead'>{{item.description}}</p>
+	</div>
+</div>

@@ -6,4 +6,6 @@ from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.items import ProjectItem
-__all__ = ['UserProfile','SummarySection','ExperienceSection','ExperienceItem','ProjectSection','ProjectItem','EducationSection','EducationItem','ContactSection']
+from mycraze.models.user.sections import PublicationSection
+from mycraze.models.user.items import PublicationItem
+__all__ = ['UserProfile','SummarySection','ExperienceSection','ExperienceItem','ProjectSection','ProjectItem','EducationSection','EducationItem','PublicationSection','PublicationItem','ContactSection']

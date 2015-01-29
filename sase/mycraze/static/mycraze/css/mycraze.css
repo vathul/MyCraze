@@ -48,6 +48,18 @@ border-top: 1px solid #e5e5e5;
 	border-left-color: #428BCA;
 }
 
-.bs-callout-info h4{
+.bs-callout-info h4 {
 	color: #428BCA;
+}
+
+.bs-docs-header h1 {
+	font-size: 48px;
+}
+
+h1[id] {
+    padding-top: 0;
+}
+
+.bs-callout {
+	padding: 10px;
 }
