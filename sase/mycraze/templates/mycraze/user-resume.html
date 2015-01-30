@@ -57,6 +57,7 @@
     {% include "mycraze/modal/edit-publication-modal.html"%}
     {% include "mycraze/modal/edit-certification-modal.html"%}
     {% include "mycraze/modal/edit-skill-modal.html"%}
+    {% include "mycraze/modal/edit-course-modal.html"%}
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
@@ -71,6 +72,7 @@ $( document ).ready(function() {
     var editPublicationItem;
     var editCertificationItem;
     var editSkillItem;
+    var editCourseItem;
 
     //profile
 	$("#edit-profile-data").on('click',function(){
@@ -196,6 +198,25 @@ $( document ).ready(function() {
         editSkillItem = elementParent;
     });
 
+    //course
+    $("#add-course").on('click',function(){
+        $("#course_item_id").val(0);
+        editCourseForm(0);
+    });
+
+    $("#edit-course-data").on('click',function(){
+        editCourseData($("#course_item_id").val());
+    });
+
+    $("body").on('click','li.btn-edit-course',function(event){
+        event.preventDefault();
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        var itemId = element.find("input").val();
+        editCourseForm(itemId);
+        editCourseItem = elementParent;
+    });
+
     //contact
 	$("#edit-contact-data").on('click',function(){
 		editContactData();
@@ -216,10 +237,10 @@ $( document ).ready(function() {
 				$("#edit-profile-modal").modal('toggle');
             },
             error: function(data) {
-                
+
             },
             complete : function() {
-            	
+
             }
         });
         return false;
@@ -558,6 +579,59 @@ $( document ).ready(function() {
                 else if(itemId > 0)
                     editSkillItem.html(data);
                 $("#edit-skill-modal").modal('toggle');
+            },
+            error: function(data) {
+
+            },
+            complete : function() {
+
+            }
+        });
+    };
+
+    //course
+    editCourseForm = function(itemId) {
+        //get the form for add/edit course for the user to either add or edit
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_course_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-course-modal").modal('show');                
+                $("#course-form-body").html(data);
+                $("#course_item_id").val(itemId);
+                $("#edit-course-data").attr("data-type", itemId);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
+    editCourseData = function (itemId) {
+        //this is called when the user submits the add/edit course form
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'edit_course' %}",
+            data: $("#course-form").serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                if(itemId == 0)
+                    $("#course-list").append(data)
+                else if(itemId > 0)
+                    editCourseItem.html(data);
+                $("#edit-course-modal").modal('toggle');
             },
             error: function(data) {
 

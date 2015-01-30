@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 
 from mycraze.models.user.items import CertificationItem
+from mycraze.models.user.items import CourseItem
 from mycraze.models.user.items import EducationItem
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.items import ProjectItem
@@ -64,3 +65,12 @@ class SkillItemForm(ModelForm):
 		widgets = {
 			'skill': forms.TextInput(attrs={'class': 'form-control'})
 		}
+
+class CourseItemForm(ModelForm):
+	class Meta:
+		model = CourseItem
+		fields = ['title', 'code']
+		widgets = {
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'code': forms.TextInput(attrs={'class': 'form-control'})
+		}		

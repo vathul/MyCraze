@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from mycraze.models.form.items import CertificationItemForm
 from mycraze.models.user.items import CertificationItem
+from mycraze.models.form.items import CourseItemForm
+from mycraze.models.user.items import CourseItem
 from mycraze.models.form.items import EducationItemForm
 from mycraze.models.user.items import EducationItem
 from mycraze.models.form.items import ExperienceItemForm
@@ -72,6 +74,18 @@ def get_certification_form(request):
 		certification_form = CertificationItemForm(instance=certification_item)
 	html = render_to_string('mycraze/form/edit-certification-form.html', 
 		{'certification_form': certification_form})
+	return HttpResponse(html)
+
+@login_required
+def get_course_form(request):
+	item_id = request.POST['id']
+	if item_id == "0":
+		course_form = CourseItemForm()
+	else:
+		course_item = CourseItem.objects.get(id=item_id)
+		course_form = CourseItemForm(instance=course_item)
+	html = render_to_string('mycraze/form/edit-course-form.html', 
+		{'course_form': course_form})
 	return HttpResponse(html)
 
 @login_required

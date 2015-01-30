@@ -1,7 +1,9 @@
 <div class="experience-item" val="">
-	{% include "mycraze/widget/item-edit-dropdown.html" with category="skill" %}
-	<input type="hidden" value={{item.id}} />
-	<ul>
-		<li class='skill lead'><span>{{item.skill}}</li>
-	</ul>
+	<div>
+		{% include "mycraze/widget/item-edit-dropdown.html" with category="skill" %}
+		<input type="hidden" value={{item.id}} />
+		<ul>
+			<li class='skill lead'><span>{{item.skill}}</li>
+		</ul>
+	</div>
 </div>

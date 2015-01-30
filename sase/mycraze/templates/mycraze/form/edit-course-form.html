@@ -1,0 +1,16 @@
+<form id="course-form" method="post" action="{% url 'edit_course' %}" class="form-horizontal" role="form" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="title" class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-10">
+        {{ course_form.title }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="code" class="col-sm-2 control-label">Course Code</label>
+    <div class="col-sm-10">
+        {{ course_form.code }}
+    </div>
+  </div>
+  <input id="course_item_id" type="hidden" name="item_id" value=""/>
+</form>

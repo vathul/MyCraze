@@ -91,6 +91,6 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .s
 	font-size: 90%;
 }
 
-.skill {
+.skill, .course {
 	line-height: 1;
 }
