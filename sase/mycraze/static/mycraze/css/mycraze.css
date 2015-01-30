@@ -81,3 +81,15 @@ h3.page-header {
 	margin: 0 0 10px;
     padding-bottom: 5px;
 }
+
+.lead {
+	font-size: 18px;
+}
+
+h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .small, h5 .small, .h5 .small, h6 .small, .h6 .small {
+	font-size: 90%;
+}
+
+.skill {
+	line-height: 1;
+}

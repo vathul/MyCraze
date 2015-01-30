@@ -3,12 +3,10 @@
 <div class="bs-docs-section">
 	<h3 id="contact" class="page-header"><a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a>
 	</h3>
-	<div class="bs-callout bs-callout-info">
 		{% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-contact-modal" %}
 		<h4 class="lead">Personal Email</h4>
 		<span id="personal-email">{{request.user.user_profile.contact_section.personal_email}}</span>
 		<h4 class="lead">Phone Number</h4>
 		<span id="phone-number">{{request.user.user_profile.contact_section.phone_number}}</span>
-	</div>
 </div>
 </div></div>

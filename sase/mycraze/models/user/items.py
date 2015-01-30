@@ -4,6 +4,7 @@ from mycraze.models.user.sections import EducationSection
 from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.sections import PublicationSection
+from mycraze.models.user.sections import SkillSection
 
 class ExperienceItem(models.Model):
 	class Meta:
@@ -48,3 +49,10 @@ class CertificationItem(models.Model):
 	title = models.CharField(max_length=200)
 	certifier = models.CharField(max_length=100)
 	certification_section = models.ForeignKey(CertificationSection, related_name="certification_items")
+
+class SkillItem(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	skill = models.CharField(max_length=100)
+	skill_section = models.ForeignKey(SkillSection, related_name="skill_items")

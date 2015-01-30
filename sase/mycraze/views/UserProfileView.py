@@ -7,6 +7,7 @@ from mycraze.models.form.items import EducationItemForm
 from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.form.items import ProjectItemForm
 from mycraze.models.form.items import PublicationItemForm
+from mycraze.models.form.items import SkillItemForm
 from mycraze.models.form.sections import ContactSectionForm
 from mycraze.services.user import UserProfileService
 from mycraze.utils.http import JsonResponse
@@ -80,6 +81,19 @@ def edit_certification(request):
 		certification_item = UserProfileService.edit_certification_item(request.user, item)
 	html = render_to_string('mycraze/item/certification.html', 
 		{'item': certification_item})
+	return HttpResponse(html)
+
+@login_required
+@csrf_exempt
+def edit_skill(request):
+	item_form = SkillItemForm(request.POST)
+	item_id = request.POST['item_id']
+	if item_form.is_valid():
+		item = item_form.save(commit=False)
+		item.id = item_id
+		skill_item = UserProfileService.edit_skill_item(request.user, item)
+	html = render_to_string('mycraze/item/skill.html', 
+		{'item': skill_item})
 	return HttpResponse(html)
 
 @login_required

@@ -56,6 +56,7 @@
     {% include "mycraze/modal/edit-education-modal.html"%}
     {% include "mycraze/modal/edit-publication-modal.html"%}
     {% include "mycraze/modal/edit-certification-modal.html"%}
+    {% include "mycraze/modal/edit-skill-modal.html"%}
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
@@ -69,6 +70,7 @@ $( document ).ready(function() {
     var editEducationItem;
     var editPublicationItem;
     var editCertificationItem;
+    var editSkillItem;
 
     //profile
 	$("#edit-profile-data").on('click',function(){
@@ -173,6 +175,25 @@ $( document ).ready(function() {
         var itemId = element.find("input").val();
         editCertificationForm(itemId);
         editCertificationItem = elementParent;
+    });
+
+    //skill
+    $("#add-skill").on('click',function(){
+        $("#skill_item_id").val(0);
+        editSkillForm(0);
+    });
+
+    $("#edit-skill-data").on('click',function(){
+        editSkillData($("#skill_item_id").val());
+    });
+
+    $("body").on('click','li.btn-edit-skill',function(event){
+        event.preventDefault();
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        var itemId = element.find("input").val();
+        editSkillForm(itemId);
+        editSkillItem = elementParent;
     });
 
     //contact
@@ -484,6 +505,59 @@ $( document ).ready(function() {
                 else if(itemId > 0)
                     editCertificationItem.html(data);
                 $("#edit-certification-modal").modal('toggle');
+            },
+            error: function(data) {
+
+            },
+            complete : function() {
+
+            }
+        });
+    };
+
+    //skill
+    editSkillForm = function(itemId) {
+        //get the form for add/edit skill for the user to either add or edit
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_skill_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-skill-modal").modal('show');                
+                $("#skill-form-body").html(data);
+                $("#skill_item_id").val(itemId);
+                $("#edit-publication-data").attr("data-type", itemId);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
+    editSkillData = function (itemId) {
+        //this is called when the user submits the add/edit skill form
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'edit_skill' %}",
+            data: $("#skill-form").serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                if(itemId == 0)
+                    $("#skill-list").append(data)
+                else if(itemId > 0)
+                    editSkillItem.html(data);
+                $("#edit-skill-modal").modal('toggle');
             },
             error: function(data) {
 

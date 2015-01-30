@@ -5,3 +5,4 @@ from mycraze.models.form.items import EducationItemForm
 from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.form.items import ProjectItemForm
 from mycraze.models.form.items import PublicationItemForm
+from mycraze.models.form.items import SkillItemForm

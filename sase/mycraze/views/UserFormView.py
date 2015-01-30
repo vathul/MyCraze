@@ -11,6 +11,8 @@ from mycraze.models.form.items import ProjectItemForm
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.form.items import PublicationItemForm
 from mycraze.models.user.items import PublicationItem
+from mycraze.models.form.items import SkillItemForm
+from mycraze.models.user.items import SkillItem
 
 @login_required
 def get_experience_form(request):
@@ -70,4 +72,16 @@ def get_certification_form(request):
 		certification_form = CertificationItemForm(instance=certification_item)
 	html = render_to_string('mycraze/form/edit-certification-form.html', 
 		{'certification_form': certification_form})
+	return HttpResponse(html)
+
+@login_required
+def get_skill_form(request):
+	item_id = request.POST['id']
+	if item_id == "0":
+		skill_form = SkillItemForm()
+	else:
+		skill_item = SkillItem.objects.get(id=item_id)
+		skill_form = SkillItemForm(instance=skill_item)
+	html = render_to_string('mycraze/form/edit-skill-form.html', 
+		{'skill_form': skill_form})
 	return HttpResponse(html)

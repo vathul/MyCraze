@@ -9,6 +9,8 @@ from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.sections import PublicationSection
 from mycraze.models.user.items import PublicationItem
+from mycraze.models.user.sections import SkillSection
+from mycraze.models.user.items import SkillItem
 from mycraze.models.user.sections import ContactSection
 
 class UserProfileService:
@@ -20,6 +22,7 @@ class UserProfileService:
 		education_section = EducationSection(user_profile = user.user_profile)
 		publication_section = PublicationSection(user_profile = user.user_profile)
 		certification_section = CertificationSection(user_profile = user.user_profile)
+		skill_section = SkillSection(user_profile = user.user_profile)
 		contact_section = ContactSection(user_profile = user.user_profile)
 
 		#add the sections here
@@ -29,6 +32,7 @@ class UserProfileService:
 		education_section.user_profile = user.user_profile
 		publication_section.user_profile = user.user_profile
 		certification_section.user_profile = user.user_profile
+		skill_section.user_profile = user.user_profile
 		contact_section.user_profile = user.user_profile
 
 		#save the sections here
@@ -38,6 +42,7 @@ class UserProfileService:
 		education_section.save()
 		publication_section.save()
 		certification_section.save()
+		skill_section.save()
 		contact_section.save()
 
 	def save_user_profile(current_user, updated_user, updated_profile):
@@ -109,7 +114,16 @@ class UserProfileService:
 			certification_item = CertificationItem(id=item_content.id, certification_section=certification_section, title=item_content.title,certifier=item_content.certifier)
 		certification_item.save()
 		return certification_item
-			
+
+	def	edit_skill_item(current_user, item_content):
+		skill_section = current_user.user_profile.skill_section
+		if item_content.id == "0":
+			skill_item = SkillItem(skill_section=skill_section, skill=item_content.skill)
+		else:
+			skill_item = SkillItem(id=item_content.id, skill_section=skill_section, skill=item_content.skill)
+		skill_item.save()
+		return skill_item
+
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile
 		contact_section,created = ContactSection.objects.get_or_create(user_profile = user_profile)

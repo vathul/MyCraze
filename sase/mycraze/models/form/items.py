@@ -6,6 +6,7 @@ from mycraze.models.user.items import EducationItem
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.items import PublicationItem
+from mycraze.models.user.items import SkillItem
 
 class ExperienceItemForm(ModelForm):
 	class Meta:
@@ -54,4 +55,12 @@ class CertificationItemForm(ModelForm):
 		widgets = {
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'certifier': forms.TextInput(attrs={'class': 'form-control'})
+		}
+
+class SkillItemForm(ModelForm):
+	class Meta:
+		model = SkillItem
+		fields = ['skill']
+		widgets = {
+			'skill': forms.TextInput(attrs={'class': 'form-control'})
 		}
