@@ -65,6 +65,13 @@ class AwardSection(models.Model):
 	user_profile = models.OneToOneField(UserProfile, related_name='award_section')
 	is_active = models.BooleanField(default=True)
 
+class LanguageSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='language_section')
+	is_active = models.BooleanField(default=True)
+
 class ContactSection(models.Model):
 	class Meta:
 		app_label = 'mycraze'

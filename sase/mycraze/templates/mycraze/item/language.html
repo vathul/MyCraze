@@ -1,0 +1,9 @@
+<div class="experience-item" val="">
+	<div>
+		{% include "mycraze/widget/item-edit-dropdown.html" with category="language" %}
+		<input type="hidden" value={{item.id}} />
+		<ul>
+			<li class='language lead'><span>{{item.language}}</li>
+		</ul>
+	</div>
+</div>

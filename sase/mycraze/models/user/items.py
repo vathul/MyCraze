@@ -4,6 +4,7 @@ from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.sections import CourseSection
 from mycraze.models.user.sections import EducationSection
 from mycraze.models.user.sections import ExperienceSection
+from mycraze.models.user.sections import LanguageSection
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.sections import PublicationSection
 from mycraze.models.user.sections import SkillSection
@@ -74,4 +75,11 @@ class CourseItem(models.Model):
 
 	title = models.CharField(max_length=100)
 	code = models.CharField(max_length=20)
-	course_section = models.ForeignKey(CourseSection, related_name="course_items")	
+	course_section = models.ForeignKey(CourseSection, related_name="course_items")
+
+class LanguageItem(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	language = models.CharField(max_length=100)
+	language_section = models.ForeignKey(LanguageSection, related_name="language_items")

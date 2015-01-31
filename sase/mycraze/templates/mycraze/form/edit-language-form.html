@@ -1,0 +1,10 @@
+<form id="language-form" method="post" action="{% url 'edit_language' %}" class="form-horizontal" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="role" class="col-sm-2 control-label">Language</label>
+      <div class="col-sm-10">
+          {{ language_form.language }}
+      </div>
+    </div>
+    <input id="language_item_id" type="hidden" name="item_id" value=""/>
+</form>

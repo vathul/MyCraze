@@ -9,6 +9,8 @@ from mycraze.models.user.sections import EducationSection
 from mycraze.models.user.items import EducationItem
 from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.items import ExperienceItem
+from mycraze.models.user.sections import LanguageSection
+from mycraze.models.user.items import LanguageItem
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.sections import PublicationSection
@@ -29,6 +31,7 @@ class UserProfileService:
 		skill_section = SkillSection(user_profile = user.user_profile)
 		course_section = CourseSection(user_profile = user.user_profile)
 		award_section = AwardSection(user_profile = user.user_profile)
+		language_section = LanguageSection(user_profile = user.user_profile)
 		contact_section = ContactSection(user_profile = user.user_profile)
 
 		#add the sections here
@@ -41,6 +44,7 @@ class UserProfileService:
 		skill_section.user_profile = user.user_profile
 		course_section.user_profile = user.user_profile
 		award_section.user_profile = user.user_profile
+		language_section.user_profile = user.user_profile
 		contact_section.user_profile = user.user_profile
 
 		#save the sections here
@@ -53,6 +57,7 @@ class UserProfileService:
 		skill_section.save()
 		course_section.save()
 		award_section.save()
+		language_section.save()
 		contact_section.save()
 
 	def save_user_profile(current_user, updated_user, updated_profile):
@@ -152,10 +157,19 @@ class UserProfileService:
 		award_item.save()
 		return award_item
 
+	def	edit_language_item(current_user, item_content):
+		language_section = current_user.user_profile.language_section
+		if item_content.id == "0":
+			language_item = LanguageItem(language_section=language_section, language=item_content.language)
+		else:
+			language_item = LanguageItem(id=item_content.id, language_section=language_section, language=item_content.language)
+		language_item.save()
+		return language_item
+
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile
 		contact_section,created = ContactSection.objects.get_or_create(user_profile = user_profile)
 		contact_section.personal_email = contact_content.personal_email
 		contact_section.phone_number = contact_content.phone_number
 		contact_section.save()
-		return contact_sectiono
+		return contact_section

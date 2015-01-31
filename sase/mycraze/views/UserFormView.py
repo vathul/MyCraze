@@ -11,6 +11,8 @@ from mycraze.models.form.items import EducationItemForm
 from mycraze.models.user.items import EducationItem
 from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.user.items import ExperienceItem
+from mycraze.models.form.items import LanguageItemForm
+from mycraze.models.user.items import LanguageItem
 from mycraze.models.form.items import ProjectItemForm
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.form.items import PublicationItemForm
@@ -112,4 +114,16 @@ def get_award_form(request):
 		award_form = AwardItemForm(instance=award_item)
 	html = render_to_string('mycraze/form/edit-award-form.html', 
 		{'award_form': award_form})
+	return HttpResponse(html)
+
+@login_required
+def get_language_form(request):
+	item_id = request.POST['id']
+	if item_id == "0":
+		language_form = LanguageItemForm()
+	else:
+		language_item = LanguageItem.objects.get(id=item_id)
+		language_form = LanguageItemForm(instance=language_item)
+	html = render_to_string('mycraze/form/edit-language-form.html', 
+		{'language_form': language_form})
 	return HttpResponse(html)

@@ -59,6 +59,7 @@
     {% include "mycraze/modal/edit-skill-modal.html"%}
     {% include "mycraze/modal/edit-course-modal.html"%}
     {% include "mycraze/modal/edit-award-modal.html"%}
+    {% include "mycraze/modal/edit-language-modal.html"%}    
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
@@ -74,6 +75,7 @@ $( document ).ready(function() {
     var editCertificationItem;
     var editSkillItem;
     var editAwardItem;
+    var editLanguageItem;
     var editCourseItem;
 
     //profile
@@ -236,6 +238,25 @@ $( document ).ready(function() {
         var itemId = element.find("input").val();
         editAwardForm(itemId);
         editAwardItem = elementParent;
+    });
+
+    //language
+    $("#add-language").on('click',function(){
+        $("#language_item_id").val(0);
+        editLanguageForm(0);
+    });
+
+    $("#edit-language-data").on('click',function(){
+        editLanguageData($("#language_item_id").val());
+    });
+
+    $("body").on('click','li.btn-edit-language',function(event){
+        event.preventDefault();
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        var itemId = element.find("input").val();
+        editLanguageForm(itemId);
+        editLanguageItem = elementParent;
     });
 
     //contact
@@ -706,6 +727,59 @@ $( document ).ready(function() {
                 else if(itemId > 0)
                     editAwardItem.html(data);
                 $("#edit-award-modal").modal('toggle');
+            },
+            error: function(data) {
+
+            },
+            complete : function() {
+
+            }
+        });
+    };
+
+    //language
+    editLanguageForm = function(itemId) {
+        //get the form for add/edit award for the user to either add or edit
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_language_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-language-modal").modal('show');                
+                $("#language-form-body").html(data);
+                $("#language_item_id").val(itemId);
+                $("#edit-language-data").attr("data-type", itemId);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
+    editLanguageData = function (itemId) {
+        //this is called when the user submits the add/edit language form
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'edit_language' %}",
+            data: $("#language-form").serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                if(itemId == 0)
+                    $("#language-list").append(data)
+                else if(itemId > 0)
+                    editLanguageItem.html(data);
+                $("#edit-language-modal").modal('toggle');
             },
             error: function(data) {
 

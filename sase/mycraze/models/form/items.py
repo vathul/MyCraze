@@ -5,6 +5,7 @@ from mycraze.models.user.items import CertificationItem
 from mycraze.models.user.items import CourseItem
 from mycraze.models.user.items import EducationItem
 from mycraze.models.user.items import ExperienceItem
+from mycraze.models.user.items import LanguageItem
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.items import PublicationItem
 from mycraze.models.user.items import SkillItem
@@ -83,4 +84,12 @@ class AwardItemForm(ModelForm):
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'issuer': forms.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
+		}
+
+class LanguageItemForm(ModelForm):
+	class Meta:
+		model = LanguageItem
+		fields = ['language']
+		widgets = {
+			'language': forms.TextInput(attrs={'class': 'form-control'})
 		}

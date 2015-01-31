@@ -32,5 +32,7 @@ urlpatterns = patterns('',
 	url(r'^get-course-form/$', UserFormView.get_course_form, name='get_course_form'),
 	url(r'^edit-award/$', UserProfileView.edit_award, name='edit_award'),
 	url(r'^get-award-form/$', UserFormView.get_award_form, name='get_award_form'),
+	url(r'^edit-language/$', UserProfileView.edit_language, name='edit_language'),
+	url(r'^get-language-form/$', UserFormView.get_language_form, name='get_language_form'),
 	url(r'^edit-contact/$', UserProfileView.edit_contact, name='edit_contact'),
 )

@@ -2,5 +2,11 @@
   <div class="panel-body">
 <div class="bs-docs-section">
 	<h3 id="languages" class="page-header"><a href="#languages"><i class="fa fa-language fa-fw"></i> Languages</a></h3>
+	<div id="language-list">
+		{% for item in request.user.user_profile.language_section.language_items.all %}
+			{% include "mycraze/item/language.html" %}
+		{% endfor %}
+	</div>
+	<button type="button" id="add-language" class="btn btn-default"><i class="fa fa-plus"></i> Add Language</button>
 </div>
 </div></div>

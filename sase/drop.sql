@@ -32,4 +32,8 @@ drop table mycraze_awarditem;
 
 drop table mycraze_awardsection;
 
+drop table mycraze_languageitem;
+
+drop table mycraze_languagesection;
+
 drop table mycraze_contactsection;
