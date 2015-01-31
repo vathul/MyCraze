@@ -1,0 +1,8 @@
+<div class="award-item" val="">
+	<div class='bs-callout bs-callout-info'>
+		{% include "mycraze/widget/item-edit-dropdown.html" with category="award" %}
+		<input type="hidden" value={{item.id}} />
+		<h4 class='lead'><span>{{item.title}} </span><small>{{item.issuer}}</small></h4>
+		<p class='lead'>{{item.description}}</p>
+	</div>
+</div>

@@ -58,6 +58,7 @@
     {% include "mycraze/modal/edit-certification-modal.html"%}
     {% include "mycraze/modal/edit-skill-modal.html"%}
     {% include "mycraze/modal/edit-course-modal.html"%}
+    {% include "mycraze/modal/edit-award-modal.html"%}
 	{% include "mycraze/modal/edit-contact-modal.html"%}
 {% endblock %}
 
@@ -72,6 +73,7 @@ $( document ).ready(function() {
     var editPublicationItem;
     var editCertificationItem;
     var editSkillItem;
+    var editAwardItem;
     var editCourseItem;
 
     //profile
@@ -215,6 +217,25 @@ $( document ).ready(function() {
         var itemId = element.find("input").val();
         editCourseForm(itemId);
         editCourseItem = elementParent;
+    });
+
+    //award
+    $("#add-award").on('click',function(){
+        $("#award_item_id").val(0);
+        editAwardForm(0);
+    });
+
+    $("#edit-award-data").on('click',function(){
+        editAwardData($("#award_item_id").val());
+    });
+
+    $("body").on('click','li.btn-edit-award',function(event){
+        event.preventDefault();
+        var element = $(this).parent().parent().parent();
+        var elementParent = element.parent();
+        var itemId = element.find("input").val();
+        editAwardForm(itemId);
+        editAwardItem = elementParent;
     });
 
     //contact
@@ -632,6 +653,59 @@ $( document ).ready(function() {
                 else if(itemId > 0)
                     editCourseItem.html(data);
                 $("#edit-course-modal").modal('toggle');
+            },
+            error: function(data) {
+
+            },
+            complete : function() {
+
+            }
+        });
+    };
+
+    //award
+    editAwardForm = function(itemId) {
+        //get the form for add/edit award for the user to either add or edit
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'get_award_form' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                id: itemId,
+            },
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                $("#edit-award-modal").modal('show');                
+                $("#award-form-body").html(data);
+                $("#award_item_id").val(itemId);
+                $("#edit-award-data").attr("data-type", itemId);
+            },
+            error: function(data) {
+                
+            },
+            complete : function() {
+                
+            }
+        });
+    }
+
+    editAwardData = function (itemId) {
+        //this is called when the user submits the add/edit award form
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'edit_award' %}",
+            data: $("#award-form").serialize(),
+            beforeSend : function() {
+
+            },
+            success: function (data) {
+                if(itemId == 0)
+                    $("#award-list").append(data)
+                else if(itemId > 0)
+                    editAwardItem.html(data);
+                $("#edit-award-modal").modal('toggle');
             },
             error: function(data) {
 

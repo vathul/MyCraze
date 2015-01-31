@@ -1,4 +1,6 @@
 from mycraze.models.user.sections import SummarySection
+from mycraze.models.user.sections import AwardSection
+from mycraze.models.user.items import AwardItem
 from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.items import CertificationItem
 from mycraze.models.user.sections import CourseSection
@@ -26,6 +28,7 @@ class UserProfileService:
 		certification_section = CertificationSection(user_profile = user.user_profile)
 		skill_section = SkillSection(user_profile = user.user_profile)
 		course_section = CourseSection(user_profile = user.user_profile)
+		award_section = AwardSection(user_profile = user.user_profile)
 		contact_section = ContactSection(user_profile = user.user_profile)
 
 		#add the sections here
@@ -37,6 +40,7 @@ class UserProfileService:
 		certification_section.user_profile = user.user_profile
 		skill_section.user_profile = user.user_profile
 		course_section.user_profile = user.user_profile
+		award_section.user_profile = user.user_profile
 		contact_section.user_profile = user.user_profile
 
 		#save the sections here
@@ -48,6 +52,7 @@ class UserProfileService:
 		certification_section.save()
 		skill_section.save()
 		course_section.save()
+		award_section.save()
 		contact_section.save()
 
 	def save_user_profile(current_user, updated_user, updated_profile):
@@ -138,10 +143,19 @@ class UserProfileService:
 		course_item.save()
 		return course_item
 
+	def	edit_award_item(current_user, item_content):
+		award_section = current_user.user_profile.award_section
+		if item_content.id == "0":
+			award_item = AwardItem(award_section=award_section, title=item_content.title,issuer=item_content.issuer, description=item_content.description)
+		else:
+			award_item = AwardItem(id=item_content.id, award_section=award_section, title=item_content.title,issuer=item_content.issuer, description=item_content.description)
+		award_item.save()
+		return award_item
+
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile
 		contact_section,created = ContactSection.objects.get_or_create(user_profile = user_profile)
 		contact_section.personal_email = contact_content.personal_email
 		contact_section.phone_number = contact_content.phone_number
 		contact_section.save()
-		return contact_section
+		return contact_sectiono

@@ -58,6 +58,13 @@ class CourseSection(models.Model):
 	user_profile = models.OneToOneField(UserProfile, related_name='course_section')
 	is_active = models.BooleanField(default=True)
 
+class AwardSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='award_section')
+	is_active = models.BooleanField(default=True)
+
 class ContactSection(models.Model):
 	class Meta:
 		app_label = 'mycraze'

@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from mycraze.models.form.items import AwardItemForm
+from mycraze.models.user.items import AwardItem
 from mycraze.models.form.items import CertificationItemForm
 from mycraze.models.user.items import CertificationItem
 from mycraze.models.form.items import CourseItemForm
@@ -98,4 +100,16 @@ def get_skill_form(request):
 		skill_form = SkillItemForm(instance=skill_item)
 	html = render_to_string('mycraze/form/edit-skill-form.html', 
 		{'skill_form': skill_form})
+	return HttpResponse(html)
+
+@login_required
+def get_award_form(request):
+	item_id = request.POST['id']
+	if item_id == "0":
+		award_form = AwardItemForm()
+	else:
+		award_item = AwardItem.objects.get(id=item_id)
+		award_form = AwardItemForm(instance=award_item)
+	html = render_to_string('mycraze/form/edit-award-form.html', 
+		{'award_form': award_form})
 	return HttpResponse(html)

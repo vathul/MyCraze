@@ -2,6 +2,12 @@
   <div class="panel-body">
   <div class="bs-docs-section">
 	<h3 id="awards" class="page-header"><a href="#awards"><i class="fa fa-trophy fa-fw"></i> Awards</a></h3>
+	<div id="award-list">
+				{% for item in request.user.user_profile.award_section.award_items.all %}
+					{% include "mycraze/item/award.html" %}
+				{% endfor %}
+			</div>
+			<button type="button" id="add-award" class="btn btn-default"><i class="fa fa-plus"></i> Add Award</button>
 </div>
 </div>
 </div>

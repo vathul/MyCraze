@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from mycraze.models.form.items import AwardItemForm
 from mycraze.models.form.items import CertificationItemForm
 from mycraze.models.form.items import CourseItemForm
 from mycraze.models.form.items import EducationItemForm
@@ -108,6 +109,19 @@ def edit_course(request):
 		course_item = UserProfileService.edit_course_item(request.user, item)
 	html = render_to_string('mycraze/item/course.html', 
 		{'item': course_item})
+	return HttpResponse(html)
+
+@login_required
+@csrf_exempt
+def edit_award(request):
+	item_form = AwardItemForm(request.POST)
+	item_id = request.POST['item_id']
+	if item_form.is_valid():
+		item = item_form.save(commit=False)
+		item.id = item_id
+		award_item = UserProfileService.edit_award_item(request.user, item)
+	html = render_to_string('mycraze/item/award.html', 
+		{'item': award_item})
 	return HttpResponse(html)
 
 @login_required

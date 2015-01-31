@@ -1,5 +1,7 @@
 from mycraze.models.user.profile import UserProfile
 from mycraze.models.user.sections import SummarySection
+from mycraze.models.user.sections import AwardSection
+from mycraze.models.user.items import AwardItem
 from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.items import CertificationItem
 from mycraze.models.user.sections import CourseSection
@@ -14,4 +16,4 @@ from mycraze.models.user.sections import PublicationSection
 from mycraze.models.user.items import PublicationItem
 from mycraze.models.user.sections import SkillSection
 from mycraze.models.user.items import SkillItem
-__all__ = ['UserProfile','SummarySection','CertificationSection','CertificationItem','CourseSection','CourseItem','ExperienceSection','ExperienceItem','EducationSection','EducationItem','ProjectSection','ProjectItem','PublicationSection','PublicationItem','SkillSection','SkillItem','ContactSection']
+__all__ = ['UserProfile','SummarySection','AwardSection','AwardItem','CertificationSection','CertificationItem','CourseSection','CourseItem','ExperienceSection','ExperienceItem','EducationSection','EducationItem','ProjectSection','ProjectItem','PublicationSection','PublicationItem','SkillSection','SkillItem','ContactSection']

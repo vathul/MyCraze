@@ -1,4 +1,5 @@
 from django.db import models
+from mycraze.models.user.sections import AwardSection
 from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.sections import CourseSection
 from mycraze.models.user.sections import EducationSection
@@ -50,6 +51,15 @@ class CertificationItem(models.Model):
 	title = models.CharField(max_length=200)
 	certifier = models.CharField(max_length=100)
 	certification_section = models.ForeignKey(CertificationSection, related_name="certification_items")
+
+class AwardItem(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	title = models.CharField(max_length=200)
+	issuer = models.CharField(max_length=100)
+	description = models.CharField(max_length=400)
+	award_section = models.ForeignKey(AwardSection, related_name="award_items")
 
 class SkillItem(models.Model):
 	class Meta:

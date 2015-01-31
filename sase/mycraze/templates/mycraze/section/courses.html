@@ -1,12 +1,13 @@
 <div class="panel panel-default">
-  <div class="panel-body">
-<div class="bs-docs-section">
-	<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a></h3><div id="course-list">
-		{% for item in request.user.user_profile.course_section.course_items.all %}
-			{% include "mycraze/item/course.html" %}
-		{% endfor %}
+	<div class="panel-body">
+		<div class="bs-docs-section">
+			<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a></h3>
+			<div id="course-list">
+				{% for item in request.user.user_profile.course_section.course_items.all %}
+					{% include "mycraze/item/course.html" %}
+				{% endfor %}
+			</div>
+			<button type="button" id="add-course" class="btn btn-default"><i class="fa fa-plus"></i> Add Course</button>
+		</div>
 	</div>
-	<button type="button" id="add-course" class="btn btn-default"><i class="fa fa-plus"></i> Add Course</button>
-
 </div>
-</div></div>
