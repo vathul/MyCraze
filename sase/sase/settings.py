@@ -36,8 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	  'mycraze',
-    'social.apps.django_app.default'
+	'mycraze',
+    'social.apps.django_app.default',
+    'django_nose'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -138,3 +139,12 @@ STATICFILES_DIRS = (
 
 PROFILE_IMAGES_DIR = '/var/www/html/'
 PROFILE_IMAGES_URL = 'http://mycraze.images.com/'
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=mycraze',
+]

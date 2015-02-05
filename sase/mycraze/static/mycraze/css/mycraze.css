@@ -93,3 +93,11 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .s
 .skill, .course, .language {
 	line-height: 1;
 }
+
+.section-active {
+	opacity: 1;
+}
+
+.section-inactive {
+	opacity: 0.25;
+}
