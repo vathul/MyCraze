@@ -1,12 +1,13 @@
 <div class="panel panel-default">
-  <div class="panel-body">
-  	<div class="bs-docs-section">
-	<h3 id="skills" class="page-header"><a href="#skills"><i class="fa fa-anchor fa-fw"></i> Skills</a></h3>
-	<div id="skill-list">
-		{% for item in request.user.user_profile.skill_section.skill_items.all %}
-			{% include "mycraze/item/skill.html" %}
-		{% endfor %}
+	<div class="panel-body">
+  		<div class="bs-docs-section">
+			<h3 id="skills" class="page-header"><a href="#skills"><i class="fa fa-anchor fa-fw"></i> Skills</a></h3>
+				<div id="skill-list">
+					{% for item in request.user.user_profile.skill_section.skill_items.all %}
+						{% include "mycraze/item/skill.html" %}
+					{% endfor %}
+				</div>
+			<button type="button" id="add-skill" class="btn btn-default"><i class="fa fa-plus"></i> Add Skill</button>
+		</div>
 	</div>
-	<button type="button" id="add-skill" class="btn btn-default"><i class="fa fa-plus"></i> Add Skill</button>
 </div>
-</div></div>
