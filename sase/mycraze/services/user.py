@@ -85,6 +85,13 @@ class UserProfileService:
 		summary_section.save()
 		return summary_section
 
+	def edit_summary_status(current_user, status):
+		user_profile = current_user.user_profile
+		summary_section = user_profile.summary_section
+		summary_section.is_active = status
+		summary_section.save()
+		return summary_section.is_active
+
 	def	edit_experience_item(current_user, item_content):
 		experience_section = current_user.user_profile.experience_section
 		if item_content.id == "0":

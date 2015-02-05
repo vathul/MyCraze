@@ -22,6 +22,12 @@ def edit_summary(request):
 	return JsonResponse({'content': summary_section.content})
 
 @login_required
+def edit_summary_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_summary_status(request.user, status)
+	return JsonResponse({'status': status})
+
+@login_required
 @csrf_exempt
 def edit_experience(request):
 	item_form = ExperienceItemForm(request.POST)

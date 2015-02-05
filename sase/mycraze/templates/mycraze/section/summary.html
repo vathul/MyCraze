@@ -1,8 +1,17 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<div class="bs-docs-section">
+		{% if request.user.user_profile.summary_section.is_active %}
+			<div id="summary-section" class="bs-docs-section"> 
+		{% else %}
+			<div id="summary-section" class="bs-docs-section section-inactive">
+		{% endif %}
 			<h3 id="summary" class="page-header">
 				<a href="#summary"><i class="fa fa-file-text fa-fw"></i> Summary</a>
+				{% if request.user.user_profile.summary_section.is_active %}
+					{% include "mycraze/widget/section-toggle.html" with active="show" section="summary" %}
+				{% else %}
+					{% include "mycraze/widget/section-toggle.html" with active="hide" section="summary"%}
+				{% endif %}
 			</h3>
 			<div class="bs-callout bs-callout-info">
 				{% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-summary-modal" %}
