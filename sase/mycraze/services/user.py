@@ -117,6 +117,13 @@ class UserProfileService:
 		project_item.save()
 		return project_item
 
+	def edit_project_status(current_user, status):
+		user_profile = current_user.user_profile
+		project_section = user_profile.project_section
+		project_section.is_active = status
+		project_section.save()
+		return project_section.is_active
+
 	def	edit_education_item(current_user, item_content):
 		education_section = current_user.user_profile.education_section
 		if item_content.id == "0":

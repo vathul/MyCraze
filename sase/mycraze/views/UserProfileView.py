@@ -59,6 +59,11 @@ def edit_project(request):
 		{'item': project_item})
 	return HttpResponse(html)
 
+def edit_project_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_project_status(request.user, status)
+	return JsonResponse({'status': status})
+
 @login_required
 @csrf_exempt
 def edit_education(request):
