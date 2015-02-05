@@ -41,6 +41,12 @@ def edit_experience(request):
 	return HttpResponse(html)
 
 @login_required
+def edit_experience_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_experience_status(request.user, status)
+	return JsonResponse({'status': status})
+
+@login_required
 @csrf_exempt
 def edit_project(request):
 	item_form = ProjectItemForm(request.POST)

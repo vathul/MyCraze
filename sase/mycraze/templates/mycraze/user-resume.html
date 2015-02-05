@@ -117,6 +117,17 @@ $( document ).ready(function() {
         editExperienceForm(itemId);
         editExperienceItem = elementParent;
     });
+    
+    $(document).ready(function() {
+    		    $('input[type=radio][name=experience-section-toggle]').change(function() {
+    		        if (this.value == '1') {
+    		            editExperienceActiveStatus(true);
+    		        }
+    		        else if (this.value == '0') {
+    		        	editExperienceActiveStatus(false);
+    		        }
+    		    });
+    		});
 
     //project
     $("#add-project").on('click',function(){
@@ -402,6 +413,32 @@ $( document ).ready(function() {
             }
         });
     };
+
+    editExperienceActiveStatus = function(status) {
+    	     	$.ajax({
+    	             type: 'POST',
+    	             url: "{% url 'edit_experience_status' %}",
+    	             data: {
+    	             	csrfmiddlewaretoken: '{{ csrf_token }}',
+    	             	status: status
+    	             },
+    	             beforeSend : function() {
+    	 
+    	             },
+    	             success: function (data) {
+    	             	if(data.status)
+    	                 	$("#experience-section").removeClass('section-inactive');
+    	             	else
+    	             		$("#experience-section").addClass('section-inactive');
+    	             },
+    	             error: function(data) {
+    	                 
+    	             },
+    	             complete : function() {
+    	                 
+    	             }
+    	         });
+    	     }
 
     //project
     editProjectForm = function(itemId) {

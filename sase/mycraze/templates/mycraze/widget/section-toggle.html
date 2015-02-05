@@ -1,24 +1,23 @@
 <div class="pull-right">
 	<div class="btn-group" data-toggle="buttons">
 		{% if active == "show" %}
-			<label class="btn btn-default active"> <input type="radio"
+			<label class="btn btn-default btn-xs active"> <input type="radio"
 				value="1" name="{{section}}-section-toggle" id="show-section" autocomplete="off">
 				<i class="fa fa-thumb-tack"></i>
 			</label>
-			<label class="btn btn-default"> <input type="radio"
+			<label class="btn btn-default btn-xs"> <input type="radio"
 				value="0" name="{{section}}-section-toggle" id="hide-section" autocomplete="off"> <i
 				class="fa fa-close"></i>
 			</label>
 		{% elif active == "hide" %}
-			<label class="btn btn-default"> <input type="radio"
+			<label class="btn btn-default btn-xs"> <input type="radio"
 				value="1" name="{{section}}-section-toggle" id="show-section" autocomplete="off">
 				<i class="fa fa-thumb-tack"></i>
 			</label>
-			<label class="btn btn-default active"> <input type="radio"
+			<label class="btn btn-default btn-xs active"> <input type="radio"
 				value="0" name="{{section}}-section-toggle" id="hide-section" autocomplete="off"> <i
 				class="fa fa-close"></i>
 			</label>
 		{% endif %} 
-		
 	</div>
 </div>

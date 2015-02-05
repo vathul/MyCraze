@@ -101,6 +101,13 @@ class UserProfileService:
 		experience_item.save()
 		return experience_item
 
+	def edit_experience_status(current_user, status):
+		user_profile = current_user.user_profile
+		experience_section = user_profile.experience_section
+		experience_section.is_active = status
+		experience_section.save()
+		return experience_section.is_active
+
 	def	edit_project_item(current_user, item_content):
 		project_section = current_user.user_profile.project_section
 		if item_content.id == "0":
