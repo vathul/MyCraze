@@ -29,6 +29,7 @@ border-top: 1px solid #e5e5e5;
 	font-size: 14px;
 	border-radius: 4px;
 	padding: 10px 20px;
+	color: #000000
 }
 
 .btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
@@ -96,4 +97,17 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .s
 
 .section-inactive {
 	opacity: 0.5;
+}
+
+.navbar-default .navbar-brand {
+    color: #000000;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #000000;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #e7e7e7;
+    color: black;
 }
