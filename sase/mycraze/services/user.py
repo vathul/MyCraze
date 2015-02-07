@@ -133,6 +133,13 @@ class UserProfileService:
 		education_item.save()
 		return education_item
 
+	def edit_education_status(current_user, status):
+		user_profile = current_user.user_profile
+		education_section = user_profile.education_section
+		education_section.is_active = status
+		education_section.save()
+		return education_section.is_active
+
 	def	edit_publication_item(current_user, item_content):
 		publication_section = current_user.user_profile.publication_section
 		if item_content.id == "0":

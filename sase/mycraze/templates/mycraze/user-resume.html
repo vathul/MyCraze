@@ -177,6 +177,17 @@ $( document ).ready(function() {
         editEducationForm(itemId);
         editEducationItem = elementParent;
     });
+    
+    $(document).ready(function() {
+    	$('input[type=radio][name=education-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editEducationActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editEducationActiveStatus(false);
+    	    }
+    	});
+	});
 
     //publication
     $("#add-publication").on('click',function(){
@@ -582,6 +593,32 @@ $( document ).ready(function() {
             }
         });
     };
+
+    editEducationActiveStatus = function(status) {
+	     	$.ajax({
+	             type: 'POST',
+	             url: "{% url 'edit_education_status' %}",
+	             data: {
+	             	csrfmiddlewaretoken: '{{ csrf_token }}',
+	             	status: status
+	             },
+	             beforeSend : function() {
+	 
+	             },
+	             success: function (data) {
+	             	if(data.status)
+	                 	$("#education-section").removeClass('section-inactive');
+	             	else
+	             		$("#education-section").addClass('section-inactive');
+	             },
+	             error: function(data) {
+	                 
+	             },
+	             complete : function() {
+	                 
+	             }
+	         });
+	     }
 
     //publication
     editPublicationForm = function(itemId) {
