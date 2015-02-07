@@ -165,6 +165,13 @@ class UserProfileService:
 		certification_item.save()
 		return certification_item
 
+	def edit_certification_status(current_user, status):
+		user_profile = current_user.user_profile
+		certification_section = user_profile.certification_section
+		certification_section.is_active = status
+		certification_section.save()
+		return certification_section.is_active
+	
 	def	edit_skill_item(current_user, item_content):
 		skill_section = current_user.user_profile.skill_section
 		if item_content.id == "0":

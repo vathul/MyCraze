@@ -237,6 +237,17 @@ $( document ).ready(function() {
         editCertificationForm(itemId);
         editCertificationItem = elementParent;
     });
+    
+    $(document).ready(function() {
+    	$('input[type=radio][name=certification-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editCertificationActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editCertificationActiveStatus(false);
+    	    }
+    	});
+	});
 
     //skill
     $("#add-skill").on('click',function(){
@@ -763,6 +774,32 @@ $( document ).ready(function() {
         });
     };
 
+    editCertificationActiveStatus = function(status) {
+     	$.ajax({
+             type: 'POST',
+             url: "{% url 'edit_certification_status' %}",
+             data: {
+             	csrfmiddlewaretoken: '{{ csrf_token }}',
+             	status: status
+             },
+             beforeSend : function() {
+ 
+             },
+             success: function (data) {
+             	if(data.status)
+                 	$("#certification-section").removeClass('section-inactive');
+             	else
+             		$("#certification-section").addClass('section-inactive');
+             },
+             error: function(data) {
+                 
+             },
+             complete : function() {
+                 
+             }
+         });
+     }
+    
     //skill
     editSkillForm = function(itemId) {
         //get the form for add/edit skill for the user to either add or edit
