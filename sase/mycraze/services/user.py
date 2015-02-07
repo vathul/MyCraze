@@ -213,6 +213,13 @@ class UserProfileService:
 		award_item.save()
 		return award_item
 
+	def edit_award_status(current_user, status):
+		user_profile = current_user.user_profile
+		award_section = user_profile.award_section
+		award_section.is_active = status
+		award_section.save()
+		return award_section.is_active
+	
 	def	edit_language_item(current_user, item_content):
 		language_section = current_user.user_profile.language_section
 		if item_content.id == "0":

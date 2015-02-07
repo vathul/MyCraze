@@ -167,6 +167,11 @@ def edit_award(request):
 		{'item': award_item})
 	return HttpResponse(html)
 
+def edit_award_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_award_status(request.user, status)
+	return JsonResponse({'status': status})
+
 @login_required
 @csrf_exempt
 def edit_language(request):

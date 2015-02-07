@@ -327,6 +327,17 @@ $( document ).ready(function() {
         editAwardForm(itemId);
         editAwardItem = elementParent;
     });
+    
+    $(document).ready(function() {
+    	$('input[type=radio][name=award-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editAwardActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editAwardActiveStatus(false);
+    	    }
+    	});
+	});
 
     //language
     $("#add-language").on('click',function(){
@@ -1032,6 +1043,32 @@ $( document ).ready(function() {
             }
         });
     };
+    
+    editAwardActiveStatus = function(status) {
+     	$.ajax({
+             type: 'POST',
+             url: "{% url 'edit_award_status' %}",
+             data: {
+             	csrfmiddlewaretoken: '{{ csrf_token }}',
+             	status: status
+             },
+             beforeSend : function() {
+ 
+             },
+             success: function (data) {
+             	if(data.status)
+                 	$("#award-section").removeClass('section-inactive');
+             	else
+             		$("#award-section").addClass('section-inactive');
+             },
+             error: function(data) {
+                 
+             },
+             complete : function() {
+                 
+             }
+         });
+     }
 
     //language
     editLanguageForm = function(itemId) {
