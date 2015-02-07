@@ -358,11 +358,33 @@ $( document ).ready(function() {
         editLanguageItem = elementParent;
     });
 
+    $(document).ready(function() {
+    	$('input[type=radio][name=language-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editLanguageActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editLanguageActiveStatus(false);
+    	    }
+    	});
+	});
+    
     //contact
 	$("#edit-contact-data").on('click',function(){
 		editContactData();
 	});
 
+	$(document).ready(function() {
+    	$('input[type=radio][name=contact-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editContactActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editContactActiveStatus(false);
+    	    }
+    	});
+	});
+	
     //profile
     submitEditProfileDataForm = function () {
         $.ajax({
@@ -1123,6 +1145,32 @@ $( document ).ready(function() {
         });
     };
 
+    editLanguageActiveStatus = function(status) {
+     	$.ajax({
+             type: 'POST',
+             url: "{% url 'edit_language_status' %}",
+             data: {
+             	csrfmiddlewaretoken: '{{ csrf_token }}',
+             	status: status
+             },
+             beforeSend : function() {
+ 
+             },
+             success: function (data) {
+             	if(data.status)
+                 	$("#language-section").removeClass('section-inactive');
+             	else
+             		$("#language-section").addClass('section-inactive');
+             },
+             error: function(data) {
+                 
+             },
+             complete : function() {
+                 
+             }
+         });
+     }
+    
     //contact
     editContactData = function () {
         $.ajax({
@@ -1147,6 +1195,31 @@ $( document ).ready(function() {
         return false;
     };
 
+    editContactActiveStatus = function(status) {
+     	$.ajax({
+             type: 'POST',
+             url: "{% url 'edit_contact_status' %}",
+             data: {
+             	csrfmiddlewaretoken: '{{ csrf_token }}',
+             	status: status
+             },
+             beforeSend : function() {
+ 
+             },
+             success: function (data) {
+             	if(data.status)
+                 	$("#contact-section").removeClass('section-inactive');
+             	else
+             		$("#contact-section").addClass('section-inactive');
+             },
+             error: function(data) {
+                 
+             },
+             complete : function() {
+                 
+             }
+         });
+     }
 });
 </script>
 {% endblock %}

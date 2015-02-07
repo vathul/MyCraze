@@ -1,8 +1,18 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="bs-docs-section">
+			{% if request.user.user_profile.contact_section.is_active %}
+			<div id="contact-section" class="bs-docs-section"> 
+		{% else %}
+			<div id="contact-section" class="bs-docs-section section-inactive">
+		{% endif %}
 			<h3 id="contact" class="page-header">
-				<a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a> 
+				<a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a>
+					{% if request.user.user_profile.contact_section.is_active %}
+					{% include "mycraze/widget/section-toggle.html" with active="show" section="contact" %}
+				{% else %}
+					{% include "mycraze/widget/section-toggle.html" with active="hide" section="contact"%}
+				{% endif %} 
 			</h3>
 			<div class="bs-callout bs-callout-info">
 				{% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-contact-modal" %}
@@ -13,4 +23,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div></div>

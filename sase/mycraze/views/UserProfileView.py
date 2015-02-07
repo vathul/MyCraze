@@ -185,6 +185,11 @@ def edit_language(request):
 		{'item': language_item})
 	return HttpResponse(html)
 
+def edit_language_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_language_status(request.user, status)
+	return JsonResponse({'status': status})
+
 @login_required
 def edit_contact(request):
 	section_form = ContactSectionForm(request.POST)
@@ -192,3 +197,8 @@ def edit_contact(request):
 		section = section_form.save(commit=False)
 		contact_section = UserProfileService.edit_contact_content(request.user, section)
 	return JsonResponse({'personal_email': contact_section.personal_email, "phone_number": contact_section.phone_number})
+
+def edit_contact_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_contact_status(request.user, status)
+	return JsonResponse({'status': status})

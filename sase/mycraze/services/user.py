@@ -229,6 +229,13 @@ class UserProfileService:
 		language_item.save()
 		return language_item
 
+	def edit_language_status(current_user, status):
+		user_profile = current_user.user_profile
+		language_section = user_profile.language_section
+		language_section.is_active = status
+		language_section.save()
+		return language_section.is_active
+	
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile
 		contact_section,created = ContactSection.objects.get_or_create(user_profile = user_profile)
@@ -236,3 +243,10 @@ class UserProfileService:
 		contact_section.phone_number = contact_content.phone_number
 		contact_section.save()
 		return contact_section
+	
+	def edit_contact_status(current_user, status):
+		user_profile = current_user.user_profile
+		contact_section = user_profile.contact_section
+		contact_section.is_active = status
+		contact_section.save()
+		return contact_section.is_active
