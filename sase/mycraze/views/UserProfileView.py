@@ -131,6 +131,11 @@ def edit_skill(request):
 		{'item': skill_item})
 	return HttpResponse(html)
 
+def edit_skill_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_skill_status(request.user, status)
+	return JsonResponse({'status': status})
+
 @login_required
 @csrf_exempt
 def edit_course(request):

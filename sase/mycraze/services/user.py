@@ -181,6 +181,13 @@ class UserProfileService:
 		skill_item.save()
 		return skill_item
 
+	def edit_skill_status(current_user, status):
+		user_profile = current_user.user_profile
+		skill_section = user_profile.skill_section
+		skill_section.is_active = status
+		skill_section.save()
+		return skill_section.is_active
+
 	def	edit_course_item(current_user, item_content):
 		course_section = current_user.user_profile.course_section
 		if item_content.id == "0":

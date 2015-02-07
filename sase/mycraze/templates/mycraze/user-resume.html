@@ -267,6 +267,17 @@ $( document ).ready(function() {
         editSkillForm(itemId);
         editSkillItem = elementParent;
     });
+    
+    $(document).ready(function() {
+    	$('input[type=radio][name=skill-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editSkillActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editSkillActiveStatus(false);
+    	    }
+    	});
+	});
 
     //course
     $("#add-course").on('click',function(){
@@ -853,6 +864,32 @@ $( document ).ready(function() {
         });
     };
 
+    editSkillActiveStatus = function(status) {
+     	$.ajax({
+             type: 'POST',
+             url: "{% url 'edit_skill_status' %}",
+             data: {
+             	csrfmiddlewaretoken: '{{ csrf_token }}',
+             	status: status
+             },
+             beforeSend : function() {
+ 
+             },
+             success: function (data) {
+             	if(data.status)
+                 	$("#skill-section").removeClass('section-inactive');
+             	else
+             		$("#skill-section").addClass('section-inactive');
+             },
+             error: function(data) {
+                 
+             },
+             complete : function() {
+                 
+             }
+         });
+     }
+    
     //course
     editCourseForm = function(itemId) {
         //get the form for add/edit course for the user to either add or edit
