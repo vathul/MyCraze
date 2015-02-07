@@ -197,6 +197,13 @@ class UserProfileService:
 		course_item.save()
 		return course_item
 
+	def edit_course_status(current_user, status):
+		user_profile = current_user.user_profile
+		course_section = user_profile.course_section
+		course_section.is_active = status
+		course_section.save()
+		return course_section.is_active
+	
 	def	edit_award_item(current_user, item_content):
 		award_section = current_user.user_profile.award_section
 		if item_content.id == "0":

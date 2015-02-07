@@ -1,7 +1,18 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="bs-docs-section">
-			<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a></h3>
+			{% if request.user.user_profile.course_section.is_active %}
+			<div id="course-section" class="bs-docs-section"> 
+			{% else %}
+			<div id="course-section" class="bs-docs-section section-inactive">
+			{% endif %}
+			<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a>
+				{% if request.user.user_profile.course_section.is_active %}
+					{% include "mycraze/widget/section-toggle.html" with active="show" section="course" %}
+				{% else %}
+					{% include "mycraze/widget/section-toggle.html" with active="hide" section="course" %}
+				{% endif %}
+			</h3>
 			<div id="course-list">
 				{% for item in request.user.user_profile.course_section.course_items.all %}
 					{% include "mycraze/item/course.html" %}
@@ -10,4 +21,5 @@
 			<button type="button" id="add-course" class="btn btn-default"><i class="fa fa-plus"></i> Add Course</button>
 		</div>
 	</div>
+</div>
 </div>

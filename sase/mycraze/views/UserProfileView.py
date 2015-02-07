@@ -149,6 +149,11 @@ def edit_course(request):
 		{'item': course_item})
 	return HttpResponse(html)
 
+def edit_course_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_course_status(request.user, status)
+	return JsonResponse({'status': status})
+
 @login_required
 @csrf_exempt
 def edit_award(request):
