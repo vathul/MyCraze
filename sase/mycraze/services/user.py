@@ -149,6 +149,13 @@ class UserProfileService:
 		publication_item.save()
 		return publication_item
 
+	def edit_publication_status(current_user, status):
+		user_profile = current_user.user_profile
+		publication_section = user_profile.publication_section
+		publication_section.is_active = status
+		publication_section.save()
+		return publication_section.is_active
+
 	def	edit_certification_item(current_user, item_content):
 		certification_section = current_user.user_profile.certification_section
 		if item_content.id == "0":
