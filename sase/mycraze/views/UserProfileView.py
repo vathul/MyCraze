@@ -82,6 +82,11 @@ def edit_education_status(request):
 	status = UserProfileService.edit_education_status(request.user, status)
 	return JsonResponse({'status': status})
 
+def edit_profile_status(request):
+	status = True if request.POST['status'] == 'true' else False
+	status = UserProfileService.edit_profile_status(request.user, status)
+	return JsonResponse({'status': status})
+
 @login_required
 @csrf_exempt
 def edit_publication(request):

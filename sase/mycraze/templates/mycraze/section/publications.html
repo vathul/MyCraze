@@ -6,7 +6,7 @@
 			{% else %}
 			<div id="publication-section" class="bs-docs-section section-inactive">
 			{% endif %}
-			<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book fa-fw"></i> Publication</a>
+			<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book fa-fw"></i> Publications</a>
 			{% if request.user.user_profile.publication_section.is_active %}
 				{% include "mycraze/widget/section-toggle.html" with active="show" section="publication" %}
 			{% else %}

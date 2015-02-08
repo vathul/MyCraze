@@ -11,6 +11,7 @@ from mycraze.models.user.sections import ExperienceSection
 from mycraze.models.user.items import ExperienceItem
 from mycraze.models.user.sections import LanguageSection
 from mycraze.models.user.items import LanguageItem
+from mycraze.models.user.sections import ProfileSection
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.sections import PublicationSection
@@ -26,6 +27,7 @@ class UserProfileService:
 		experience_section = ExperienceSection(user_profile = user.user_profile)
 		project_section = ProjectSection(user_profile = user.user_profile)
 		education_section = EducationSection(user_profile = user.user_profile)
+		profile_section = ProfileSection(user_profile = user.user_profile)
 		publication_section = PublicationSection(user_profile = user.user_profile)
 		certification_section = CertificationSection(user_profile = user.user_profile)
 		skill_section = SkillSection(user_profile = user.user_profile)
@@ -39,6 +41,7 @@ class UserProfileService:
 		experience_section.user_profile = user.user_profile
 		project_section.user_profile = user.user_profile
 		education_section.user_profile = user.user_profile
+		profile_section.user_profile = user.user_profile
 		publication_section.user_profile = user.user_profile
 		certification_section.user_profile = user.user_profile
 		skill_section.user_profile = user.user_profile
@@ -52,6 +55,7 @@ class UserProfileService:
 		experience_section.save()
 		project_section.save()
 		education_section.save()
+		profile_section.save()
 		publication_section.save()
 		certification_section.save()
 		skill_section.save()
@@ -139,6 +143,13 @@ class UserProfileService:
 		education_section.is_active = status
 		education_section.save()
 		return education_section.is_active
+
+	def edit_profile_status(current_user, status):
+		user_profile = current_user.user_profile
+		profile_section = user_profile.profile_section
+		profile_section.is_active = status
+		profile_section.save()
+		return profile_section.is_active
 
 	def	edit_publication_item(current_user, item_content):
 		publication_section = current_user.user_profile.publication_section

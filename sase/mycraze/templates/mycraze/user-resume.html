@@ -35,7 +35,7 @@
 				{% include "mycraze/section/experience.html" %}
 				{% include "mycraze/section/projects.html" %}
 				{% include "mycraze/section/education.html" %}
-				{% include "mycraze/section/links.html" %}
+				{% include "mycraze/section/profiles.html" %}
 				{% include "mycraze/section/publications.html" %}
 				{% include "mycraze/section/certifications.html" %}
 				{% include "mycraze/section/skills.html" %}
@@ -185,6 +185,18 @@ $( document ).ready(function() {
     	    }
     	    else if (this.value == '0') {
     	       	editEducationActiveStatus(false);
+    	    }
+    	});
+	});
+    
+    //profiles
+    $(document).ready(function() {
+    	$('input[type=radio][name=profile-section-toggle]').change(function() {
+    		if (this.value == '1') {
+    	    	editProfileActiveStatus(true);
+    	    }
+    	    else if (this.value == '0') {
+    	       	editProfileActiveStatus(false);
     	    }
     	});
 	});
@@ -696,7 +708,34 @@ $( document ).ready(function() {
 	             }
 	         });
 	     }
-
+	
+    //profiles
+    editProfileActiveStatus = function(status) {
+     	$.ajax({
+             type: 'POST',
+             url: "{% url 'edit_profile_status' %}",
+             data: {
+             	csrfmiddlewaretoken: '{{ csrf_token }}',
+             	status: status
+             },
+             beforeSend : function() {
+ 
+             },
+             success: function (data) {
+             	if(data.status)
+                 	$("#profile-section").removeClass('section-inactive');
+             	else
+             		$("#profile-section").addClass('section-inactive');
+             },
+             error: function(data) {
+                 
+             },
+             complete : function() {
+                 
+             }
+         });
+     }
+    
     //publication
     editPublicationForm = function(itemId) {
         //get the form for add/edit publication for the user to either add or edit

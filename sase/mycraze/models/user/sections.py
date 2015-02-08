@@ -30,6 +30,13 @@ class EducationSection(models.Model):
 	user_profile = models.OneToOneField(UserProfile, related_name='education_section')
 	is_active = models.BooleanField(default=True)
 
+class ProfileSection(models.Model):
+	class Meta:
+		app_label = 'mycraze'
+
+	user_profile = models.OneToOneField(UserProfile, related_name='profile_section')
+	is_active = models.BooleanField(default=True)
+
 class PublicationSection(models.Model):
 	class Meta:
 		app_label = 'mycraze'
