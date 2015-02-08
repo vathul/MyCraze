@@ -58,6 +58,7 @@ AUTHENTICATION_BACKENDS = (
    'social.backends.facebook.FacebookOAuth2',
    'social.backends.google.GoogleOAuth2',
    'social.backends.github.GithubOAuth2',
+   'social.backends.stackoverflow.StackoverflowOAuth2',
    'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -108,7 +109,10 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '27ff2c6ed2e53a73e7d240fa81a3dbda'
 SOCIAL_AUTH_GITHUB_KEY = 'cb4ccb6a648aaa4f57f7'
 SOCIAL_AUTH_GITHUB_SECRET = 'c5de7d07f0aef56037c2a9a15843231deb1bcf14'
 
-
+#Stackoverflow Project Details
+SOCIAL_AUTH_STACKOVERFLOW_KEY = '4229'
+SOCIAL_AUTH_STACKOVERFLOW_SECRET = '3LchuYAG7r80hnr5jaMLOg(('
+SOCIAL_AUTH_STACKOVERFLOW_API_KEY = 'ENwTUj3oQoKOCUtKEBJm1Q(('
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
