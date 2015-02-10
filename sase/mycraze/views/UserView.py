@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from mycraze.models.form.sections import ContactSectionForm
-from mycraze.models.form.items import ExperienceItemForm
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
 from mycraze.models.user.profile import UserProfile
@@ -33,10 +32,12 @@ def edit_profile(request):
 def get_resume_page(request):
 	contact_data = {'personal_email': request.user.user_profile.contact_section.personal_email,
 		    'phone_number': request.user.user_profile.contact_section.phone_number}
-
 	contact_form = ContactSectionForm(contact_data)
+	stackoverflow_profile_list = request.user.social_auth.filter(provider='stackoverflow')
+
 	context = {
 		'image_url': settings.PROFILE_IMAGES_URL,
-		'contact_form': contact_form
+		'contact_form': contact_form,
+		'stackoverflow_profile_list': stackoverflow_profile_list
 	}
 	return render(request, 'mycraze/user-resume.html',context)
