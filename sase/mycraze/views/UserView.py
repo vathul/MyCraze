@@ -19,7 +19,7 @@ def submit_profile(request):
 		user = userForm.save(commit=False)
 		userProfile = userProfileForm.save(commit=False)
 		UserProfileService.save_user_profile(request.user, user, userProfile)
-	return HttpResponseRedirect('/mycraze/user-resume')
+	return HttpResponseRedirect('/mycraze/user-resume') 
 
 @login_required
 def edit_profile(request):
