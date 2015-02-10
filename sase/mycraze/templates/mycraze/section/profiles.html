@@ -17,9 +17,11 @@
 			</h3>
 			<div class='bs-callout bs-callout-info'>
 				<h4 class='lead'><span><i class="fa fa-stack-overflow fa-fw"></i> Stackoverflow</span></h4>
+				<ul>
 				{% for profile in stackoverflow_profile_list %}
-					<ul><li><a href="https://www.stackoverflow.com/users/{{profile.uid}}" target="_blank">https://www.stackoverflow.com/users/{{profile.uid}}</a></li></ul>
+					<li><a href="https://www.stackoverflow.com/users/{{profile.uid}}" target="_blank">https://www.stackoverflow.com/users/{{profile.uid}}</a></li>
 				{% endfor %}
+				</ul>
 			</div>
 			<p><a href = "{% url 'social:begin' 'stackoverflow' %}?next={{ request.path }}" class="btn btn-default home-custom" role="button"><i class="fa fa-plus"></i> Add Stackoverflow Profile</a></p>
 		</div>
