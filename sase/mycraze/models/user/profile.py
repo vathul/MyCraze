@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 from django.db import models
+
 from sase.settings import PROFILE_IMAGES_DIR
+
 
 file_store = FileSystemStorage(location=PROFILE_IMAGES_DIR)
 

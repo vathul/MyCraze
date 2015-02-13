@@ -1,24 +1,26 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+
 from mycraze.models.form.items import AwardItemForm
-from mycraze.models.user.items import AwardItem
 from mycraze.models.form.items import CertificationItemForm
-from mycraze.models.user.items import CertificationItem
 from mycraze.models.form.items import CourseItemForm
-from mycraze.models.user.items import CourseItem
 from mycraze.models.form.items import EducationItemForm
-from mycraze.models.user.items import EducationItem
 from mycraze.models.form.items import ExperienceItemForm
-from mycraze.models.user.items import ExperienceItem
 from mycraze.models.form.items import LanguageItemForm
-from mycraze.models.user.items import LanguageItem
 from mycraze.models.form.items import ProjectItemForm
-from mycraze.models.user.items import ProjectItem
 from mycraze.models.form.items import PublicationItemForm
-from mycraze.models.user.items import PublicationItem
 from mycraze.models.form.items import SkillItemForm
+from mycraze.models.user.items import AwardItem
+from mycraze.models.user.items import CertificationItem
+from mycraze.models.user.items import CourseItem
+from mycraze.models.user.items import EducationItem
+from mycraze.models.user.items import ExperienceItem
+from mycraze.models.user.items import LanguageItem
+from mycraze.models.user.items import ProjectItem
+from mycraze.models.user.items import PublicationItem
 from mycraze.models.user.items import SkillItem
+
 
 @login_required
 def get_experience_form(request):

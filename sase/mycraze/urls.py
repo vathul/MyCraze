@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, url
 
-from mycraze.views import TemplateView
 from mycraze.views import LoginView
-from mycraze.views import UserView
-from mycraze.views import UserProfileView
+from mycraze.views import TemplateView
 from mycraze.views import UserFormView
+from mycraze.views import UserProfileView
+from mycraze.views import UserView
+
 
 urlpatterns = patterns('',
 	#url(r'^$', views.index, name='index'),

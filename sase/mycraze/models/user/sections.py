@@ -1,5 +1,7 @@
 from django.db import models
+
 from mycraze.models.user.profile import UserProfile
+
 
 class SummarySection(models.Model):
 	class Meta:

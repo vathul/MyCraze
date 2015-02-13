@@ -1,13 +1,14 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
 from mycraze.models.user.profile import UserProfile
 
-# Create your login views here.
 
+# Create your login views here.
 def get_login_page(request, **kwargs):
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/mycraze/user-resume')

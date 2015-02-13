@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+
 from mycraze.models.form.items import AwardItemForm
 from mycraze.models.form.items import CertificationItemForm
 from mycraze.models.form.items import CourseItemForm
@@ -14,6 +15,7 @@ from mycraze.models.form.items import SkillItemForm
 from mycraze.models.form.sections import ContactSectionForm
 from mycraze.services.user import UserProfileService
 from mycraze.utils.http import JsonResponse
+
 
 @login_required
 def edit_summary(request):

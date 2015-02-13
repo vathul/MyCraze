@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
+
 from mycraze.models.user.sections import ContactSection
+
 
 class ContactSectionForm(ModelForm):
 	class Meta:

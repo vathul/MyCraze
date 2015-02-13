@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+
 from mycraze.models.user.profile import UserProfile
+
 
 class UserForm(ModelForm):
 	class Meta:

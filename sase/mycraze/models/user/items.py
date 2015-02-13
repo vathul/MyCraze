@@ -1,4 +1,5 @@
 from django.db import models
+
 from mycraze.models.user.sections import AwardSection
 from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.sections import CourseSection
@@ -8,6 +9,7 @@ from mycraze.models.user.sections import LanguageSection
 from mycraze.models.user.sections import ProjectSection
 from mycraze.models.user.sections import PublicationSection
 from mycraze.models.user.sections import SkillSection
+
 
 class ExperienceItem(models.Model):
 	class Meta:
