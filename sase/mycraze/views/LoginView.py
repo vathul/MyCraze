@@ -5,27 +5,26 @@ from django.shortcuts import render
 
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
-from mycraze.models.user.profile import UserProfile
 
 
 # Create your login views here.
-def get_login_page(request, **kwargs):
-	if request.user.is_authenticated():
-		return HttpResponseRedirect('/mycraze/user-resume')
-	else:
-		return render(request, 'mycraze/sign-up.html')
+def get_login_page(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/mycraze/user-resume')
+    else:
+        return render(request, 'mycraze/sign-up.html')
 
 @login_required
 def get_profile_completion_page(request):
-	data = {'first_name': request.user.first_name,
-		    'last_name': request.user.last_name}
-	userForm = UserForm(data)
-	profileForm = UserProfileForm()
-	return render(request, 'mycraze/profile-complete.html',{
-        "userForm": userForm,
-        "profileForm": profileForm,
+    data = {'first_name': request.user.first_name,
+            'last_name': request.user.last_name}
+    user_form = UserForm(data)
+    profile_form = UserProfileForm()
+    return render(request, 'mycraze/profile-complete.html', {
+        "userForm": user_form,
+        "profileForm": profile_form,
     })
 
 def get_logout_page(request):
-	logout(request)
-	return HttpResponseRedirect('/mycraze/login')
+    logout(request)
+    return HttpResponseRedirect('/mycraze/login')

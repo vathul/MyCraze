@@ -1,16 +1,18 @@
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.conf import settings
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-from mycraze.models.form.sections import ContactSectionForm
+
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
+from mycraze.models.form.sections import ContactSectionForm
 from mycraze.models.user.profile import UserProfile
 from mycraze.services.user import UserProfileService
 from mycraze.utils.http import JsonResponse
-# Create your views here.
 
+
+# Create your views here.
 @login_required
 def submit_profile(request):
 	userForm = UserForm(request.POST)
