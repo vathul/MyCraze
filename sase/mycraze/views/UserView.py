@@ -11,7 +11,6 @@ from mycraze.models.user.profile import UserProfile
 from mycraze.services.user import UserProfileService
 from mycraze.utils.http import JsonResponse
 
-
 # Create your views here.
 @login_required
 def submit_profile(request):
@@ -43,3 +42,7 @@ def get_resume_page(request):
 		'stackoverflow_profile_list': stackoverflow_profile_list
 	}
 	return render(request, 'mycraze/user-resume.html',context)
+
+@login_required
+def get_my_work_page(request):
+	return render(request, 'mycraze/my-work.html')
