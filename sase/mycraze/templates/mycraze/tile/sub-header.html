@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<img src="{{image_url}}{{ request.user.user_profile.profile_image }}"
+				class="img-responsive">
+		</div>
+		<div class="col-md-10">
+			<h1 id="full-name">{{ request.user.first_name}} {{request.user.last_name}}</h1>
+			<p id="description" class="lead">{{request.user.user_profile.description }}</p>
+		</div>
+	</div>
+</div>

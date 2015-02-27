@@ -45,4 +45,7 @@ def get_resume_page(request):
 
 @login_required
 def get_my_work_page(request):
-	return render(request, 'mycraze/my-work.html')
+	context = {
+		'image_url': settings.PROFILE_IMAGES_URL
+	}
+	return render(request, 'mycraze/my-work.html',context)

@@ -2,22 +2,12 @@
 {% load staticfiles %}
 {% block title %} Resume {% endblock %}
 {% block header %}
-			{% include "mycraze/tile/header.html" with resumeClass="active"%}
+    {% include "mycraze/tile/header.html" with resumeClass="active"%}
 {% endblock %}
 {% block content %}
 <!-- Sub Header -->
 	<div class="bs-docs-header" id="content">
-      	<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-					<img src="{{image_url}}{{ request.user.user_profile.profile_image }}" class="img-responsive" >
-				</div> 
-				<div class="col-md-10">
-        			<h1 id = "full-name">{{ request.user.first_name}} {{ request.user.last_name}}</h1>
-        			<p id =  "description" class="lead">{{ request.user.user_profile.description }}</p>
-        		</div>
-        	</div>
-      	</div>
+      	{% include "mycraze/tile/sub-header.html" %}
 		<div class="pull-right">
 			<button type="button" class="btn btn-outline-inverse" data-toggle="modal" data-target="#edit-profile-modal"><i class="fa fa-pencil"></i></button>
 		</div>

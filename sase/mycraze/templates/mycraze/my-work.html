@@ -1,10 +1,14 @@
 {% extends "mycraze/tile/base.html" %}
 {% load staticfiles %}
-{% block title %} Resume {% endblock %}
+{% block title %} My Work {% endblock %}
 {% block header %}
-            {% include "mycraze/tile/header.html" with myWorkClass="active"%}
+    {% include "mycraze/tile/header.html" with myWorkClass="active"%}
 {% endblock %}
 {% block content %}
+    <!-- Sub Header -->
+    <div class="bs-docs-header" id="content">
+        {% include "mycraze/tile/sub-header.html" %}
+    </div>
 {% endblock %}
 
 {% block hidden %}
