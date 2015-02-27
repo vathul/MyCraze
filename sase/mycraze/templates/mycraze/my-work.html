@@ -1,0 +1,17 @@
+{% extends "mycraze/tile/base.html" %}
+{% load staticfiles %}
+{% block title %} Resume {% endblock %}
+{% block header %}
+            {% include "mycraze/tile/header.html" with myWorkClass="active"%}
+{% endblock %}
+{% block content %}
+{% endblock %}
+
+{% block hidden %}
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript">
+</script>
+{% endblock %}
