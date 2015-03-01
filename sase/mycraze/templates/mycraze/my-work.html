@@ -9,6 +9,18 @@
     <div class="bs-docs-header" id="content">
         {% include "mycraze/tile/sub-header.html" %}
     </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <!-- Side pane content -->
+            <div class="col-md-3" role="complementary">
+                {% include "mycraze/widget/my-work-side-pane.html" %}
+            </div>
+            <!-- Main content of side pane sections -->
+            <div class="col-md-9" role="main">
+                {% include "mycraze/work/stack-overflow.html" %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block hidden %}
