@@ -1,0 +1,37 @@
+{% extends "mycraze/tile/base.html" %}
+{% load staticfiles %}
+{% block title %} Users {% endblock %}
+{% block header %}
+    {% include "mycraze/tile/header.html" with myWorkClass="active"%}
+{% endblock %}
+{% block content %}
+    <div class="container bs-docs-container">
+        <div class="row">
+            <!-- Side pane content -->
+            <div class="col-md-3" role="complementary">
+                {% include "mycraze/widget/users-side-pane.html" %}
+            </div>
+            <!-- Main content of side pane sections -->
+            <div class="col-md-9">
+                <div class="row">
+                    {% for user in user_list %}
+                    <div class="text-center col-md-2">
+                        <a href="#" class="thumbnail">
+                            <img src="{{image_url}}{{ user.profile_image }}"/>
+                            <h5>{{user.user.first_name}} {{user.user.last_name}}</h5>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block hidden %}
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript"></script>
+{% endblock %}
