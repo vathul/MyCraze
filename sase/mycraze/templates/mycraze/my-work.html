@@ -45,20 +45,17 @@ $( document ).ready(function() {
             type: 'GET',
             url: "{% url 'get_stackoverflow_profiles' %}",
             success: function (data) {
-               list = fetchProfiles(data)
-               alert(list[0]);
+               list = fetchProfiles(data);
+               renderTagsChart(list);
             },
             error: function(data) {
-                alert(data);
             },
             complete : function() {
-                
             }
         }); 
         return list;
     }
     getStackoverflowProfileList();
-    renderTagsChart();
 });
 </script>
 {% endblock %}
