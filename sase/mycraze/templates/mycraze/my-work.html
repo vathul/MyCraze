@@ -28,5 +28,37 @@
 
 {% block javascript %}
 {{ block.super }}
-<script type="text/javascript"></script>
+<script src="{% static "mycraze/js/highstock.js" %}"></script>
+<script src="{% static "mycraze/js/chart.js" %}"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+	fetchProfiles = function(data){
+		var profiles = [];
+		$.each(data, function(i, obj) {
+			  profiles.push(obj.fields.uid);
+		});
+		return profiles;
+	}
+	getStackoverflowProfileList = function(){
+		var list;
+		$.ajax({
+	        type: 'GET',
+	        url: "{% url 'get_stackoverflow_profiles' %}",
+	        success: function (data) {
+	           list = fetchProfiles(data)
+	           alert(list[0]);
+	        },
+	        error: function(data) {
+	            alert(data);
+	        },
+	        complete : function() {
+	            
+	        }
+	    });	
+		return list;
+	}
+	getStackoverflowProfileList();
+	renderTagsChart();
+});
+</script>
 {% endblock %}

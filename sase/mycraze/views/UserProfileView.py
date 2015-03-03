@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 
 from mycraze.models.form.items import AwardItemForm
 from mycraze.models.form.items import CertificationItemForm
@@ -209,3 +210,9 @@ def edit_contact_status(request):
 	status = True if request.POST['status'] == 'true' else False
 	status = UserProfileService.edit_contact_status(request.user, status)
 	return JsonResponse({'status': status})
+
+@login_required
+def get_stackoverflow_profiles(request):
+	stackoverflow_profile_list = request.user.social_auth.filter(provider='stackoverflow')
+	data = serializers.serialize('json', stackoverflow_profile_list)
+	return HttpResponse(data, mimetype="application/json")

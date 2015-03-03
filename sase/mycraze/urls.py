@@ -51,4 +51,5 @@ urlpatterns = patterns('',
 	url(r'^edit-language-status/$', UserProfileView.edit_language_status, name='edit_language_status'),
 	url(r'^edit-contact/$', UserProfileView.edit_contact, name='edit_contact'),
 	url(r'^edit-contact-status/$', UserProfileView.edit_contact_status, name='edit_contact_status'),
+	url(r'^get-stackoverflow-profiles/$', UserProfileView.get_stackoverflow_profiles, name='get_stackoverflow_profiles'),
 )
