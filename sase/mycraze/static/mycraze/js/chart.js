@@ -1,26 +1,5 @@
-gatherStats = function(i, stackId) {
-	$.ajax({
-		type : 'GET',
-		url : "https://api.stackexchange.com/2.2/users/" + stackId
-				+ "/top-tags?site=stackoverflow",
-		success : function(stats) {
-			renderChart(i, stats);
-		},
-		error : function(data) {
-		},
-		complete : function() {
-		}
-	});
-}
-renderChart = function(i, stats) {
-	alert(i);
-	alert(stats);
-}
-renderTagsChart = function(list) {
-	var stats;
-	for (i = 0; i < list.length; i++) {
-		stats = gatherStats(i, list[i]);
-	}
+renderChart = function(category, answerCount, answerScore, questionCount,
+		questionScore) {
 	new Highcharts.Chart({
 		chart : {
 			type : 'column',
@@ -29,10 +8,8 @@ renderTagsChart = function(list) {
 		title : {
 			text : 'Tags, score and count'
 		},
-
 		xAxis : {
-			categories : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
-					'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+			categories : category,
 			min : 8
 		},
 		yAxis : {
@@ -41,7 +18,6 @@ renderTagsChart = function(list) {
 				text : 'Count / Score'
 			}
 		},
-
 		scrollbar : {
 			enabled : true
 		},
@@ -51,30 +27,58 @@ renderTagsChart = function(list) {
 				borderWidth : 0
 			}
 		},
-		series : [
-				{
-					name : 'Answer Count',
-					data : [ 49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6,
-							148.5, 216.4, 194.1, 95.6, 54.4 ]
-
-				},
-				{
-					name : 'Answer Score',
-					data : [ 83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3,
-							91.2, 83.5, 106.6, 92.3 ]
-
-				},
-				{
-					name : 'Question Count',
-					data : [ 48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6,
-							52.4, 65.2, 59.3, 51.2 ]
-
-				},
-				{
-					name : 'Question Score',
-					data : [ 42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4,
-							47.6, 39.1, 46.8, 51.1 ]
-
-				} ]
+		series : [ {
+			name : 'Answer Count',
+			data : answerCount
+		}, {
+			name : 'Answer Score',
+			data : answerScore
+		}, {
+			name : 'Question Count',
+			data : questionCount
+		}, {
+			name : 'Question Score',
+			data : questionScore
+		} ]
 	});
+}
+
+buildChart = function(i, stats) {
+	var category = [];
+	var answerCount = [];
+	var answerScore = [];
+	var questionCount = [];
+	var questionScore = [];
+
+	for (i = 0; i < stats.items.length; i++) {
+		category.push(stats.items[i].tag_name);
+		answerCount.push(stats.items[i].answer_count);
+		answerScore.push(stats.items[i].answer_score);
+		questionCount.push(stats.items[i].question_count);
+		questionScore.push(stats.items[i].question_score);
+	}
+	renderChart(category, answerCount, answerScore, questionCount,
+			questionScore);
+}
+
+gatherStats = function(i, stackId) {
+	$.ajax({
+		type : 'GET',
+		url : "https://api.stackexchange.com/2.2/users/" + stackId
+				+ "/top-tags?site=stackoverflow",
+		success : function(stats) {
+			buildChart(i, stats);
+		},
+		error : function(data) {
+		},
+		complete : function() {
+		}
+	});
+}
+
+renderTagsChart = function(list) {
+	var stats;
+	for (i = 0; i < list.length; i++) {
+		stats = gatherStats(i, list[i]);
+	}
 }
