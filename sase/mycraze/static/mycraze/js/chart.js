@@ -1,7 +1,27 @@
-//https://api.stackexchange.com/2.2/users/{id}/top-tags?site=stackoverflow
+gatherStats = function(i, stackId) {
+	$.ajax({
+		type : 'GET',
+		url : "https://api.stackexchange.com/2.2/users/" + stackId
+				+ "/top-tags?site=stackoverflow",
+		success : function(stats) {
+			renderChart(i, stats);
+		},
+		error : function(data) {
+		},
+		complete : function() {
+		}
+	});
+}
+renderChart = function(i, stats) {
+	alert(i);
+	alert(stats);
+}
 renderTagsChart = function(list) {
-
-	var chart = new Highcharts.Chart({
+	var stats;
+	for (i = 0; i < list.length; i++) {
+		stats = gatherStats(i, list[i]);
+	}
+	new Highcharts.Chart({
 		chart : {
 			type : 'column',
 			renderTo : 'tags-graph'

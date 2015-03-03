@@ -51,9 +51,9 @@ $( document ).ready(function() {
             error: function(data) {
             },
             complete : function() {
+            	return list;
             }
         }); 
-        return list;
     }
     getStackoverflowProfileList();
 });
