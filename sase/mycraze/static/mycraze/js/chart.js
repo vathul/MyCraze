@@ -1,16 +1,19 @@
-renderChart = function(category, answerCount, answerScore, questionCount,
+renderChart = function(i, category, answerCount, answerScore, questionCount,
 		questionScore) {
+	var divId = "tags-graph-" + i;
+	var newDiv = "<div id='" + divId + "'></div>"
+	$("#stack-graphs").append(newDiv);
 	new Highcharts.Chart({
 		chart : {
 			type : 'column',
-			renderTo : 'tags-graph'
+			renderTo : divId
 		},
 		title : {
-			text : 'Tags, score and count'
+			text : 'Top Tags'
 		},
 		xAxis : {
 			categories : category,
-			min : 8
+			max : 4
 		},
 		yAxis : {
 			min : 0,
@@ -50,14 +53,14 @@ buildChart = function(i, stats) {
 	var questionCount = [];
 	var questionScore = [];
 
-	for (i = 0; i < stats.items.length; i++) {
-		category.push(stats.items[i].tag_name);
-		answerCount.push(stats.items[i].answer_count);
-		answerScore.push(stats.items[i].answer_score);
-		questionCount.push(stats.items[i].question_count);
-		questionScore.push(stats.items[i].question_score);
+	for (j = 0; j < stats.items.length; j++) {
+		category.push(stats.items[j].tag_name);
+		answerCount.push(stats.items[j].answer_count);
+		answerScore.push(stats.items[j].answer_score);
+		questionCount.push(stats.items[j].question_count);
+		questionScore.push(stats.items[j].question_score);
 	}
-	renderChart(category, answerCount, answerScore, questionCount,
+	renderChart(i, category, answerCount, answerScore, questionCount,
 			questionScore);
 }
 
