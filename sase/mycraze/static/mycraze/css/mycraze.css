@@ -25,6 +25,10 @@ border-top: 1px solid #e5e5e5;
 	border-left: none;
 }
 
+.bs-docs-sidenav {
+    margin-top: 0px;
+}
+
 .bs-docs-sidebar .nav>li>a {
 	font-size: 14px;
 	border-radius: 4px;
