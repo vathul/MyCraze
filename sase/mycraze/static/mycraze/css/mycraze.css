@@ -1,9 +1,9 @@
 .bs-docs-footer {
-padding-top: 15px;
-padding-bottom: 15px;
-color: #777;
-text-align: center;
-border-top: 1px solid #e5e5e5;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #777;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
 }
 
 .bs-docs-masthead, .bs-docs-header{
@@ -118,4 +118,13 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .s
 
 .work-graph {
 	height: 250px;
+}
+
+.bs-docs-header {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.navbar {
+	margin-bottom: 0px;
 }
