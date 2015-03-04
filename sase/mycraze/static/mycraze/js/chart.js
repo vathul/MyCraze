@@ -1,7 +1,7 @@
 renderChart = function(i, category, answerCount, answerScore, questionCount,
 		questionScore) {
 	var divId = "tags-graph-" + i;
-	var newDiv = "<div id='" + divId + "'></div>"
+	var newDiv = "<div id='" + divId + "' class='work-graph'></div>"
 	$("#stack-graphs").append(newDiv);
 	new Highcharts.Chart({
 		chart : {
@@ -19,7 +19,8 @@ renderChart = function(i, category, answerCount, answerScore, questionCount,
 			min : 0,
 			title : {
 				text : 'Count / Score'
-			}
+			},
+			allowDecimals : false
 		},
 		scrollbar : {
 			enabled : true
@@ -28,7 +29,13 @@ renderChart = function(i, category, answerCount, answerScore, questionCount,
 			column : {
 				pointPadding : 0,
 				borderWidth : 0
-			}
+			},
+			series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,                            
+                }
+            }
 		},
 		series : [ {
 			name : 'Answer Count',
@@ -80,8 +87,7 @@ gatherStats = function(i, stackId) {
 }
 
 renderTagsChart = function(list) {
-	var stats;
 	for (i = 0; i < list.length; i++) {
-		stats = gatherStats(i, list[i]);
+		gatherStats(i, list[i]);
 	}
 }

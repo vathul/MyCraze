@@ -115,3 +115,7 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .s
     background-color: #e7e7e7;
     color: black;
 }
+
+.work-graph {
+	height: 250px;
+}
