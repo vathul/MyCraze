@@ -1,6 +1,6 @@
 renderTagsChart = function(list) {
 	drawTagsChart = function(divId, category, answerCount, answerScore, questionCount,
-			questionScore) {
+			questionScore, stackId) {
 		new Highcharts.Chart({
 			chart : {
 				type : 'column',
@@ -9,6 +9,9 @@ renderTagsChart = function(list) {
 			title : {
 				text : 'Top Tags'
 			},
+			subtitle: {
+	        	text: 'Stackoverflow User: ' + stackId
+	        },
 			xAxis : {
 				categories : category,
 				max : 4
@@ -51,7 +54,7 @@ renderTagsChart = function(list) {
 		});
 	}
 	
-	buildTagsChart = function(divId, stats) {
+	buildTagsChart = function(divId, stats, stackId) {
 		var category = [];
 		var answerCount = [];
 		var answerScore = [];
@@ -66,7 +69,7 @@ renderTagsChart = function(list) {
 			questionScore.push(stats.items[j].question_score);
 		}
 		drawTagsChart(divId, category, answerCount, answerScore, questionCount,
-				questionScore);
+				questionScore, stackId);
 	}
 	
 	gatherTagsStats = function(i, stackId) {
@@ -78,7 +81,7 @@ renderTagsChart = function(list) {
 			url : "https://api.stackexchange.com/2.2/users/" + stackId
 					+ "/top-tags?site=stackoverflow",
 			success : function(stats) {
-				buildTagsChart(divId, stats);
+				buildTagsChart(divId, stats, stackId);
 			},
 			error : function(data) {
 			},

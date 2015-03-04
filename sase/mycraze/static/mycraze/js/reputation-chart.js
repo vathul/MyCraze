@@ -1,5 +1,5 @@
 renderReputationsChart = function(list) {
-	drawReputationsChart = function(divId, data) {
+	drawReputationsChart = function(divId, data, stackId) {
 		new Highcharts.Chart({
 			chart: {
 	            type: 'spline',
@@ -7,6 +7,9 @@ renderReputationsChart = function(list) {
 	        },
 	        title: {
 	            text: 'Reputation Changes'
+	        },
+	        subtitle: {
+	        	text: 'Stackoverflow User: ' + stackId
 	        },
 	        xAxis: {
 	            type: 'datetime',
@@ -37,19 +40,19 @@ renderReputationsChart = function(list) {
 	        series: [{
 	            name: 'Reputation',
 	            data: data,
-	            lineWidth: 5
+	            lineWidth: 4
 	        }]
 		});
 	}
 	
-	buildReputationsChart = function(divId, stats) {
+	buildReputationsChart = function(divId, stats, stackId) {
 		var data = [];
 		for (j = stats.items.length - 1 ; j != 0 ; j--) {
 			var datum = [];
 			datum.push(stats.items[j].on_date*1000, stats.items[j].reputation_change);
 			data.push(datum);
 		}
-		drawReputationsChart(divId, data);
+		drawReputationsChart(divId, data, stackId);
 	}
 	
 	gatherReputationsStats = function(i, stackId) {
@@ -61,7 +64,7 @@ renderReputationsChart = function(list) {
 			url : "https://api.stackexchange.com/2.2/users/" + stackId
 					+ "/reputation?site=stackoverflow",
 			success : function(stats) {
-				buildReputationsChart(divId, stats);
+				buildReputationsChart(divId, stats, stackId);
 			},
 			error : function(data) {
 			},
