@@ -1,5 +1,5 @@
 renderTagsChart = function(list) {
-	renderChart = function(divId, category, answerCount, answerScore, questionCount,
+	drawTagsChart = function(divId, category, answerCount, answerScore, questionCount,
 			questionScore) {
 		new Highcharts.Chart({
 			chart : {
@@ -65,7 +65,7 @@ renderTagsChart = function(list) {
 			questionCount.push(stats.items[j].question_count);
 			questionScore.push(stats.items[j].question_score);
 		}
-		renderChart(divId, category, answerCount, answerScore, questionCount,
+		drawTagsChart(divId, category, answerCount, answerScore, questionCount,
 				questionScore);
 	}
 	
@@ -87,7 +87,7 @@ renderTagsChart = function(list) {
 		});
 	}
 	
-	/*for (i = 0; i < list.length; i++) {
-		//gatherTagsStats(i, list[i]);
-	}*/
+	for (i = 0; i < list.length; i++) {
+		gatherTagsStats(i, list[i]);
+	}
 }

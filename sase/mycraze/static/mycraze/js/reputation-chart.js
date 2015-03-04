@@ -1,5 +1,5 @@
 renderReputationsChart = function(list) {
-	renderChart = function(divId, data) {
+	drawReputationsChart = function(divId, data) {
 		new Highcharts.Chart({
 			chart: {
 	            type: 'spline',
@@ -26,7 +26,8 @@ renderReputationsChart = function(list) {
 	        plotOptions: {
 	            spline: {
 	                marker: {
-	                    enabled: true
+	                    enabled: true,
+	                    radius: 5
 	                },
 	                dataLabels: {
 	                    enabled: true
@@ -35,7 +36,8 @@ renderReputationsChart = function(list) {
 	        },
 	        series: [{
 	            name: 'Reputation',
-	            data: data
+	            data: data,
+	            lineWidth: 5
 	        }]
 		});
 	}
@@ -44,10 +46,10 @@ renderReputationsChart = function(list) {
 		var data = [];
 		for (j = stats.items.length - 1 ; j != 0 ; j--) {
 			var datum = [];
-			datum.push(new Date(stats.items[j].on_date*1000), stats.items[j].reputation_change);
+			datum.push(stats.items[j].on_date*1000, stats.items[j].reputation_change);
 			data.push(datum);
 		}
-		renderChart(divId, data);
+		drawReputationsChart(divId, data);
 	}
 	
 	gatherReputationsStats = function(i, stackId) {

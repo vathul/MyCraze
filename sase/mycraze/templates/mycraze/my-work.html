@@ -46,14 +46,13 @@ $( document ).ready(function() {
             type: 'GET',
             url: "{% url 'get_stackoverflow_profiles' %}",
             success: function (data) {
-               list = fetchProfiles(data);
-               //renderTagsChart(list);
-               renderReputationsChart(list);
+                list = fetchProfiles(data);
+                renderReputationsChart(list);
             },
             error: function(data) {
             },
             complete : function() {
-            	return list;
+                renderTagsChart(list);
             }
         }); 
     }
