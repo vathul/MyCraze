@@ -29,7 +29,8 @@
 {% block javascript %}
 {{ block.super }}
 <script src="{% static "mycraze/js/highstock.js" %}"></script>
-<script src="{% static "mycraze/js/chart.js" %}"></script>
+<script src="{% static "mycraze/js/tag-chart.js" %}"></script>
+<script src="{% static "mycraze/js/reputation-chart.js" %}"></script>
 <script type="text/javascript">
 $( document ).ready(function() {
     fetchProfiles = function(data){
@@ -46,7 +47,8 @@ $( document ).ready(function() {
             url: "{% url 'get_stackoverflow_profiles' %}",
             success: function (data) {
                list = fetchProfiles(data);
-               renderTagsChart(list);
+               //renderTagsChart(list);
+               renderReputationsChart(list);
             },
             error: function(data) {
             },
