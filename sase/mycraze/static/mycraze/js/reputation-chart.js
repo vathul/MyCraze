@@ -41,7 +41,10 @@ renderReputationsChart = function(list) {
 	            name: 'Reputation',
 	            data: data,
 	            lineWidth: 3
-	        }]
+	        }],
+	        credits: {
+	            enabled: false
+	        }
 		});
 	}
 	

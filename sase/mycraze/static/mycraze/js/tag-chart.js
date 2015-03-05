@@ -50,7 +50,10 @@ renderTagsChart = function(list) {
 			}, {
 				name : 'Question Score',
 				data : questionScore
-			} ]
+			} ],
+	        credits: {
+	            enabled: false
+	        }
 		});
 	}
 	
