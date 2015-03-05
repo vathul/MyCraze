@@ -40,7 +40,7 @@ renderReputationsChart = function(list) {
 	        series: [{
 	            name: 'Reputation',
 	            data: data,
-	            lineWidth: 4
+	            lineWidth: 3
 	        }]
 		});
 	}
@@ -63,6 +63,9 @@ renderReputationsChart = function(list) {
 			type : 'GET',
 			url : "https://api.stackexchange.com/2.2/users/" + stackId
 					+ "/reputation?site=stackoverflow",
+			beforeSend : function() {
+				$("#"+divId).html(imageHTML);
+			},
 			success : function(stats) {
 				buildReputationsChart(divId, stats, stackId);
 			},

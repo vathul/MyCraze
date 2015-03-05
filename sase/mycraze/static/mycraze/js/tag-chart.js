@@ -80,6 +80,9 @@ renderTagsChart = function(list) {
 			type : 'GET',
 			url : "https://api.stackexchange.com/2.2/users/" + stackId
 					+ "/top-tags?site=stackoverflow",
+			beforeSend : function() {
+				$("#"+divId).html(imageHTML);
+			},
 			success : function(stats) {
 				buildTagsChart(divId, stats, stackId);
 			},

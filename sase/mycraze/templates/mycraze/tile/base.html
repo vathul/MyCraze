@@ -41,5 +41,9 @@
 	{% block javascript %}
 			<script src="{% static "mycraze/js/jquery-2.1.1.min.js" %}"></script>
 			<script src="{% static "mycraze/js/bootstrap.min.js" %}"></script>
+			<script type="text/javascript">
+			   var staticURL = "{% static 'mycraze/images/ajax-loader.gif' %}";
+			   var imageHTML = "<p><img class='img-responsive center' src = '"+staticURL+"'/></p>";
+			</script>
 	{% endblock %}
 </html>
