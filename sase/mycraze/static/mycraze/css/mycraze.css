@@ -134,3 +134,7 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
+
+#user-container {
+	margin-top : 40px;
+}
