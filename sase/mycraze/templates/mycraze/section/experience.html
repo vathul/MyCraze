@@ -1,20 +1,20 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="bs-docs-section">
-			{% if request.user.user_profile.experience_section.is_active %}
+			{% if user.user_profile.experience_section.is_active %}
 				<div id="experience-section" class="bs-docs-section"> 
 			{% else %}
 				<div id="experience-section" class="bs-docs-section section-inactive">
 			{% endif %}
 					<h3 id="experience" class="page-header"><a href="#experience"><i class="fa fa-building fa-fw"></i> Experience</a>
-						{% if request.user.user_profile.experience_section.is_active %}
+						{% if user.user_profile.experience_section.is_active %}
 							{% include "mycraze/widget/section-toggle.html" with active="show" section="experience" %}
 						{% else %}
 							{% include "mycraze/widget/section-toggle.html" with active="hide" section="experience"%}
 						{% endif %}
 					</h3>
 				<div id="experience-list">
-					{% for item in request.user.user_profile.experience_section.experience_items.all %}
+					{% for item in user.user_profile.experience_section.experience_items.all %}
 						{% include "mycraze/item/experience.html" %}
 					{% endfor %}
 				</div>

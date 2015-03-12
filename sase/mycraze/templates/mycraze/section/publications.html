@@ -1,20 +1,20 @@
 <div class="panel panel-default">
 	<div class="panel-body">
   		<div class="bs-docs-section">
-  			{% if request.user.user_profile.publication_section.is_active %}
+  			{% if user.user_profile.publication_section.is_active %}
 			<div id="publication-section" class="bs-docs-section"> 
 			{% else %}
 			<div id="publication-section" class="bs-docs-section section-inactive">
 			{% endif %}
 			<h3 id="publications" class="page-header"><a href="#publications"><i class="fa fa-book fa-fw"></i> Publications</a>
-			{% if request.user.user_profile.publication_section.is_active %}
+			{% if user.user_profile.publication_section.is_active %}
 				{% include "mycraze/widget/section-toggle.html" with active="show" section="publication" %}
 			{% else %}
 				{% include "mycraze/widget/section-toggle.html" with active="hide" section="publication" %}
 			{% endif %}
 			</h3>
 			<div id="publication-list">
-				{% for item in request.user.user_profile.publication_section.publication_items.all %}
+				{% for item in user.user_profile.publication_section.publication_items.all %}
 					{% include "mycraze/item/publication.html" %}
 				{% endfor %}
 			</div>

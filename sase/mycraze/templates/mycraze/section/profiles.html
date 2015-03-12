@@ -1,13 +1,13 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="bs-docs-section">
-			{% if request.user.user_profile.profile_section.is_active %}
+			{% if user.user_profile.profile_section.is_active %}
 				<div id="profile-section" class="bs-docs-section"> 
 			{% else %}
 				<div id="profile-section" class="bs-docs-section section-inactive">
 			{% endif %}
 			<h3 id="profile" class="page-header">
-			{% if request.user.user_profile.profile_section.is_active %}
+			{% if user.user_profile.profile_section.is_active %}
 					{% include "mycraze/widget/section-toggle.html" with active="show" section="profile" %}
 				{% else %}
 					{% include "mycraze/widget/section-toggle.html" with active="hide" section="profile" %}

@@ -1,20 +1,20 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="bs-docs-section">
-			{% if request.user.user_profile.education_section.is_active %}
+			{% if user.user_profile.education_section.is_active %}
 				<div id="education-section" class="bs-docs-section"> 
 			{% else %}
 				<div id="education-section" class="bs-docs-section section-inactive">
 			{% endif %}
 			<h3 id="education" class="page-header"><a href="#education"><i class="fa fa-graduation-cap fa-fw"></i> Education</a>
-				{% if request.user.user_profile.education_section.is_active %}
+				{% if user.user_profile.education_section.is_active %}
 					{% include "mycraze/widget/section-toggle.html" with active="show" section="education" %}
 				{% else %}
 					{% include "mycraze/widget/section-toggle.html" with active="hide" section="education" %}
 				{% endif %}
 				</h3>
 				<div id="education-list">
-				{% for item in request.user.user_profile.education_section.education_items.all %}
+				{% for item in user.user_profile.education_section.education_items.all %}
 					{% include "mycraze/item/education.html" %}
 				{% endfor %}
 				</div>

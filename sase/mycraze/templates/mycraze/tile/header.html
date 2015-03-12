@@ -12,10 +12,10 @@
     	<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
       		<ul class="nav navbar-nav">
             <li class="{{ myWorkClass }}">
-                <a href="{% url 'my_work' %}"><i class="fa fa-cubes"></i> My Work</a>
+                <a href="{% url 'my_work' user.id %}"><i class="fa fa-cubes"></i> My Work</a>
             </li>
       			<li class="{{ resumeClass }}">
-          			<a href="{% url 'resume' %}"><i class="fa fa-file-text-o"></i> Resume</a>
+          			<a href="{% url 'resume' user.id %}"><i class="fa fa-file-text-o"></i> Resume</a>
         		</li>
         		<form class="navbar-form navbar-left" role="search">
 					<div class="form-group input-group">
