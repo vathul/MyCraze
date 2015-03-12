@@ -10,7 +10,8 @@ from mycraze.models.form.profile import UserProfileForm
 # Create your login views here.
 def get_login_page(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/mycraze/user-resume')
+        response_url = '/mycraze/user-resume/' + str(request.user.id)
+        return HttpResponseRedirect(response_url)
     else:
         return render(request, 'mycraze/sign-up.html')
 

@@ -1,20 +1,20 @@
 <div class="panel panel-default">
   	<div class="panel-body">
 		<div class="section-active bs-docs-section">
-			{% if request.user.user_profile.certification_section.is_active %}
+			{% if user.user_profile.certification_section.is_active %}
 			<div id="certification-section" class="bs-docs-section"> 
 			{% else %}
 			<div id="certification-section" class="bs-docs-section section-inactive">
 			{% endif %}
 				<h3 id="certifications" class="page-header"><a href="#certifications"><i class="fa fa-certificate fa-fw"></i> Certifications</a>
-				{% if request.user.user_profile.certification_section.is_active %}
+				{% if user.user_profile.certification_section.is_active %}
 					{% include "mycraze/widget/section-toggle.html" with active="show" section="certification" %}
 				{% else %}
 					{% include "mycraze/widget/section-toggle.html" with active="hide" section="certification" %}
 				{% endif %}
 				</h3>
 				<div id="certification-list">
-				{% for item in request.user.user_profile.certification_section.certification_items.all %}
+				{% for item in user.user_profile.certification_section.certification_items.all %}
 					{% include "mycraze/item/certification.html" %}
 				{% endfor %}
 				</div>

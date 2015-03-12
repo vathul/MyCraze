@@ -1,20 +1,20 @@
 <div class="panel panel-default">
   <div class="panel-body">
   <div class="bs-docs-section">
-  {% if request.user.user_profile.award_section.is_active %}
+  {% if user.user_profile.award_section.is_active %}
 			<div id="award-section" class="bs-docs-section"> 
 			{% else %}
 			<div id="award-section" class="bs-docs-section section-inactive">
 			{% endif %}
 	<h3 id="awards" class="page-header"><a href="#awards"><i class="fa fa-trophy fa-fw"></i> Awards</a>
-	{% if request.user.user_profile.award_section.is_active %}
+	{% if user.user_profile.award_section.is_active %}
 					{% include "mycraze/widget/section-toggle.html" with active="show" section="award" %}
 				{% else %}
 					{% include "mycraze/widget/section-toggle.html" with active="hide" section="award" %}
 				{% endif %}
 	</h3>
 	<div id="award-list">
-				{% for item in request.user.user_profile.award_section.award_items.all %}
+				{% for item in user.user_profile.award_section.award_items.all %}
 					{% include "mycraze/item/award.html" %}
 				{% endfor %}
 			</div>

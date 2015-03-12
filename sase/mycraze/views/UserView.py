@@ -20,7 +20,8 @@ def submit_profile(request):
 		user = userForm.save(commit=False)
 		userProfile = userProfileForm.save(commit=False)
 		UserProfileService.save_user_profile(request.user, user, userProfile)
-	return HttpResponseRedirect('/mycraze/user-resume') 
+	response_url = '/mycraze/user-resume/' + str(request.user.id)
+	return HttpResponseRedirect(response_url)
 
 @login_required
 def edit_profile(request):
@@ -30,13 +31,16 @@ def edit_profile(request):
 	return JsonResponse({'first_name':updated_user.first_name, 'last_name':updated_user.last_name, 'description':updated_user.user_profile.description})
 
 @login_required
-def get_resume_page(request):
+def get_resume_page(request,user_id):
+	user_id = int(user_id)
+	user = User.objects.get(id=user_id)
 	contact_data = {'personal_email': request.user.user_profile.contact_section.personal_email,
 		    'phone_number': request.user.user_profile.contact_section.phone_number}
 	contact_form = ContactSectionForm(contact_data)
 	stackoverflow_profile_list = request.user.social_auth.filter(provider='stackoverflow')
 
 	context = {
+		'user': user,
 		'image_url': settings.PROFILE_IMAGES_URL,
 		'contact_form': contact_form,
 		'stackoverflow_profile_list': stackoverflow_profile_list
