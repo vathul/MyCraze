@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core import serializers
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -213,6 +214,8 @@ def edit_contact_status(request):
 
 @login_required
 def get_stackoverflow_profiles(request):
-	stackoverflow_profile_list = request.user.social_auth.filter(provider='stackoverflow')
+	user_id = int(request.GET['userId'])
+	user = User.objects.get(id=user_id)
+	stackoverflow_profile_list = user.social_auth.filter(provider='stackoverflow')
 	data = serializers.serialize('json', stackoverflow_profile_list)
 	return HttpResponse(data, mimetype="application/json")

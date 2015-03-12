@@ -24,13 +24,14 @@
 {% endblock %}
 
 {% block hidden %}
+<input id="user-id" type="hidden" value="{{user.id}}"/>
 {% endblock %}
 
 {% block javascript %}
 {{ block.super }}
-<script src="{% static "mycraze/js/highstock.js" %}"></script>
-<script src="{% static "mycraze/js/tag-chart.js" %}"></script>
-<script src="{% static "mycraze/js/reputation-chart.js" %}"></script>
+<script src="{% static 'mycraze/js/highstock.js' %}"></script>
+<script src="{% static 'mycraze/js/tag-chart.js' %}"></script>
+<script src="{% static 'mycraze/js/reputation-chart.js' %}"></script>
 <script type="text/javascript">
 $( document ).ready(function() {
     fetchProfiles = function(data){
@@ -45,6 +46,9 @@ $( document ).ready(function() {
         $.ajax({
             type: 'GET',
             url: "{% url 'get_stackoverflow_profiles' %}",
+            data:{
+            	userId : $("#user-id").val()
+            },
             success: function (data) {
                 list = fetchProfiles(data);
                 renderReputationsChart(list);
