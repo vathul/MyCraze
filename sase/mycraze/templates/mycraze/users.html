@@ -16,7 +16,7 @@
                 <div class="row">
                     {% for user in user_list %}
                     <div class="text-center col-md-2">
-                        <a href="#" class="thumbnail">
+                        <a href="{% url 'resume' user.user.id %}" class="thumbnail">
                             <img class="img-responsive" src="{{image_url}}{{ user.profile_image }}"/>
                             <h5>{{user.user.first_name}} {{user.user.last_name}}</h5>
                         </a>
