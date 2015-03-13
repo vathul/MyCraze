@@ -22,6 +22,7 @@ from mycraze.models.user.sections import SummarySection
 
 
 class UserProfileService:
+	@staticmethod
 	def create_sections(user):
 		#create sections here
 		summary_section = SummarySection(user_profile = user.user_profile)
@@ -65,6 +66,7 @@ class UserProfileService:
 		language_section.save()
 		contact_section.save()
 
+	@staticmethod
 	def save_user_profile(current_user, updated_user, updated_profile):
 		current_user.first_name = updated_user.first_name
 		current_user.last_name = updated_user.last_name
@@ -74,6 +76,7 @@ class UserProfileService:
 		UserProfileService.create_sections(current_user)
 		return current_user
 
+	@staticmethod
 	def edit_user_profile(current_user, updated_user, updated_profile):
 		current_user.first_name = updated_user.first_name
 		current_user.last_name = updated_user.last_name
@@ -83,6 +86,7 @@ class UserProfileService:
 		user_profile.save()
 		return current_user
 
+	@staticmethod
 	def edit_summary_content(current_user, summary_content):
 		user_profile = current_user.user_profile
 		summary_section,created = SummarySection.objects.get_or_create(user_profile = user_profile)
@@ -90,6 +94,7 @@ class UserProfileService:
 		summary_section.save()
 		return summary_section
 
+	@staticmethod
 	def edit_summary_status(current_user, status):
 		user_profile = current_user.user_profile
 		summary_section = user_profile.summary_section
@@ -97,6 +102,7 @@ class UserProfileService:
 		summary_section.save()
 		return summary_section.is_active
 
+	@staticmethod
 	def	edit_experience_item(current_user, item_content):
 		experience_section = current_user.user_profile.experience_section
 		if item_content.id == "0":
@@ -106,6 +112,7 @@ class UserProfileService:
 		experience_item.save()
 		return experience_item
 
+	@staticmethod
 	def edit_experience_status(current_user, status):
 		user_profile = current_user.user_profile
 		experience_section = user_profile.experience_section
@@ -113,6 +120,7 @@ class UserProfileService:
 		experience_section.save()
 		return experience_section.is_active
 
+	@staticmethod
 	def	edit_project_item(current_user, item_content):
 		project_section = current_user.user_profile.project_section
 		if item_content.id == "0":
@@ -122,6 +130,7 @@ class UserProfileService:
 		project_item.save()
 		return project_item
 
+	@staticmethod
 	def edit_project_status(current_user, status):
 		user_profile = current_user.user_profile
 		project_section = user_profile.project_section
@@ -129,6 +138,7 @@ class UserProfileService:
 		project_section.save()
 		return project_section.is_active
 
+	@staticmethod
 	def	edit_education_item(current_user, item_content):
 		education_section = current_user.user_profile.education_section
 		if item_content.id == "0":
@@ -138,6 +148,7 @@ class UserProfileService:
 		education_item.save()
 		return education_item
 
+	@staticmethod
 	def edit_education_status(current_user, status):
 		user_profile = current_user.user_profile
 		education_section = user_profile.education_section
@@ -145,6 +156,7 @@ class UserProfileService:
 		education_section.save()
 		return education_section.is_active
 
+	@staticmethod
 	def edit_profile_status(current_user, status):
 		user_profile = current_user.user_profile
 		profile_section = user_profile.profile_section
@@ -152,6 +164,7 @@ class UserProfileService:
 		profile_section.save()
 		return profile_section.is_active
 
+	@staticmethod
 	def	edit_publication_item(current_user, item_content):
 		publication_section = current_user.user_profile.publication_section
 		if item_content.id == "0":
@@ -161,6 +174,7 @@ class UserProfileService:
 		publication_item.save()
 		return publication_item
 
+	@staticmethod
 	def edit_publication_status(current_user, status):
 		user_profile = current_user.user_profile
 		publication_section = user_profile.publication_section
@@ -168,6 +182,7 @@ class UserProfileService:
 		publication_section.save()
 		return publication_section.is_active
 
+	@staticmethod
 	def	edit_certification_item(current_user, item_content):
 		certification_section = current_user.user_profile.certification_section
 		if item_content.id == "0":
@@ -177,13 +192,15 @@ class UserProfileService:
 		certification_item.save()
 		return certification_item
 
+	@staticmethod
 	def edit_certification_status(current_user, status):
 		user_profile = current_user.user_profile
 		certification_section = user_profile.certification_section
 		certification_section.is_active = status
 		certification_section.save()
 		return certification_section.is_active
-	
+
+	@staticmethod
 	def	edit_skill_item(current_user, item_content):
 		skill_section = current_user.user_profile.skill_section
 		if item_content.id == "0":
@@ -193,6 +210,7 @@ class UserProfileService:
 		skill_item.save()
 		return skill_item
 
+	@staticmethod
 	def edit_skill_status(current_user, status):
 		user_profile = current_user.user_profile
 		skill_section = user_profile.skill_section
@@ -200,6 +218,7 @@ class UserProfileService:
 		skill_section.save()
 		return skill_section.is_active
 
+	@staticmethod
 	def	edit_course_item(current_user, item_content):
 		course_section = current_user.user_profile.course_section
 		if item_content.id == "0":
@@ -209,13 +228,15 @@ class UserProfileService:
 		course_item.save()
 		return course_item
 
+	@staticmethod
 	def edit_course_status(current_user, status):
 		user_profile = current_user.user_profile
 		course_section = user_profile.course_section
 		course_section.is_active = status
 		course_section.save()
 		return course_section.is_active
-	
+
+	@staticmethod
 	def	edit_award_item(current_user, item_content):
 		award_section = current_user.user_profile.award_section
 		if item_content.id == "0":
@@ -225,13 +246,15 @@ class UserProfileService:
 		award_item.save()
 		return award_item
 
+	@staticmethod
 	def edit_award_status(current_user, status):
 		user_profile = current_user.user_profile
 		award_section = user_profile.award_section
 		award_section.is_active = status
 		award_section.save()
 		return award_section.is_active
-	
+
+	@staticmethod
 	def	edit_language_item(current_user, item_content):
 		language_section = current_user.user_profile.language_section
 		if item_content.id == "0":
@@ -241,13 +264,15 @@ class UserProfileService:
 		language_item.save()
 		return language_item
 
+	@staticmethod
 	def edit_language_status(current_user, status):
 		user_profile = current_user.user_profile
 		language_section = user_profile.language_section
 		language_section.is_active = status
 		language_section.save()
 		return language_section.is_active
-	
+
+	@staticmethod	
 	def edit_contact_content(current_user, contact_content):
 		user_profile = current_user.user_profile
 		contact_section,created = ContactSection.objects.get_or_create(user_profile = user_profile)
@@ -255,7 +280,8 @@ class UserProfileService:
 		contact_section.phone_number = contact_content.phone_number
 		contact_section.save()
 		return contact_section
-	
+
+	@staticmethod	
 	def edit_contact_status(current_user, status):
 		user_profile = current_user.user_profile
 		contact_section = user_profile.contact_section
