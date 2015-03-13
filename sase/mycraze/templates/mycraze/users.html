@@ -14,14 +14,18 @@
             <!-- Main content of side pane sections -->
             <div class="col-md-9">
                 <div class="row">
+                    {% if not user_list %}
+                        <h3>Sorry, no results found! You may try refining your search.</h3>
+                    {% else %}
                     {% for user in user_list %}
                     <div class="text-center col-md-2">
-                        <a href="{% url 'resume' user.user.id %}" class="thumbnail">
-                            <img class="img-responsive" src="{{image_url}}{{ user.profile_image }}"/>
-                            <h5>{{user.user.first_name}} {{user.user.last_name}}</h5>
+                        <a href="{% url 'resume' user.id %}" class="thumbnail">
+                            <img class="img-responsive" src="{{image_url}}{{ user.user_profile.profile_image }}"/>
+                            <h5>{{user.first_name}} {{user.last_name}}</h5>
                         </a>
                     </div>
                     {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
