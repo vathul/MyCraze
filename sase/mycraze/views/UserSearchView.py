@@ -24,7 +24,8 @@ def get_users_page(request):
         user_list=UserSearchService.get_users_by_skills(q)
     context = {
         'image_url': settings.PROFILE_IMAGES_URL,
-        'query':q,
+        'query': q,
+        'criteria': criteria,
         'user_list': user_list
     }
     return render(request, 'mycraze/users.html',context)
