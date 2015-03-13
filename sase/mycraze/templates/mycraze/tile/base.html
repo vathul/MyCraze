@@ -22,7 +22,7 @@
 			<![endif]-->
 		{% endblock %}
 	</head>
-	<body{% ifequal request.path "/mycraze/user-resume/" %} data-spy="scroll" data-target=".bs-docs-sidebar" {% endifequal %}>
+	<body{% if "/mycraze/user-resume/" in request.path %} data-spy="scroll" data-target=".bs-docs-sidebar" {% endif %}>
 
 		{% block header %}
 			{% include "mycraze/tile/header.html" %}
@@ -39,11 +39,11 @@
 		{% endblock %}
 	</body>
 	{% block javascript %}
-			<script src="{% static 'mycraze/js/jquery-2.1.1.min.js' %}"></script>
-			<script src="{% static 'mycraze/js/bootstrap.min.js' %}"></script>
-			<script type="text/javascript">
-			   var staticURL = "{% static 'mycraze/images/ajax-loader.gif' %}";
-			   var imageHTML = "<p><img class='img-responsive center' src = '"+staticURL+"'/></p>";
-			</script>
+		<script src="{% static 'mycraze/js/jquery-2.1.1.min.js' %}"></script>
+		<script src="{% static 'mycraze/js/bootstrap.min.js' %}"></script>
+		<script type="text/javascript">
+		   var staticURL = "{% static 'mycraze/images/ajax-loader.gif' %}";
+		   var imageHTML = "<p><img class='img-responsive center' src = '"+staticURL+"'/></p>";
+		</script>
 	{% endblock %}
 </html>
