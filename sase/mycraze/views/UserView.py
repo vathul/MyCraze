@@ -14,12 +14,13 @@ from mycraze.utils.http import JsonResponse
 # Create your views here.
 @login_required
 def submit_profile(request):
-	userForm = UserForm(request.POST)
-	userProfileForm = UserProfileForm(request.POST, request.FILES)
-	if userForm.is_valid() and userProfileForm.is_valid():
-		user = userForm.save(commit=False)
-		userProfile = userProfileForm.save(commit=False)
-		UserProfileService.save_user_profile(request.user, user, userProfile)
+	if request.user.user_profile is None:
+		userForm = UserForm(request.POST)
+		userProfileForm = UserProfileForm(request.POST, request.FILES)
+		if userForm.is_valid() and userProfileForm.is_valid():
+			user = userForm.save(commit=False)
+			userProfile = userProfileForm.save(commit=False)
+			UserProfileService.save_user_profile(request.user, user, userProfile)
 	response_url = '/mycraze/user-resume/' + str(request.user.id)
 	return HttpResponseRedirect(response_url)
 
@@ -38,9 +39,10 @@ def get_resume_page(request,user_id):
 		    'phone_number': request.user.user_profile.contact_section.phone_number}
 	contact_form = ContactSectionForm(contact_data)
 	stackoverflow_profile_list = request.user.social_auth.filter(provider='stackoverflow')
-
+	has_edit_permission = True if request.user == user else False
 	context = {
 		'user': user,
+		'has_edit_permission': has_edit_permission,
 		'image_url': settings.PROFILE_IMAGES_URL,
 		'contact_form': contact_form,
 		'stackoverflow_profile_list': stackoverflow_profile_list

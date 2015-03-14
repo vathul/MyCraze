@@ -7,10 +7,12 @@
 			<div id="certification-section" class="bs-docs-section section-inactive">
 			{% endif %}
 				<h3 id="certifications" class="page-header"><a href="#certifications"><i class="fa fa-certificate fa-fw"></i> Certifications</a>
-				{% if user.user_profile.certification_section.is_active %}
-					{% include "mycraze/widget/section-toggle.html" with active="show" section="certification" %}
-				{% else %}
-					{% include "mycraze/widget/section-toggle.html" with active="hide" section="certification" %}
+				{% if has_edit_permission %}
+					{% if user.user_profile.certification_section.is_active %}
+						{% include "mycraze/widget/section-toggle.html" with active="show" section="certification" %}
+					{% else %}
+						{% include "mycraze/widget/section-toggle.html" with active="hide" section="certification" %}
+					{% endif %}
 				{% endif %}
 				</h3>
 				<div id="certification-list">
@@ -18,7 +20,9 @@
 					{% include "mycraze/item/certification.html" %}
 				{% endfor %}
 				</div>
-				<button type="button" id="add-certification" class="btn btn-default"><i class="fa fa-plus"></i> Add Certification</button>
+				{% if has_edit_permission %}
+				    <button type="button" id="add-certification" class="btn btn-default"><i class="fa fa-plus"></i> Add Certification</button>
+				{% endif %}
 			</div>
 		</div>
 	</div>

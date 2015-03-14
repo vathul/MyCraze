@@ -1,6 +1,8 @@
 <div class="experience-item" val="">
 	<div class='bs-callout bs-callout-info'>
-		{% include "mycraze/widget/item-edit-dropdown.html" with category="project" %}
+	    {% if has_edit_permission %}
+		      {% include "mycraze/widget/item-edit-dropdown.html" with category="project" %}
+		{% endif %}
 		<input type="hidden" value={{item.id}} />
 		<h4 class='lead'><span>{{item.title}}</span> <small><a href="{{item.url}}" target="_blank"><i class="fa fa-external-link"></i></a></small></h4>
 			<p class='lead'>{{item.description}}</p>

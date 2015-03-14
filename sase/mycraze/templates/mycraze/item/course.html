@@ -1,6 +1,8 @@
 <div class="course-item" val="">
 	<div>
-		{% include "mycraze/widget/item-edit-dropdown.html" with category="course" %}
+		{% if has_edit_permission %}
+			{% include "mycraze/widget/item-edit-dropdown.html" with category="course" %}
+		{% endif %}
 		<input type="hidden" value={{item.id}} />
 		<ul>
 			<li class='course lead'><span>{{item.title}} - <small>{{item.code}}</small></li>

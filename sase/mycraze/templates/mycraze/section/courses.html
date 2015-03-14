@@ -7,18 +7,22 @@
 			<div id="course-section" class="bs-docs-section section-inactive">
 			{% endif %}
 			<h3 id="courses" class="page-header"><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a>
-				{% if user.user_profile.course_section.is_active %}
-					{% include "mycraze/widget/section-toggle.html" with active="show" section="course" %}
-				{% else %}
-					{% include "mycraze/widget/section-toggle.html" with active="hide" section="course" %}
-				{% endif %}
+                {% if has_edit_permission %}
+					{% if user.user_profile.course_section.is_active %}
+						{% include "mycraze/widget/section-toggle.html" with active="show" section="course" %}
+					{% else %}
+						{% include "mycraze/widget/section-toggle.html" with active="hide" section="course" %}
+					{% endif %}
+                {% endif %}
 			</h3>
 			<div id="course-list">
 				{% for item in user.user_profile.course_section.course_items.all %}
 					{% include "mycraze/item/course.html" %}
 				{% endfor %}
 			</div>
-			<button type="button" id="add-course" class="btn btn-default"><i class="fa fa-plus"></i> Add Course</button>
+			{% if has_edit_permission %}
+			     <button type="button" id="add-course" class="btn btn-default"><i class="fa fa-plus"></i> Add Course</button>
+			{% endif %}
 		</div>
 	</div>
 </div>

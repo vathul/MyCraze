@@ -1,6 +1,8 @@
 <div class="experience-item" val="">
 	<div>
-		{% include "mycraze/widget/item-edit-dropdown.html" with category="language" %}
+		{% if has_edit_permission %}
+			{% include "mycraze/widget/item-edit-dropdown.html" with category="language" %}
+		{% endif %}
 		<input type="hidden" value={{item.id}} />
 		<ul>
 			<li class='language lead'><span>{{item.language}}</li>

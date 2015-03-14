@@ -7,14 +7,18 @@
 		{% endif %}
 			<h3 id="summary" class="page-header">
 				<a href="#summary"><i class="fa fa-file-text fa-fw"></i> Summary</a>
-				{% if user.user_profile.summary_section.is_active %}
-					{% include "mycraze/widget/section-toggle.html" with active="show" section="summary" %}
-				{% else %}
-					{% include "mycraze/widget/section-toggle.html" with active="hide" section="summary"%}
+				{% if has_edit_permission %}
+					{% if user.user_profile.summary_section.is_active %}
+						{% include "mycraze/widget/section-toggle.html" with active="show" section="summary" %}
+					{% else %}
+						{% include "mycraze/widget/section-toggle.html" with active="hide" section="summary"%}
+					{% endif %}
 				{% endif %}
 			</h3>
 			<div class="bs-callout bs-callout-info">
-				{% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-summary-modal" %}
+			     {% if has_edit_permission %}
+				    {% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-summary-modal" %}
+				 {% endif %}
 				<p id="summary-content" class="lead">{{user.user_profile.summary_section.content}}</p>
 			</div>
 		</div>

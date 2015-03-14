@@ -7,10 +7,12 @@
 				<div id="profile-section" class="bs-docs-section section-inactive">
 			{% endif %}
 			<h3 id="profile" class="page-header">
-			{% if user.user_profile.profile_section.is_active %}
-					{% include "mycraze/widget/section-toggle.html" with active="show" section="profile" %}
-				{% else %}
-					{% include "mycraze/widget/section-toggle.html" with active="hide" section="profile" %}
+				{% if has_edit_permission %}
+				    {% if user.user_profile.profile_section.is_active %}
+						{% include "mycraze/widget/section-toggle.html" with active="show" section="profile" %}
+					{% else %}
+						{% include "mycraze/widget/section-toggle.html" with active="hide" section="profile" %}
+					{% endif %}
 				{% endif %}
 				<a href="#profile"><i class="fa fa-user fa-fw"></i>
 					Profiles</a>
@@ -27,7 +29,9 @@
     				</div>
 				{% endfor %}
 			</div>
-			<p><a href = "{% url 'social:begin' 'stackoverflow' %}?next={{ request.path }}" class="btn btn-default home-custom" role="button"><i class="fa fa-plus"></i> Add Stackoverflow Profile</a></p>
+			{% if has_edit_permission %}
+			     <p><a href = "{% url 'social:begin' 'stackoverflow' %}?next={{ request.path }}" class="btn btn-default home-custom" role="button"><i class="fa fa-plus"></i> Add Stackoverflow Profile</a></p>
+			{% endif %}
 		</div>
 	</div>
 </div>

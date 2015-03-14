@@ -1,6 +1,8 @@
 <div class="certification-item" val="">
 	<div class='bs-callout bs-callout-info'>
-		{% include "mycraze/widget/item-edit-dropdown.html" with category="certification" %}
+	    {% if has_edit_permission %}
+            {% include "mycraze/widget/item-edit-dropdown.html" with category="certification" %}
+	    {% endif %}	
 		<input type="hidden" value={{item.id}} />
 		<h4 class='lead'><span>{{item.title}}</span></h4>
 		<h4 class='lead'><small>{{item.certifier}}</small></h4>

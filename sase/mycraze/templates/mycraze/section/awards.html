@@ -7,18 +7,22 @@
 			<div id="award-section" class="bs-docs-section section-inactive">
 			{% endif %}
 	<h3 id="awards" class="page-header"><a href="#awards"><i class="fa fa-trophy fa-fw"></i> Awards</a>
-	{% if user.user_profile.award_section.is_active %}
+	       {% if has_edit_permission %}
+	           {% if user.user_profile.award_section.is_active %}
 					{% include "mycraze/widget/section-toggle.html" with active="show" section="award" %}
 				{% else %}
 					{% include "mycraze/widget/section-toggle.html" with active="hide" section="award" %}
 				{% endif %}
+			{% endif %}
 	</h3>
 	<div id="award-list">
 				{% for item in user.user_profile.award_section.award_items.all %}
 					{% include "mycraze/item/award.html" %}
 				{% endfor %}
 			</div>
+		{% if has_edit_permission %}
 			<button type="button" id="add-award" class="btn btn-default"><i class="fa fa-plus"></i> Add Award</button>
+		{% endif %}
 </div>
 </div>
 </div>

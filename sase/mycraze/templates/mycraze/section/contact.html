@@ -8,14 +8,18 @@
 		{% endif %}
 			<h3 id="contact" class="page-header">
 				<a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a>
+				{% if has_edit_permission %}
 					{% if user.user_profile.contact_section.is_active %}
-					{% include "mycraze/widget/section-toggle.html" with active="show" section="contact" %}
-				{% else %}
-					{% include "mycraze/widget/section-toggle.html" with active="hide" section="contact"%}
-				{% endif %} 
+					   {% include "mycraze/widget/section-toggle.html" with active="show" section="contact" %}
+				    {% else %}
+					   {% include "mycraze/widget/section-toggle.html" with active="hide" section="contact"%}
+				    {% endif %}
+				{% endif %}
 			</h3>
 			<div class="bs-callout bs-callout-info">
+			{% if has_edit_permission %}
 				{% include "mycraze/widget/section-edit-dropdown.html" with dataTarget="#edit-contact-modal" %}
+			{% endif %}
 				<h4 class="lead">Personal Email</h4>
 				<span id="personal-email">{{user.user_profile.contact_section.personal_email}}</span>
 				<h4 class="lead">Phone Number</h4>
