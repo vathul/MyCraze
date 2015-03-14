@@ -9,7 +9,7 @@ class UserSearchService:
         if query == None:
             user_list = User.objects.filter(Q(user_profile__isnull=False))
         else:
-            user_list = User.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query))
+            user_list = User.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query)).distinct()
         return user_list
     
     @staticmethod
@@ -18,7 +18,7 @@ class UserSearchService:
         if query == None:
             user_list = User.objects.filter(Q(user_profile__isnull=False))
         else:            
-            user_list = User.objects.filter(Q(user_profile__skill_section__skill_items__skill__icontains=query))
+            user_list = User.objects.filter(Q(user_profile__skill_section__skill_items__skill__icontains=query)).distinct()
         return user_list
     
     @staticmethod
