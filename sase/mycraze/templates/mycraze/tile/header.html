@@ -17,10 +17,10 @@
       			<li class="{{ resumeClass }}">
           			<a href="{% url 'resume' user.id %}"><i class="fa fa-file-text"></i> Resume</a>
         		</li>
-        		<form method="get" action="{% url 'users' %}" class="navbar-form navbar-left" role="search">
+        		<form method="get" action="{% url 'users' %}" id="search-form" class="navbar-form navbar-left" role="search">
 					<div class="form-group input-group">
-					    <input type="hidden" name="criteria" value="all"/>
-						<input type="text" name="q" class="form-control" value="{{ query|default_if_none:'' }}" placeholder="Search">
+					    <input type="hidden" id="s-criteria" name="criteria" value="all"/>
+						<input type="text"  id="s-q" name="q" class="form-control" value="{{ query|default_if_none:'' }}" placeholder="Search">
 						<span class="input-group-btn">    
     						<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 						</span>

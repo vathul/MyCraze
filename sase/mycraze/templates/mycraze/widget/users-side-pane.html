@@ -1,19 +1,19 @@
 <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" data-spy="affix" data-offset-top="255" data-offset-bottom="200">
     <ul class="nav bs-docs-sidenav">
         {% ifequal criteria "all" %}
-            <li class = "active"><a href=""> All</a></li>
+            <li class = "active"><a class="search-criteria" data-criteria="all" href=""> All</a></li>
         {% else %}
-            <li class = ""><a href=""> All</a></li>
+            <li class = ""><a class="search-criteria" data-criteria="all" href=""> All</a></li>
         {% endifequal %}
         {% ifequal criteria "people" %}
-            <li class = "active"><a href=""><i class="fa fa-user fa-fw"></i> People</a></li>
+            <li class = "active"><a class="search-criteria" data-criteria="people" href=""><i class="fa fa-user fa-fw"></i> People</a></li>
         {% else %}
-            <li class = ""><a href=""><i class="fa fa-user fa-fw"></i> People</a></li>
+            <li class = ""><a class="search-criteria" data-criteria="people" href=""><i class="fa fa-user fa-fw"></i> People</a></li>
         {% endifequal %}
         {% ifequal criteria "skill" %}
-            <li class = "active"><a href=""><i class="fa fa-anchor fa-fw"></i> Skills</a></li>
+            <li class = "active"><a class="search-criteria" data-criteria="skill" href=""><i class="fa fa-anchor fa-fw"></i> Skills</a></li>
         {% else %}
-            <li class = ""><a href=""><i class="fa fa-anchor fa-fw"></i> Skills</a></li>
+            <li class = ""><a class="search-criteria" data-criteria="skill" href=""><i class="fa fa-anchor fa-fw"></i> Skills</a></li>
         {% endifequal %}
     </ul>
 </nav>

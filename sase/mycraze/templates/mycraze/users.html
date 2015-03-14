@@ -37,5 +37,14 @@
 
 {% block javascript %}
 {{ block.super }}
-<script type="text/javascript"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$(".search-criteria").on('click', function(event){
+			event.preventDefault();
+			var criteria = $(this).attr('data-criteria');
+			$("#s-criteria").val(criteria);
+			$("#search-form").submit();
+		});
+	});
+</script>
 {% endblock %}
