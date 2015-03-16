@@ -11,6 +11,15 @@
     	</div>
     	<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
       		<ul class="nav navbar-nav">
+      		    {% if has_edit_permission %}
+	      		    <li class="active">
+	                    <a><i class="fa fa-home"></i></a>
+	                </li>
+	            {% else %}
+	               <li class="">
+                        <a href="{% url 'resume' request.user.id %}"><i class="fa fa-home"></i></a>
+                    </li>
+                {% endif %}
                 <li class="{{ myWorkClass }}">
                     <a href="{% url 'my_work' user.id %}"><i class="fa fa-area-chart"></i> My Work</a>
                 </li>
