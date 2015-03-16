@@ -41,7 +41,7 @@ def edit_experience(request):
 		item.id = item_id
 		experience_item = UserProfileService.edit_experience_item(request.user, item)
 	html = render_to_string('mycraze/item/experience.html', 
-		{'item': experience_item})
+		{'item': experience_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 @login_required
@@ -60,7 +60,7 @@ def edit_project(request):
 		item.id = item_id
 		project_item = UserProfileService.edit_project_item(request.user, item)
 	html = render_to_string('mycraze/item/project.html', 
-		{'item': project_item})
+		{'item': project_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_project_status(request):
@@ -78,7 +78,7 @@ def edit_education(request):
 		item.id = item_id
 		education_item = UserProfileService.edit_education_item(request.user, item)
 	html = render_to_string('mycraze/item/education.html', 
-		{'item': education_item})
+		{'item': education_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_education_status(request):
@@ -101,7 +101,7 @@ def edit_publication(request):
 		item.id = item_id
 		publication_item = UserProfileService.edit_publication_item(request.user, item)
 	html = render_to_string('mycraze/item/publication.html', 
-		{'item': publication_item})
+		{'item': publication_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_publication_status(request):
@@ -119,7 +119,7 @@ def edit_certification(request):
 		item.id = item_id
 		certification_item = UserProfileService.edit_certification_item(request.user, item)
 	html = render_to_string('mycraze/item/certification.html', 
-		{'item': certification_item})
+		{'item': certification_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_certification_status(request):
@@ -137,7 +137,7 @@ def edit_skill(request):
 		item.id = item_id
 		skill_item = UserProfileService.edit_skill_item(request.user, item)
 	html = render_to_string('mycraze/item/skill.html', 
-		{'item': skill_item})
+		{'item': skill_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_skill_status(request):
@@ -155,7 +155,7 @@ def edit_course(request):
 		item.id = item_id
 		course_item = UserProfileService.edit_course_item(request.user, item)
 	html = render_to_string('mycraze/item/course.html', 
-		{'item': course_item})
+		{'item': course_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_course_status(request):
@@ -173,7 +173,7 @@ def edit_award(request):
 		item.id = item_id
 		award_item = UserProfileService.edit_award_item(request.user, item)
 	html = render_to_string('mycraze/item/award.html', 
-		{'item': award_item})
+		{'item': award_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_award_status(request):
@@ -191,7 +191,7 @@ def edit_language(request):
 		item.id = item_id
 		language_item = UserProfileService.edit_language_item(request.user, item)
 	html = render_to_string('mycraze/item/language.html', 
-		{'item': language_item})
+		{'item': language_item, 'has_edit_permission': True})
 	return HttpResponse(html)
 
 def edit_language_status(request):
