@@ -28,4 +28,4 @@ def get_profile_completion_page(request):
 
 def get_logout_page(request):
     logout(request)
-    return HttpResponseRedirect('/mycraze/login')
+    return render(request, 'mycraze/logout.html')

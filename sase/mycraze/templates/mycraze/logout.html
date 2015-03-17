@@ -1,0 +1,20 @@
+{% extends "mycraze/tile/base.html" %}
+{% load staticfiles %}
+{% block title %} Logout {% endblock %}
+{% block header %} {% endblock %}
+{% block content %}
+    <main class="bs-docs-masthead">
+        <div class="container">
+            <h1>MyCraze</h1>
+            <br/>
+            <div>
+                <h4>You have logged out of MyCraze.</h4> 
+                <h4>Remember to logout of your Open ID providers (Google, Facebook, Github, etc.) </h4>
+            </div>
+            <br/>
+            <div>
+                <a href = "{% url 'login' %}" class="btn btn-default" role="button"><i class="fa fa-sign-in"></i> Login</a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
