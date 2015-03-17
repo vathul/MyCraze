@@ -29,7 +29,7 @@
     				</div>
 				{% endfor %}
 			</div>
-			{% if has_edit_permission %}
+			{% if has_edit_permission and not stackoverflow_profile_list%}
 			     <p><a href = "{% url 'social:begin' 'stackoverflow' %}?next={{ request.path }}" class="btn btn-default home-custom" role="button"><i class="fa fa-plus"></i> Add Stackoverflow Profile</a></p>
 			{% endif %}
 		</div>

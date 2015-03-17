@@ -50,11 +50,12 @@ renderReputationsChart = function(list) {
 	
 	buildReputationsChart = function(divId, stats, stackId) {
 		var data = [];
-		for (j = stats.items.length - 1 ; j != 0 ; j--) {
+		for (j = 0; j < stats.items.length; j++) {
 			var datum = [];
 			datum.push(stats.items[j].on_date*1000, stats.items[j].reputation_change);
 			data.push(datum);
 		}
+		data.reverse();
 		drawReputationsChart(divId, data, stackId);
 	}
 	

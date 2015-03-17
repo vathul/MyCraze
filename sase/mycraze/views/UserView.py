@@ -13,14 +13,13 @@ from mycraze.utils.http import JsonResponse
 
 # Create your views here.
 @login_required
-def submit_profile(request):
-	if request.user.user_profile is None:
-		userForm = UserForm(request.POST)
-		userProfileForm = UserProfileForm(request.POST, request.FILES)
-		if userForm.is_valid() and userProfileForm.is_valid():
-			user = userForm.save(commit=False)
-			userProfile = userProfileForm.save(commit=False)
-			UserProfileService.save_user_profile(request.user, user, userProfile)
+def submit_profile(request):	
+	userForm = UserForm(request.POST)
+	userProfileForm = UserProfileForm(request.POST, request.FILES)
+	if userForm.is_valid() and userProfileForm.is_valid():
+		user = userForm.save(commit=False)
+		userProfile = userProfileForm.save(commit=False)
+		UserProfileService.save_user_profile(request.user, user, userProfile)
 	response_url = '/mycraze/user-resume/' + str(request.user.id)
 	return HttpResponseRedirect(response_url)
 
@@ -35,10 +34,10 @@ def edit_profile(request):
 def get_resume_page(request,user_id):
 	user_id = int(user_id)
 	user = User.objects.get(id=user_id)
-	contact_data = {'personal_email': request.user.user_profile.contact_section.personal_email,
-		    'phone_number': request.user.user_profile.contact_section.phone_number}
+	contact_data = {'personal_email': user.user_profile.contact_section.personal_email,
+		    'phone_number': user.user_profile.contact_section.phone_number}
 	contact_form = ContactSectionForm(contact_data)
-	stackoverflow_profile_list = request.user.social_auth.filter(provider='stackoverflow')
+	stackoverflow_profile_list = user.social_auth.filter(provider='stackoverflow')
 	has_edit_permission = True if request.user == user else False
 	context = {
 		'user': user,
@@ -53,8 +52,10 @@ def get_resume_page(request,user_id):
 def get_my_work_page(request,user_id):
 	user_id = int(user_id)
 	user = User.objects.get(id=user_id)
+	has_edit_permission = True if request.user == user else False
 	context = {
 		'user': user,
+		'has_edit_permission': has_edit_permission,
 		'image_url': settings.PROFILE_IMAGES_URL
 	}
 	return render(request, 'mycraze/my-work.html',context)
