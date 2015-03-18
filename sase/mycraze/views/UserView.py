@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from mycraze.models.form.profile import UserForm
 from mycraze.models.form.profile import UserProfileForm
@@ -35,7 +35,7 @@ def get_resume_page(request,user_id):
 	if not UserProfileService.has_user_profile(request.user):
 		return HttpResponseRedirect('/mycraze/profile-complete/')
 	user_id = int(user_id)
-	user = User.objects.get(id=user_id)
+	user = get_object_or_404(User, id=user_id)
 	contact_data = {'personal_email': user.user_profile.contact_section.personal_email,
 		    'phone_number': user.user_profile.contact_section.phone_number}
 	contact_form = ContactSectionForm(contact_data)
