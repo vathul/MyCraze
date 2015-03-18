@@ -1,3 +1,4 @@
+from mycraze.models.user.profile import UserProfile
 from mycraze.models.user.items import AwardItem
 from mycraze.models.user.items import CertificationItem
 from mycraze.models.user.items import CourseItem
@@ -66,6 +67,10 @@ class UserProfileService:
 		language_section.save()
 		contact_section.save()
 
+	@staticmethod
+	def has_user_profile(user):
+		return True if UserProfile.objects.select_related('user').filter(user=user) else False
+		
 	@staticmethod
 	def save_user_profile(current_user, updated_user, updated_profile):
 		current_user.first_name = updated_user.first_name

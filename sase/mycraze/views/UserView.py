@@ -32,7 +32,7 @@ def edit_profile(request):
 
 @login_required
 def get_resume_page(request,user_id):
-	if not UserProfile.objects.select_related('user').filter(user=request.user):
+	if not UserProfileService.has_user_profile(request.user):
 		return HttpResponseRedirect('/mycraze/profile-complete/')
 	user_id = int(user_id)
 	user = User.objects.get(id=user_id)
@@ -52,7 +52,7 @@ def get_resume_page(request,user_id):
 
 @login_required
 def get_my_work_page(request,user_id):
-	if not UserProfile.objects.select_related('user').filter(user=request.user):
+	if not UserProfileService.has_user_profile(request.user):
 		return HttpResponseRedirect('/mycraze/profile-complete/')
 	user_id = int(user_id)
 	user = User.objects.get(id=user_id)
