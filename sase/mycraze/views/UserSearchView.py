@@ -2,10 +2,13 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from mycraze.models.user.profile import UserProfile
 from mycraze.services.search import UserSearchService
 
 @login_required
 def get_users_page(request):
+    if not UserProfile.objects.select_related('user').filter(user=request.user):
+        return HttpResponseRedirect('/mycraze/profile-complete/')
     criteria=None
     q=None
     if request.GET.get('criteria'):

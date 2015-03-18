@@ -32,6 +32,8 @@ def edit_profile(request):
 
 @login_required
 def get_resume_page(request,user_id):
+	if not UserProfile.objects.select_related('user').filter(user=request.user):
+		return HttpResponseRedirect('/mycraze/profile-complete/')
 	user_id = int(user_id)
 	user = User.objects.get(id=user_id)
 	contact_data = {'personal_email': user.user_profile.contact_section.personal_email,
@@ -50,6 +52,8 @@ def get_resume_page(request,user_id):
 
 @login_required
 def get_my_work_page(request,user_id):
+	if not UserProfile.objects.select_related('user').filter(user=request.user):
+		return HttpResponseRedirect('/mycraze/profile-complete/')
 	user_id = int(user_id)
 	user = User.objects.get(id=user_id)
 	has_edit_permission = True if request.user == user else False
