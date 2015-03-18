@@ -21,7 +21,7 @@
 	                    <div class="text-center col-md-2">
 	                        <a href="{% url 'resume' user.id %}" class="thumbnail">
 	                            <img class="img-responsive" src="{{image_url}}{{ user.user_profile.profile_image }}"/>
-	                            <h5>{{user.first_name}} {{user.last_name}}</h5>
+	                            <b>{{user.first_name}} {{user.last_name}}</b>
 	                        </a>
 	                    </div>
                     {% endfor %}

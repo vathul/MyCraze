@@ -1,3 +1,4 @@
+{% if user.user_profile.project_section.is_active or has_edit_permission %}
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="bs-docs-section">
@@ -27,3 +28,4 @@
 		</div>
 	</div>
 </div>
+{% endif %}

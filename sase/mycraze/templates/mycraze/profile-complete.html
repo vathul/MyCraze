@@ -1,10 +1,10 @@
-  {% extends "mycraze/tile/base.html" %}
-  {% load staticfiles %}
-  {% block title %} Complete Profile {% endblock %}
-  {% block css %}
-  {{ block.super }}
+{% extends "mycraze/tile/base.html" %}
+{% load staticfiles %}
+{% block title %} Complete Profile {% endblock %}
+{% block css %}
+{{ block.super }}
 <!--Page specific styles-->
-  <style>
+<style>
       .control-label {
         color: #000000;
       }
@@ -14,10 +14,10 @@
       input[type=file] {
         color: #000000;
       }
-  </style>
-  {% endblock %}
-  {% block header %} {% endblock %}
-  {% block content %}
+</style>
+{% endblock %}
+{% block header %} {% endblock %}
+{% block content %}
       <main class="bs-docs-masthead">
         <div class="container">
           <h1>MyCraze</h1>
@@ -31,4 +31,8 @@
           </div>
         </div>
       </main>
-  {% endblock %}
+{% endblock %}
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'mycraze/js/profile-form-validator.js' %}"></script>
+{% endblock %}

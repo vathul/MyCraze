@@ -1,16 +1,40 @@
 <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top"   data-spy="affix" data-offset-top="255" data-offset-bottom="200">
 	<ul class="nav bs-docs-sidenav">
-	 	<li class = "active"><a href="#summary"><i class="fa fa-file-text fa-fw"></i> Summary</a></li>
-		<li class><a href="#experience"><i class="fa fa-building fa-fw"></i> Experience</a></li>
-		<li class><a href="#projects"><i class="fa fa-th-list fa-fw"></i> Projects</a></li>
-		<li class><a href="#education"><i class="fa fa-graduation-cap fa-fw"></i> Education</a></li>
-		<li class><a href="#profile"><i class="fa fa-user fa-fw"></i> Profiles</a></li>
-		<li class><a href="#publications"><i class="fa fa-book fa-fw"></i> Publications</a></li>
-		<li class><a href="#certifications"><i class="fa fa-certificate fa-fw"></i> Certifications</a></li>
-		<li class><a href="#skills"><i class="fa fa-anchor fa-fw"></i> Skills</a></li>
-		<li class><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a></li>
-		<li class><a href="#awards"><i class="fa fa-trophy fa-fw"></i> Awards</a></li>
-		<li class><a href="#languages"><i class="fa fa-language fa-fw"></i> Languages</a></li>
-		<li class><a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a></li>
+	    {% if user.user_profile.summary_section.is_active or has_edit_permission %}
+	 	     <li class><a href="#summary"><i class="fa fa-file-text fa-fw"></i> Summary</a></li>
+	 	{% endif %}
+	 	{% if user.user_profile.experience_section.is_active or has_edit_permission %}
+		      <li class><a href="#experience"><i class="fa fa-building fa-fw"></i> Experience</a></li>
+		{% endif %}
+		{% if user.user_profile.project_section.is_active or has_edit_permission %}
+		      <li class><a href="#projects"><i class="fa fa-th-list fa-fw"></i> Projects</a></li>
+		{% endif %}
+		{% if user.user_profile.education_section.is_active or has_edit_permission %}
+		      <li class><a href="#education"><i class="fa fa-graduation-cap fa-fw"></i> Education</a></li>
+		{% endif %}
+		{% if user.user_profile.profile_section.is_active or has_edit_permission %}
+		      <li class><a href="#profile"><i class="fa fa-user fa-fw"></i> Profiles</a></li>
+		{% endif %}
+		{% if user.user_profile.publication_section.is_active or has_edit_permission %}
+		      <li class><a href="#publications"><i class="fa fa-book fa-fw"></i> Publications</a></li>
+		{% endif %}
+		{% if user.user_profile.certification_section.is_active or has_edit_permission %}
+		      <li class><a href="#certifications"><i class="fa fa-certificate fa-fw"></i> Certifications</a></li>
+		{% endif %}
+		{% if user.user_profile.skill_section.is_active or has_edit_permission %}
+		      <li class><a href="#skills"><i class="fa fa-anchor fa-fw"></i> Skills</a></li>
+		{% endif %}
+		{% if user.user_profile.course_section.is_active or has_edit_permission %}
+		      <li class><a href="#courses"><i class="fa fa-server fa-fw"></i> Courses</a></li>
+		{% endif %}
+		{% if user.user_profile.award_section.is_active or has_edit_permission %}
+		      <li class><a href="#awards"><i class="fa fa-trophy fa-fw"></i> Awards</a></li>
+		{% endif %}
+		{% if user.user_profile.language_section.is_active or has_edit_permission %}
+		      <li class><a href="#languages"><i class="fa fa-language fa-fw"></i> Languages</a></li>
+		{% endif %}
+		{% if user.user_profile.contact_section.is_active or has_edit_permission %}
+		      <li class><a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a></li>
+		{% endif %}
 	</ul>    			
 </nav>
