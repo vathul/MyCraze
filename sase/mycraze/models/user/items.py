@@ -22,7 +22,7 @@ class ExperienceItem(models.Model):
     """This module is the model class that represents an experience item within
     an experience section in user resume.
     Refer py:module:: mycraze.models.user.sections.ExperienceSection
-    Can be accessed as experience_section.experience_items.
+    Can be accessed by experience_section.experience_items.
     """
 
     class Meta:
@@ -37,7 +37,7 @@ class ProjectItem(models.Model):
     """This module is the model class that represents a project item within
     a project section in user resume.
     Refer py:module:: mycraze.models.user.sections.ProjectSection
-    Can be accessed as project_section.project_items.
+    Can be accessed by project_section.project_items.
     """
 
     class Meta:
@@ -52,7 +52,7 @@ class EducationItem(models.Model):
     """This module is the model class that represents an education item within
     an education section in user resume.
     Refer py:module:: mycraze.models.user.sections.EducationSection
-    Can be accessed as education_section.education_items.
+    Can be accessed by education_section.education_items.
     """
 
     class Meta:
@@ -67,7 +67,7 @@ class PublicationItem(models.Model):
     """This module is the model class that represents a publication item within
     a publication section in user resume.
     Refer py:module:: mycraze.models.user.sections.PublicationSection
-    Can be accessed as publication_section.publication_items.
+    Can be accessed by publication_section.publication_items.
     """
 
     class Meta:
@@ -82,7 +82,7 @@ class CertificationItem(models.Model):
     """This module is the model class that represents a certification item within
     a certification section in user resume.
     Refer py:module:: mycraze.models.user.sections.CertificationSection
-    Can be accessed as certification_section.certification_items.
+    Can be accessed by certification_section.certification_items.
     """
 
     class Meta:
@@ -96,7 +96,7 @@ class AwardItem(models.Model):
     """This module is the model class that represents an award item within
     an award section in user resume.
     Refer py:module:: mycraze.models.user.sections.AwardSection
-    Can be accessed as award_section.award_items.
+    Can be accessed by award_section.award_items.
     """
 
     class Meta:
@@ -111,7 +111,7 @@ class SkillItem(models.Model):
     """This module is the model class that represents a skill item within
     a skill section in user resume.
     Refer py:module:: mycraze.models.user.sections.SkillSection
-    Can be accessed as skill_section.skill_items.
+    Can be accessed by skill_section.skill_items.
     """
 
     class Meta:
@@ -124,7 +124,7 @@ class CourseItem(models.Model):
     """This module is the model class that represents a course item within
     a course section in user resume.
     Refer py:module:: mycraze.models.user.sections.CourseSection
-    Can be accessed as course_section.course_items.
+    Can be accessed by course_section.course_items.
     """
 
     class Meta:
@@ -138,7 +138,7 @@ class LanguageItem(models.Model):
     """This module is the model class that represents a language item within
     a language section in user resume.
     Refer py:module:: mycraze.models.user.sections.LanguageSection
-    Can be accessed as language_section.language_items.
+    Can be accessed by language_section.language_items.
     """
 
     class Meta:
