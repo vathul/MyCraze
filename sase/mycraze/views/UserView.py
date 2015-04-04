@@ -11,6 +11,7 @@ from mycraze.models.user.profile import UserProfile
 from mycraze.services.user import UserProfileService
 from mycraze.utils.http import JsonResponse
 
+
 # Create your views here.
 @login_required
 def submit_profile(request):	

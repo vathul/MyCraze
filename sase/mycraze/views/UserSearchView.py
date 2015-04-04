@@ -2,8 +2,10 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from mycraze.services.user import UserProfileService
+
 from mycraze.services.search import UserSearchService
+from mycraze.services.user import UserProfileService
+
 
 @login_required
 def get_users_page(request):

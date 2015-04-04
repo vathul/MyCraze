@@ -1,4 +1,3 @@
-from mycraze.models.user.profile import UserProfile
 from mycraze.models.user.items import AwardItem
 from mycraze.models.user.items import CertificationItem
 from mycraze.models.user.items import CourseItem
@@ -8,6 +7,7 @@ from mycraze.models.user.items import LanguageItem
 from mycraze.models.user.items import ProjectItem
 from mycraze.models.user.items import PublicationItem
 from mycraze.models.user.items import SkillItem
+from mycraze.models.user.profile import UserProfile
 from mycraze.models.user.sections import AwardSection
 from mycraze.models.user.sections import CertificationSection
 from mycraze.models.user.sections import ContactSection
