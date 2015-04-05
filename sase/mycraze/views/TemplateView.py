@@ -1,4 +1,4 @@
-"""This module contains view classe to receive user ping on the app."""
+"""This module contains view function to receive user ping on the app."""
 
 __author__ = "Srikrishnan Suresh"
 __copyright__ = "Copyright 2015, MyCraze"

@@ -1,4 +1,4 @@
-"""This module contains view classes pertaining to login, sign up and profile
+"""This module contains view functions pertaining to login, sign up and profile
 completion."""
 
 __author__ = "Srikrishnan Suresh"
