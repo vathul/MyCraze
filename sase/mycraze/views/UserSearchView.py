@@ -1,3 +1,9 @@
+"""This module contains view classes pertaining to searching users."""
+
+__author__ = "Srikrishnan Suresh"
+__copyright__ = "Copyright 2015, MyCraze"
+__version__ = "1.0.1"
+
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -9,6 +15,10 @@ from mycraze.services.user import UserProfileService
 
 @login_required
 def get_users_page(request):
+    """This function returns the user search results page based on the
+    search criteria and query entered by user. 
+    """
+
     if not UserProfileService.has_user_profile(request.user):
         return HttpResponseRedirect('/mycraze/profile-complete/')
     criteria=None
