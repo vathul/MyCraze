@@ -2,7 +2,7 @@ Brlapi==0.6.1
 Django==1.6.5
 Mako==0.9.1
 MarkupSafe==0.18
-Pillow==2.7.0
+Pillow==9.0.0
 PyJWT==0.3.0
 PyMySQL==0.6.2
 apturl==0.5.2ubuntu4
